@@ -59,20 +59,22 @@ export default function Sidebar({ isMobileOpen, closeMobileSidebar }) {
       )}
 
       {/* Navigation */}
+      {/* Navigation */}
       <nav className="flex-1 p-2">
         {navItems.map((item) => (
           <Link
             key={item.id}
             href={item.href}
             onClick={() => {
+              // Check karein ke ye code sirf browser mein chale (window available hai)
               if (typeof window !== "undefined" && window.innerWidth < 1024) {
                 closeMobileSidebar();
               }
             }}
             className={`
-              flex items-center px-3 py-2 rounded-lg mb-1 transition-colors
-              ${item.id === "chatbots" ? "bg-gray-100" : "hover:bg-gray-50"}
-            `}
+        flex items-center px-3 py-2 rounded-lg mb-1 transition-colors
+        ${item.id === "chatbots" ? "bg-gray-100" : "hover:bg-gray-50"}
+      `}
           >
             <span className="text-xl">{item.icon}</span>
             {!isCollapsed && <span className="ml-3">{item.label}</span>}

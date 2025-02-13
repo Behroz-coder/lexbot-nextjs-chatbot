@@ -1,6 +1,6 @@
-"use client";
+
 import Link from "next/link";
-import Lottie from "lottie-react";
+
 
 export default function Custom404() {
   return (
@@ -19,13 +19,13 @@ export default function Custom404() {
       >
         Go Home
       </Link>
-      <div className="mt-10 w-64 mx-auto">
+      {/* <div className="mt-10 w-64 mx-auto">
         <Lottie
           animationData={require("../public/404-animation.json")}
           loop={true}
           className="w-full h-full"
         />
-      </div>
+      </div> */}
     </div>
   );
 }
