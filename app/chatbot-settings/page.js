@@ -76,7 +76,7 @@ const handleAddSuggestedMessage = () => {
         time: new Date().toLocaleString(),
       },
     ];
-
+  setIsMessageSent(true);
     setMessages(newMessages);
     setInputMessage("");
   };
@@ -90,6 +90,8 @@ const handleAddSuggestedMessage = () => {
   const [color2, setColor2] = useState("#2472FC");
   const [alignment, setAlignment] = useState("right");
   const [selected, setSelected] = useState("textured");
+ const [isMessageSent, setIsMessageSent] = useState(false);
+
   const options = [
     {
       id: "chat_bubble",
@@ -387,7 +389,11 @@ const handleAddSuggestedMessage = () => {
             <X size={24} />
           </button> */}
 
-          <div className="h-full lg:h-screen w-full flex flex-col">
+          <div
+            className={`h-full ${
+              isMessageSent ? "lg:h-screen" : "lg:h-[500px]"
+            } w-full flex flex-col`}
+          >
             <div className="flex items-center p-4 border-b">
               <Image
                 src={logoLex}

@@ -5,6 +5,8 @@ import Link from "next/link";
 import Sidebar from "./Sidebar";
 import Image from "next/image";
 import logo from "../../public/lexLogo.svg";
+import Playground from "../Playground/page";
+import Functions from "../Functions/page";
 export default function MainNav({ activeMenuItem, setActiveMenuItem }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const menuItems = [
@@ -71,7 +73,6 @@ export default function MainNav({ activeMenuItem, setActiveMenuItem }) {
           <div className="hidden mr-4 lg:block h-10 w-10 bg-slate-300 rounded-full"></div>
         </div>
       </nav>
-
       {/* Render Sidebar only on mobile */}
       <div className="lg:hidden">
         {isMobileMenuOpen && (
@@ -80,7 +81,9 @@ export default function MainNav({ activeMenuItem, setActiveMenuItem }) {
             closeMobileSidebar={() => setIsMobileMenuOpen(false)}
           />
         )}
-      </div>
+      </div>{" "}
+      {activeMenuItem === "Playground" && <Playground />}
+      {activeMenuItem === "Functions" && <Functions />}
     </>
   );
 }

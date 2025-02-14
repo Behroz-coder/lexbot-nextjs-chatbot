@@ -1,13 +1,15 @@
  
 import "./globals.css";
 import HomePage from './home/page'
+import Login from "./login/page";
 
 export default function Home() {
 
 
   return (
     <>
-      <HomePage/>
+      {/* <HomePage/> */}
+      <Login/>
 </>
   );
 }
