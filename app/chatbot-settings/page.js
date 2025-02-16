@@ -10,45 +10,47 @@ import profile_icon from "../../public/profile-icon.svg"
 import custom_icon from "../../public/custom-icon.svg"
 import { Paperclip, Send } from "lucide-react";
 import { X } from "lucide-react";
+import {
+  MessageSquare,
+  MessageCircle,
+  User,
+  MessagesSquare,
+  MoreHorizontal,
+  MenuSquare,
+} from "lucide-react";
+import { SketchPicker } from "react-color";
 export default function ChatbotSettings() {
   const [theme, setTheme] = useState("light");
- const [messages, setMessages] = useState([
-   {
-     text: "Hi, Thank you for choosing us, what will you like us to do for you? Please explain clearly.",
-     sender: "Chat bot",
-     time: new Date().toLocaleString(),
-   },
- ]);
+  const [messages, setMessages] = useState([
+    {
+      text: "Hi, Thank you for choosing us, what will you like us to do for you? Please explain clearly.",
+      sender: "Chat bot",
+      time: new Date().toLocaleString(),
+    },
+  ]);
   const [autoShowDelay, setAutoShowDelay] = useState(3);
-const [suggestedMessages, setSuggestedMessages] = useState([
-  "Hey, how are you doing?",
-  "Hope you are fine?",
-]);
+  const [suggestedMessages, setSuggestedMessages] = useState([
+    "Hey, how are you doing?",
+    "Hope you are fine?",
+  ]);
 
+  //   const scrollToBottom = () => {
+  //     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  //   };
 
-//   const scrollToBottom = () => {
-//     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-//   };
+  //   useEffect(() => {
+  //     scrollToBottom();
+  //   }, [suggestedMessages]);
 
- 
-//   useEffect(() => {
-//     scrollToBottom();
-//   }, [suggestedMessages]);
+  const handleDeleteSuggestedMessage = (index) => {
+    setSuggestedMessages((prevMessages) =>
+      prevMessages.filter((_, i) => i !== index)
+    );
+  };
 
-
-
-
-
-const handleDeleteSuggestedMessage = (index) => {
-  setSuggestedMessages((prevMessages) =>
-    prevMessages.filter((_, i) => i !== index)
-  );
-};
-
-const handleAddSuggestedMessage = () => {
-  setSuggestedMessages([...suggestedMessages, " "]);
-};
-
+  const handleAddSuggestedMessage = () => {
+    setSuggestedMessages([...suggestedMessages, " "]);
+  };
 
   const handleSuggestedMessageChange = (index, value) => {
     const updatedMessages = [...suggestedMessages];
@@ -56,12 +58,9 @@ const handleAddSuggestedMessage = () => {
     setSuggestedMessages(updatedMessages);
   };
 
- 
   const [inputMessage, setInputMessage] = useState("");
   const [files, setFiles] = useState([]);
   const messagesEndRef = useRef(null);
-
-
 
   const handleSendMessage = (msg) => {
     const messageText = msg || inputMessage.trim();
@@ -76,7 +75,7 @@ const handleAddSuggestedMessage = () => {
         time: new Date().toLocaleString(),
       },
     ];
-  setIsMessageSent(true);
+    setIsMessageSent(true);
     setMessages(newMessages);
     setInputMessage("");
   };
@@ -89,18 +88,110 @@ const handleAddSuggestedMessage = () => {
   const [color, setColor] = useState("#000000");
   const [color2, setColor2] = useState("#2472FC");
   const [alignment, setAlignment] = useState("right");
-  const [selected, setSelected] = useState("textured");
- const [isMessageSent, setIsMessageSent] = useState(false);
+  // const [selected, setSelected] = useState("textured");
+  const [isMessageSent, setIsMessageSent] = useState(false);
 
+  // changes here
+
+  const [showCustomizer, setShowCustomizer] = useState(false);
+  const [selected, setSelected] = useState("chat_bubble");
+  const [selectedIcon, setSelectedIcon] = useState("message1");
+  const [selectedColor, setSelectedColor] = useState("#2472FC");
+  const [texture, setTexture] = useState("flat");
+  const [customIcon, setCustomIcon] = useState(<MessageSquare size={24} />);
+  const [customLabel, setCustomlabel] = useState('Custom');
+  const [customColor, setCustomColor] = useState("#2472FC");
+  const [showColorPicker, setShowColorPicker] = useState(false);
+
+  // Chat bubble options
   const options = [
     {
       id: "chat_bubble",
       label: "Chat bubble",
-      icon: message_icon,
+      icon: (
+        <Image src={message_icon} alt="Chat Bubble" width={40} height={40} />
+      ),
     },
-    { id: "textured", label: "Textured", icon: profile_icon },
-    { id: "custom", label: "Custom", icon: custom_icon },
+    {
+      id: "textured",
+      label: "Textured",
+      icon: <Image src={profile_icon} alt="Textured" width={40} height={40} />,
+    },
+    {
+      id: "custom",
+      label: "Custom",
+      customElement: (
+        <>
+          <div
+            className="w-[40px] h-[40px] rounded-full flex items-center justify-center"
+            style={{
+              background: customColor,
+              boxShadow:
+                texture === "textured"
+                  ? "inset 0 1px 0 rgba(255, 255, 255, 0.1)"
+                  : "none",
+            }}
+          >
+            <div className="text-white">{customIcon}</div>
+          </div>
+          <div className="text-gray-700 mt-2 text-sm">{customLabel}</div>
+        </>
+      ),
+    },
   ];
+
+  // Icon options
+  const iconOptions = [
+    { id: "message1", icon: <MessageSquare size={24} /> },
+    { id: "message2", icon: <MessageCircle size={24} /> },
+    { id: "user", icon: <User size={24} /> },
+    { id: "messages", icon: <MessagesSquare size={24} /> },
+    { id: "more", icon: <MoreHorizontal size={24} /> },
+    { id: "menu", icon: <MenuSquare size={24} /> },
+  ];
+
+  // Color options
+  const colorOptions = [
+    { id: "blue", color: "#2472FC" },
+    { id: "black", color: "#000000" },
+    { id: "purple", color: "#800080" },
+    { id: "green", color: "#008000" },
+    { id: "gradient", color: "linear-gradient(135deg, #8B5CF6, #D8B4FE)" },
+  ];
+
+  // Handle icon selection
+  const handleIconSelect = (icon, iconComponent) => {
+    setSelectedIcon(icon);
+    setCustomIcon(iconComponent);
+  };
+
+  // Handle color selection
+  const handleColorSelect = (color) => {
+    setSelectedColor(color);
+    setCustomColor(color);
+  };
+
+  // Handle custom color input
+  // Updated custom color handler for SketchPicker
+  const handleCustomColor = (color) => {
+    // Update color on complete selection from SketchPicker
+    handleColorSelect(color.hex);
+    setShowColorPicker(false);
+  };
+  // Handle option selection
+  const handleOptionSelect = (optionId) => {
+    setSelected(optionId);
+    if (optionId === "custom") {
+      setShowCustomizer(true);
+    } else if (optionId === "chat_bubble") {
+      setTexture("flat");
+    } else if (optionId === "textured") {
+      setTexture("textured");
+    }
+  };
+
+
+   const runtimeSize = 60; 
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
 
   const [initialMessage1, setInitialMessage1] = useState(
@@ -234,7 +325,7 @@ const handleAddSuggestedMessage = () => {
             </select>
           </section>
           {/* color picker */}
-          <section className="flex items-center justify-between space-x-3">
+          <section className="flex items-center justify-between space-x-3 mb-4">
             <span className="text-black text-lg font-semibold ">
               User Message Color
             </span>
@@ -249,7 +340,45 @@ const handleAddSuggestedMessage = () => {
             </div>
           </section>
           {/* Chat Bubble Design */}
-          <section className="my-6">
+          {/* Chat Bubble Design Selection */}
+          {/* <section className="my-6">
+            <h3 className="text-lg font-semibold text-black mb-2">
+              Chat bubble design
+            </h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+              {options.map((option) => (
+                <div
+                  key={option.id}
+                  className={`flex flex-col items-center p-4 border rounded-lg cursor-pointer transition-all duration-300 ${
+                    selected === option.id
+                      ? "border-blue-500 shadow-md"
+                      : "border-gray-300"
+                  }`}
+                  onClick={() => {
+                    setSelected(option.id);
+                    if (option.id === "custom") {
+                      handleCustomClick();
+                    }
+                  }}
+                >
+                  <input
+                    type="radio"
+                    name="chat_bubble_design"
+                    checked={selected === option.id}
+                    onChange={() => setSelected(option.id)}
+                    className="mb-2"
+                  />
+                  <div className="text-gray-700">{option.icon}</div>
+                  <span className="mt-2 text-sm text-gray-700">
+                    {option.label}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </section> */}
+          <hr />
+          {/* Chat Bubble Design Selection Section */}
+          <section className="my-6 ">
             <h3 className="text-lg font-semibold text-black mb-2">
               Chat bubble design
             </h3>
@@ -262,28 +391,174 @@ const handleAddSuggestedMessage = () => {
                       ? "border-blue-500 shadow-md"
                       : "border-gray-300"
                   }`}
-                  onClick={() => setSelected(option.id)}
+                  onClick={() => handleOptionSelect(option.id)}
                 >
                   <input
                     type="radio"
                     name="chat_bubble_design"
                     checked={selected === option.id}
-                    onChange={() => setSelected(option.id)}
+                    onChange={() => handleOptionSelect(option.id)}
                     className="mb-2"
                   />
-                  <Image
-                    src={option.icon}
-                    alt={option.label}
-                    width={40}
-                    height={40}
-                  />
-                  <span className="mt-2 text-xs sm:text-sm md:text-lg text-gray-700">
-                    {option.label}
-                  </span>
+                  {option.customElement ? (
+                    option.customElement
+                  ) : (
+                    <>
+                      <div className="text-gray-700">{option.icon}</div>
+                      <span className="mt-1 lg:mt-2 text-sm text-gray-700">
+                        {option.label}
+                      </span>
+                    </>
+                  )}
                 </div>
               ))}
             </div>
           </section>
+
+          {/* Customizer Popup */}
+          {showCustomizer && (
+            <div className="fixed right-1 top-0 sm:top-4 w-full sm:w-auto  sm:inset-0 lg:bg-black/50 flex items-center justify-center lg:p-4 z-50">
+              <div className="bg-white rounded-lg max-h-[540px] shadow-xl max-w-5xl w-full lg:overflow-hidden">
+                <div className="flex lg:flex-row flex-col bg-white">
+                  {/* Preview Section */}
+                  <div className="lg:w-1/2 bg-gray-50 p-8 border-r flex flex-col items-center justify-center">
+                    <div
+                      className="w-32 h-32 rounded-full flex items-center justify-center"
+                      style={{
+                        background: selectedColor,
+                        boxShadow:
+                          texture === "textured"
+                            ? "0 4px 6px rgba(70, 80, 70, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.1)"
+                            : "none",
+                      }}
+                    >
+                      <div className="text-white ">
+                        {" "}
+                        {React.cloneElement(customIcon, { size: runtimeSize })}
+                      </div>
+                    </div>
+                    {/* <div className="mt-4 text-center">
+                      <p className="text-sm text-gray-600">
+                        Texture: {texture}
+                      </p>
+                    </div> */}
+                  </div>
+
+                  {/* Customization Section */}
+                  <div className="lg:w-1/2 p-4 lg:p-8">
+                    <h2 className="text-xl font-semibold mb-2">
+                      Customise your Chat bubble
+                    </h2>
+
+                    {/* Icons Section */}
+                    <div className="space-y-4 mb-3">
+                      <h3 className="text-lg font-medium text-gray-900">
+                        Icons
+                      </h3>
+                      <div className="grid grid-cols-6 gap-4">
+                        {iconOptions.map((icon) => (
+                          <button
+                            key={icon.id}
+                            onClick={() => handleIconSelect(icon.id, icon.icon)}
+                            className={`px-2 py-3 border rounded-md flex items-center justify-center transition-all ${
+                              selectedIcon === icon.id
+                                ? "border-blue-500 bg-blue-50"
+                                : "border-gray-200 hover:border-blue-200"
+                            }`}
+                          >
+                            <div className="text-gray-900">{icon.icon}</div>
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Colors Section */}
+                    <div className="space-y-4 mb-4">
+                      <h3 className="text-lg font-medium text-gray-900">
+                        Chat Bubble Button Color
+                      </h3>
+                      <div className="grid grid-cols-6 gap-4">
+                        {colorOptions.map((color) => (
+                          <button
+                            key={color.id}
+                            onClick={() => handleColorSelect(color.color)}
+                            className={`w-12 h-12 rounded-full transition-all ${
+                              selectedColor === color.color
+                                ? "ring-2 ring-blue-500 ring-offset-2"
+                                : ""
+                            }`}
+                            style={{ background: color.color }}
+                          />
+                        ))}
+                        <div className="relative">
+                          {/* Pencil icon button to toggle professional color picker */}
+                          <button
+                            onClick={() => setShowColorPicker(!showColorPicker)}
+                            className="w-12 h-12 rounded-full border-2 border-gray-300 flex items-center justify-center"
+                          >
+                            <span className="text-xl">✏️</span>
+                          </button>
+                          {showColorPicker && (
+                            <div className="absolute right-16 -top-[120%] mt-2 z-50">
+                              {/* Professional color picker (SketchPicker) replaces native color input */}
+                              <SketchPicker
+                                color={selectedColor}
+                                onChangeComplete={handleCustomColor}
+                              />
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                    {/* Texture Section */}
+                    <div className="space-y-4 mb-4">
+                      <h3 className="text-lg font-medium text-gray-900">
+                        Texture
+                      </h3>
+                      <div className="grid grid-cols-2 gap-4">
+                        <button
+                          onClick={() => setTexture("flat")}
+                          className={`p-3 rounded-xl text-center transition-all ${
+                            texture === "flat"
+                              ? "bg-blue-50 border-blue-500 border"
+                              : "border border-gray-200"
+                          }`}
+                        >
+                          Flat
+                        </button>
+                        <button
+                          onClick={() => setTexture("textured")}
+                          className={`p-3 rounded-xl text-center transition-all ${
+                            texture === "textured"
+                              ? "bg-blue-50 border-blue-500 border"
+                              : "border border-gray-200"
+                          }`}
+                        >
+                          Textured
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* Action Buttons */}
+                    <div className="space-y-3">
+                      <button
+                        onClick={() => setShowCustomizer(false)}
+                        className="w-full py-3 bg-[#2472FC] text-white rounded-lg hover:bg-blue-600 transition-colors"
+                      >
+                        Save
+                      </button>
+                      <button
+                        onClick={() => setShowCustomizer(false)}
+                        className="w-full py-3 bg-[#DBDBDB]/40 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
+                      >
+                        Close
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
           {/* chat button color */}
           <section className="flex items-center justify-between space-x-3">
             <span className="text-black text-lg font-semibold capitalize ">
@@ -494,3 +769,11 @@ const handleAddSuggestedMessage = () => {
     </div>
   );
 }
+
+
+
+
+
+
+
+

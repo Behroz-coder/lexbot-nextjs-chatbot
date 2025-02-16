@@ -51,6 +51,13 @@ const Playground = () => {
   const handleSliderChange = (e) => {
     setCreativity(e.target.value);
   };
+   const [text, setText] = useState("");
+
+   const handleChange = (e) => {
+     if (e.target.value.length <= 1000) {
+       setText(e.target.value);
+     }
+   };
 
     return (
       <div className="flex items-start  overflow-y-auto lg:min-h-screen bg-white  gap-20 px-3 lg:px-4 mx-auto w-full ">
@@ -60,7 +67,9 @@ const Playground = () => {
           <div className="my-6 ">
             <div className="flex justify-between items-center mb-2">
               <span className="text-lg font-medium text-black">Creativity</span>
-              <span className="text-lg font-semibold text-gray-800">{creativity}</span>
+              <span className="text-lg font-semibold text-gray-800">
+                {creativity}
+              </span>
             </div>
             {/* Custom styled range input */}
             <input
@@ -135,13 +144,26 @@ const Playground = () => {
             <textarea
               className="w-full p-2 border border-gray-300 outline-none rounded-md text-sm text-gray-700 min-h-[100px] resize-none"
               placeholder="Enter your instruction here..."
+              value={text}
+              onChange={handleChange} 
             ></textarea>
+
+            {/* Character Counter with Limit */}
+            <p className="text-sm mt-1 text-end">
+              <span
+                className={`font-semibold ${
+                  text.length >= 1000 ? "text-red-500" : "text-gray-600"
+                }`}
+              >
+                {text.length}/1000
+              </span>
+            </p>
           </div>
 
           {/* Save Button */}
           <div className="flex  mt-5 w-full">
             <button className="bg-blue-600 text-white w-full px-6 py-3 rounded-lg hover:bg-blue-700 transition">
-              Save to chatbot
+              Save to Chatbot
             </button>
           </div>
 

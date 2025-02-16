@@ -7,6 +7,7 @@ import Image from "next/image";
 import logo from "../../public/lexLogo.svg";
 import Playground from "../Playground/page";
 import Functions from "../Functions/page";
+import Settings from "../Settings/page";
 export default function MainNav({ activeMenuItem, setActiveMenuItem }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const menuItems = [
@@ -36,7 +37,7 @@ export default function MainNav({ activeMenuItem, setActiveMenuItem }) {
               )}
             </button>
           </div>
-          <div className="flex items-center justify-center px-2 space-x-1 sm:space-x-4 overflow-x-auto whitespace-nowrap">
+          <div className="flex items-center justify-start px-2 space-x-1 sm:space-x-4 overflow-x-auto whitespace-nowrap">
             {menuItems.map((item) => (
               <button
                 key={item}
@@ -84,6 +85,7 @@ export default function MainNav({ activeMenuItem, setActiveMenuItem }) {
       </div>{" "}
       {activeMenuItem === "Playground" && <Playground />}
       {activeMenuItem === "Functions" && <Functions />}
+      {activeMenuItem === "Settings" && <Settings />}
     </>
   );
 }
