@@ -135,7 +135,7 @@ function Page() {
         {/* Right Section */}
         <div className="w-full lg:w-1/2 min-h-screen bg-custom-gradient hidden lg:flex items-center justify-center mt-8 md:mt-0">
           <Image
-            src={chatrightside} // Replace with the path to your image
+            src={chatrightside} 
             alt="Chatbot Preview"
             className="w-[500px] py-12"
           />
