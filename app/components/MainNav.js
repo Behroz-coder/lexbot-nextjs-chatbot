@@ -8,6 +8,7 @@ import logo from "../../public/lexLogo.svg";
 import Playground from "../Playground/page";
 import Functions from "../Functions/page";
 import Settings from "../Settings/page";
+import Responses from "../responses/page";
 export default function MainNav({ activeMenuItem, setActiveMenuItem }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const menuItems = [
@@ -86,6 +87,7 @@ export default function MainNav({ activeMenuItem, setActiveMenuItem }) {
       {activeMenuItem === "Playground" && <Playground />}
       {activeMenuItem === "Functions" && <Functions />}
       {activeMenuItem === "Settings" && <Settings />}
+      {activeMenuItem === "Responses" && <Responses />}
     </>
   );
 }
