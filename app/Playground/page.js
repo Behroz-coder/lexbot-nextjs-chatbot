@@ -64,21 +64,25 @@ const Playground = () => {
         {/* left side */}
         <div className="w-full lg:w-1/2 lg:border-r-2 border-gray-300 lg:pr-6 pb-24 min-h-screen   ">
           {/* Creativity Section */}
-          <div className="my-6 ">
+          <div className="my-6">
             <div className="flex justify-between items-center mb-2">
               <span className="text-lg font-medium text-black">Creativity</span>
               <span className="text-lg font-semibold text-gray-800">
                 {creativity}
               </span>
             </div>
-            {/* Custom styled range input */}
+     
             <input
               type="range"
               min="0"
               max="100"
               value={creativity}
               onChange={handleSliderChange}
-              className="w-full h-1.5 bg-gray-200 rounded-lg appearance-none cursor-pointer"
+            
+              style={{
+                background: `linear-gradient(to right, #2472FC 0%, #2472FC ${creativity}%, #E5E7EB ${creativity}%, #E5E7EB 100%)`,
+              }}
+              className="w-full h-1.5 rounded-lg appearance-none cursor-pointer"
             />
             <div className="flex justify-between mt-1">
               <span className="text-sm text-gray-500">Specific</span>
@@ -145,7 +149,7 @@ const Playground = () => {
               className="w-full p-2 border border-gray-300 outline-none rounded-md text-sm text-gray-700 min-h-[100px] resize-none"
               placeholder="Enter your instruction here..."
               value={text}
-              onChange={handleChange} 
+              onChange={handleChange}
             ></textarea>
 
             {/* Character Counter with Limit */}
@@ -193,7 +197,7 @@ const Playground = () => {
 
           <div
             className={`h-full    ${
-              isMessageSent ? "lg:h-screen" : "lg:h-[500px]"
+              isMessageSent ? "lg:h-screen" : "lg:h-[600px]"
             } w-full flex flex-col`}
           >
             <div className="flex items-center p-4 border-b">
@@ -243,8 +247,9 @@ const Playground = () => {
                     }`}
                   >
                     <p className="text-lg">{msg.text}</p>
-                    <p className="text-xs text-gray-600 mt-1">
-                      {msg.sender} {msg.time}
+                    <p className="text-xs text-black mt-1">
+                      {msg.sender}{" "}
+                      <span className="text-[#b6abab] pl-2"> {msg.time}</span>{" "}
                     </p>
                   </div>
                 </div>
@@ -257,7 +262,7 @@ const Playground = () => {
                 <button
                   key={index}
                   onClick={() => handleSendMessage(msg)}
-                  className="bg-[#DBDBDB] px-4 py-3 rounded-lg border border-gray-400 text-sm lg:text-lg hover:bg-gray-300 transition"
+                  className="bg-[#DBDBDB]/40 px-4 py-3 rounded-lg border border-gray-300 text-sm lg:text-[16px] leading-6 hover:bg-gray-300 transition"
                 >
                   {msg}
                 </button>

@@ -1,13 +1,13 @@
-"use client"
+"use client";
 import React, { useState, useRef, useEffect } from "react";
-import Head from 'next/head';
-import Image from 'next/image';
+import Head from "next/head";
+import Image from "next/image";
 import logo from "../../public/Lexbot.svg";
 import logoLex from "../../public/lexLogo.svg";
 import { FaTrash } from "react-icons/fa";
-import message_icon from "../../public/message-icon.svg"
-import profile_icon from "../../public/profile-icon.svg"
-import custom_icon from "../../public/custom-icon.svg"
+import message_icon from "../../public/message-icon.svg";
+import profile_icon from "../../public/profile-icon.svg";
+import custom_icon from "../../public/custom-icon.svg";
 import { Paperclip, Send } from "lucide-react";
 import { X } from "lucide-react";
 import {
@@ -99,7 +99,7 @@ export default function ChatbotSettings() {
   const [selectedColor, setSelectedColor] = useState("#2472FC");
   const [texture, setTexture] = useState("flat");
   const [customIcon, setCustomIcon] = useState(<MessageSquare size={24} />);
-  const [customLabel, setCustomlabel] = useState('Custom');
+  const [customLabel, setCustomlabel] = useState("Custom");
   const [customColor, setCustomColor] = useState("#2472FC");
   const [showColorPicker, setShowColorPicker] = useState(false);
 
@@ -190,8 +190,7 @@ export default function ChatbotSettings() {
     }
   };
 
-
-   const runtimeSize = 60; 
+  const runtimeSize = 60;
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
 
   const [initialMessage1, setInitialMessage1] = useState(
@@ -215,10 +214,10 @@ export default function ChatbotSettings() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="flex items-start   gap-16 px-3 lg:px-4 mx-auto w-full ">
+      <main className="flex items-start   gap-16 px-3 lg:px-0 mx-auto w-full ">
         {/* left side */}
         <div className="w-full lg:w-1/2 ">
-          <div className="flex items-center mb-6">
+          {/* <div className="flex items-center mb-6">
             <Image
               src={logo}
               alt="Lexbot Logo"
@@ -226,27 +225,27 @@ export default function ChatbotSettings() {
               height={80}
               priority
             />
-          </div>
+          </div> */}
           <div>
-            <h1 className="font-semibold text-2xl mt-8">Settings</h1>
+            <h1 className="font-medium text-2xl mt-1">Settings</h1>
             <p className="my-2 text-[#737373]">
               Easily customize your chatbot for web integrations
             </p>
           </div>
           {/* Initial Message Section */}
           <section className="mb-6 mt-4">
-            <h2 className="text-lg font-semibold mb-2">Initial Message</h2>
+            <h2 className="text-lg font-medium mb-2">Initial Message</h2>
             <textarea
               value={initialMessage1}
               onChange={handleChange}
-              className="w-full border rounded-lg p-3 resize-none focus:ring-2 focus:ring-blue-500 transition"
+              className="w-full border rounded-lg p-3 text-[#252525] resize-none  transition"
               rows={3}
               placeholder="Type your message..."
             />
             {/* Character Counter with Limit */}
             <p className="text-sm mt-1 text-end">
               <span
-                className={`font-semibold ${
+                className={`font-medium ${
                   initialMessage1.length >= 1000
                     ? "text-red-500"
                     : "text-gray-600"
@@ -265,10 +264,13 @@ export default function ChatbotSettings() {
           {/* Suggested Messages Section */}
           <section className="mb-6">
             <div className="flex justify-between items-center mb-3">
-              <h2 className="text-lg font-semibold">Suggested Messages</h2>
+              <h2 className="text-lg font-medium">Suggested Messages</h2>
             </div>
             {suggestedMessages.map((message, index) => (
-              <div key={index} className="flex items-center mb-2 relative">
+              <div
+                key={index}
+                className="flex items-center text-[#252525] mb-2 relative"
+              >
                 <input
                   type="text"
                   value={message}
@@ -296,7 +298,7 @@ export default function ChatbotSettings() {
 
           {/* toggle button */}
           <section className="flex items-center justify-between space-x-3">
-            <span className="text-lg text-black font-semibold">
+            <span className="text-lg text-black font-medium">
               Collect User Emails
             </span>
             <button
@@ -314,7 +316,7 @@ export default function ChatbotSettings() {
           </section>
           {/* Theme Selection */}
           <section className="mb-6 mt-6">
-            <h2 className="text-lg font-semibold mb-2">Theme</h2>
+            <h2 className="text-lg font-medium mb-2">Theme</h2>
             <select
               value={theme}
               onChange={(e) => setTheme(e.target.value)}
@@ -326,15 +328,15 @@ export default function ChatbotSettings() {
           </section>
           {/* color picker */}
           <section className="flex items-center justify-between space-x-3 mb-4">
-            <span className="text-black text-lg font-semibold ">
+            <span className="text-black text-lg font-medium ">
               User Message Color
             </span>
-            <div className="flex items-center gap-1">
+            <div className="flex items-center  gap-1">
               <input
                 type="color"
                 value={color}
                 onChange={(e) => setColor(e.target.value)}
-                className="w-8 h-8 cursor-pointer"
+                className="w-8 h-8 cursor-pointer rounded-2xl"
               />
               <span className="text-sm font-mono p">{color}</span>
             </div>
@@ -569,7 +571,7 @@ export default function ChatbotSettings() {
                 type="color"
                 value={color2}
                 onChange={(e) => setColor2(e.target.value)}
-                className="w-8 h-8 cursor-pointer"
+                className="w-8 h-8 cursor-pointer rounded-2xl"
               />
               <span className="text-sm font-mono p">{color2}</span>
             </div>
@@ -582,7 +584,7 @@ export default function ChatbotSettings() {
             <div className="flex space-x-4 justify-between w-full">
               <button
                 onClick={() => setAlignment("left")}
-                className={`px-6 py-2 w-full rounded-lg border transition-all duration-300 ${
+                className={`px-6 py-2 w-full rounded-xl border transition-all duration-300 ${
                   alignment === "left"
                     ? "border-blue-500 shadow-md"
                     : "border-gray-300"
@@ -599,7 +601,7 @@ export default function ChatbotSettings() {
               </button>
               <button
                 onClick={() => setAlignment("right")}
-                className={`px-6 w-full py-2 rounded-lg border transition-all duration-300 ${
+                className={`px-6 w-full py-2 rounded-xl border transition-all duration-300 ${
                   alignment === "right"
                     ? "border-blue-500 shadow-md"
                     : "border-gray-300"
@@ -666,7 +668,7 @@ export default function ChatbotSettings() {
 
           <div
             className={`h-full ${
-              isMessageSent ? "lg:h-screen" : "lg:h-[500px]"
+              isMessageSent ? "lg:h-screen" : "lg:h-[600px]"
             } w-full flex flex-col`}
           >
             <div className="flex items-center p-4 border-b">
@@ -715,9 +717,12 @@ export default function ChatbotSettings() {
                         : "bg-[#F3F3F3] text-black"
                     }`}
                   >
-                    <p className="text-lg">{msg.text}</p>
-                    <p className="text-xs text-gray-600 mt-1">
-                      {msg.sender} {msg.time}
+                    <p className="text-[16px] leading-[25px] font-normal">
+                      {msg.text}
+                    </p>
+                    <p className="text-xs text-black mt-1">
+                      {msg.sender}{" "}
+                      <span className="text-[#b6abab] pl-2"> {msg.time}</span>{" "}
                     </p>
                   </div>
                 </div>
@@ -730,7 +735,7 @@ export default function ChatbotSettings() {
                 <button
                   key={index}
                   onClick={() => handleSendMessage(msg)}
-                  className="bg-[#DBDBDB] px-4 py-3 rounded-lg border border-gray-400 text-sm lg:text-lg hover:bg-gray-300 transition"
+                  className="bg-[#DBDBDB]/40 px-4 py-3 rounded-lg border border-gray-300 text-sm lg:text-[16px] leading-6 hover:bg-gray-300 transition"
                 >
                   {msg}
                 </button>
@@ -769,11 +774,3 @@ export default function ChatbotSettings() {
     </div>
   );
 }
-
-
-
-
-
-
-
-

@@ -1,12 +1,12 @@
-// components/Header.js
+// components/InterfaceHeader.js
 export default function Header({ activeTab, setActiveTab }) {
   return (
     <header className="border-b px-6 py-4">
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center overflow-x-auto  whitespace-nowrap">
         <div className="flex space-x-4">
           <button
             className={`px-4 py-2 border border-gray-300 rounded-lg ${
-              activeTab === "web" ? "bg-[#252525] text-white" : "text-gray-600"
+              activeTab === "web" ? "bg-[#252525] text-white" : "text-[#252525]"
             }`}
             onClick={() => setActiveTab("web")}
           >
@@ -16,11 +16,21 @@ export default function Header({ activeTab, setActiveTab }) {
             className={`px-4 py-2 border border-gray-300  rounded-lg ${
               activeTab === "social"
                 ? "bg-[#252525] text-white"
-                : "text-gray-600"
+                : "text-[#252525]"
             }`}
             onClick={() => setActiveTab("social")}
           >
             Social Media
+          </button>
+          <button
+            className={`px-4 py-2 border border-gray-300  rounded-lg ${
+              activeTab === "separate"
+                ? "bg-[#252525] text-white"
+                : "text-[#252525]"
+            }`}
+            onClick={() => setActiveTab("separate")}
+          >
+            Separate Interface
           </button>
         </div>
       </div>

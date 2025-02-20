@@ -227,6 +227,7 @@ const MessageBubble = memo(({ message }) =>  {
             >
               <div className="flex items-center justify-between">
                 <h3 className="font-medium text-lg text-black">{chat.name}</h3>
+                <p className="text-[#A3A3A3]">1 minute ago</p>
               </div>
               <p className="text-base text-gray-500 mt-2 truncate">
                 {chat.messages[chat.messages.length - 1]?.text}

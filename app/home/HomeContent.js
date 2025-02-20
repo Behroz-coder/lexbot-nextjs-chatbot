@@ -1,14 +1,16 @@
+//HomeContent
 "use client";
 import React, { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Sidebar from "../components/Sidebar";
 import MainNav from "../components/MainNav";
-import Header from "../components/Header";
+import Header from "../components/InterfaceHeader";
 import SocialConnections from "../components/SocialConnections";
 import ChatbotSettings from "../chatbot-settings/page"; 
 import PublishHeader from "../components/PublishHeader";
 import ShareInterface from "../components/ShareInterface";
 import WebIntegration from "../components/WebIntegration";
+import SeparateInterface from "../components/SeparateInterface";
 
 export default function HomeContent() {
   const router = useRouter();
@@ -16,7 +18,7 @@ export default function HomeContent() {
 
   // Initialize state from URL parameters
   const [activeTab, setActiveTab] = useState(
-    () => searchParams.get("tab") || "social"
+    () => searchParams.get("tab") || "web"
   );
   const [activeMenuItem, setActiveMenuItem] = useState(
     () => searchParams.get("menu") || "Interface"
@@ -42,6 +44,13 @@ export default function HomeContent() {
     if (menu) setActiveMenuItem(menu);
   }, []);
 
+
+  useEffect(() => {
+    if (!searchParams.get("tab")) {
+      setActiveTab("web"); 
+    }
+  }, [activeMenuItem, searchParams]);
+
   return (
     <div className="flex h-screen bg-white">
       <Sidebar
@@ -59,6 +68,7 @@ export default function HomeContent() {
             <div className="overflow-y-auto flex-1">
               {activeTab === "social" && <SocialConnections />}
               {activeTab === "web" && <ChatbotSettings />}
+              {activeTab === "separate" && <SeparateInterface />}
             </div>
           </>
         )}
@@ -66,17 +76,14 @@ export default function HomeContent() {
           <>
             <PublishHeader activeTab={activeTab} setActiveTab={setActiveTab} />
             <div className="overflow-y-auto flex-1">
-
-              
-                {activeTab === "web" && <WebIntegration/>}
-                {activeTab === "share" && <ShareInterface />}
-                {activeTab === "instagram" && (
-                  <div>Instagram Connection Content</div>
-                )}
-                {activeTab === "facebook" && (
-                  <div>Facebook Connection Content</div>
-                )}
-          
+              {activeTab === "web" && <WebIntegration />}
+              {activeTab === "share" && <ShareInterface />}
+              {activeTab === "instagram" && (
+                <div>Instagram Connection Content</div>
+              )}
+              {activeTab === "facebook" && (
+                <div>Facebook Connection Content</div>
+              )}
             </div>
           </>
         )}

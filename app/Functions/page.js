@@ -52,126 +52,129 @@ const SetupForm = ({ integration, onBack }) => {
   };
 
   return (
-    <div className="max-w-[640px] mx-auto p-6 overflow-y-auto scrollbar-hidden">
+    <>
       {/* Back button */}
-      <button
-        onClick={onBack}
-        className="mb-6 text-blue-600 hover:text-blue-700  text-lg font-medium flex items-center gap-2"
-      >
-        <ArrowLeftIcon/>
-     Back to integrations
-      </button>
+      <div className="container pl-4 pt-4">
+        <button
+          onClick={onBack}
+          className="mb-6 w-full text-blue-600 hover:text-blue-700  text-lg font-medium flex items-center gap-2"
+        >
+          <ArrowLeftIcon />
+        </button>
+      </div>
+      <div className="max-w-[680px] mx-auto p-6 overflow-y-auto scrollbar-hidden">
+        {/* Title */}
+        <h1 className="text-xl font-medium text-black text-center mb-8">
+          Setup {integration.title} Function
+        </h1>
 
-      {/* Title */}
-      <h1 className="text-xl font-semibold text-center mb-8">
-        Setup {integration.title} Function
-      </h1>
-
-      <form onSubmit={handleSubmit} className="space-y-8">
-        {/* When This Happens Section */}
-        <div>
-          <div className="flex justify-center mb-6">
-            <span className="bg-[#4B5563] text-white text-sm px-4 py-1.5 rounded-full">
-              When this happens...
-            </span>
-          </div>
-
-          <div className="mb-8 bg-white p-6 rounded-lg shadow-md">
-            <div className="text-sm text-gray-900 mb-2">
-              Please explain the context of the conversation for the function to
-              trigger.
-            </div>
-            <div className="relative pt-2">
-              <input
-                type="text"
-                value={context}
-                onChange={(e) => setContext(e.target.value)}
-                placeholder="When the user is interested about the AI functionality of my company"
-                className="w-full p-6 border border-gray-200 rounded-lg bg-white shadow-sm focus:ring-1 focus:ring-blue-500 focus:border-blue-500 text-sm"
-              />
-            </div>
-          </div>
-        </div>
-
-        {/* Do This Section */}
-        <div>
-          <div className="flex justify-center mb-6">
-            <span className="bg-[#4B5563] text-white text-sm px-4 py-1.5 rounded-full">
-              Do this...
-            </span>
-          </div>
-
-          {/* Name Input */}
-          <div className="space-y-2 relative">
-            {/* First Card */}
-            <div className=" bg-white rounded-lg shadow-md p-4 border border-gray-100">
-              <button
-                type="button"
-                className="absolute top-1 -right-6 text-gray-400 hover:text-gray-600"
-                aria-label="Delete"
-              >
-                <Trash2 size={18} />
-              </button>
-
-              <div className="mb-2 text-sm text-gray-900">Name of user</div>
-              <input
-                type="text"
-                value={userName}
-                onChange={(e) => setUserName(e.target.value)}
-                placeholder="Please type here"
-                className="w-full p-3 border border-gray-200 rounded-md focus:ring-0 text-sm"
-              />
+        <form onSubmit={handleSubmit} className="space-y-8">
+          {/* When This Happens Section */}
+          <div>
+            <div className="flex justify-center mb-6">
+              <span className="bg-[#253238CC]/80 text-white text-sm px-4 py-2 rounded-full">
+                When this happens...
+              </span>
             </div>
 
-            {/* Updated Plus Button Section with Connecting Lines */}
-            <div className="relative py-12 flex justify-center">
-          
-              <div className="absolute top-0 bottom-0 w-[2px] bg-gray-800">
-         
+            <div className="mb-8 bg-white p-6 rounded-lg shadow-md">
+              <div className="text-sm text-[#252525] mb-2 font-medium ">
+                Please explain the context of the conversation for the function
+                to trigger.
               </div>
+              <div className="relative pt-2">
+                <input
+                  type="text"
+                  value={context}
+                  onChange={(e) => setContext(e.target.value)}
+                  placeholder="When the user is interested about the AI functionality of my company"
+                  className="w-full px-2 pb-6 pt-3 border placeholder:font-normal  placeholder:text-[#252525] border-gray-200 rounded-lg bg-white shadow-sm focus:ring-1 focus:ring-blue-500 focus:border-blue-500 text-sm"
+                />
+              </div>
+            </div>
+          </div>
 
-              {/* Plus Button */}
-              <div className="absolute top-1/2 -translate-y-1/2 z-10">
+          {/* Do This Section */}
+          <div>
+            <div className="flex justify-center mb-6">
+              <span className="bg-[#253238CC]/80 text-white text-sm px-4 py-1.5 rounded-full">
+                Do this...
+              </span>
+            </div>
+
+            {/* Name Input */}
+            <div className="space-y-2 relative">
+              {/* First Card */}
+              <div className=" bg-white rounded-lg shadow-md p-4 border border-gray-100">
                 <button
                   type="button"
-                  className="w-6 h-6 rounded-full bg-black text-white flex items-center justify-center"
+                  className="absolute top-1 -right-6 text-red-500 hover:text-red-600"
+                  aria-label="Delete"
                 >
-                  +
+                  <Trash2 size={18} />
                 </button>
+
+                <div className="mb-2 font-medium text-sm text-gray-900">
+                  Name of user
+                </div>
+                <input
+                  type="text"
+                  value={userName}
+                  onChange={(e) => setUserName(e.target.value)}
+                  placeholder="Please type here"
+                  className="w-full p-3 border placeholder:font-normal placeholder:text-[#252525] border-gray-200 rounded-md focus:ring-0 text-sm"
+                />
+              </div>
+
+              {/* Updated Plus Button Section with Connecting Lines */}
+              <div className="relative py-12 flex justify-center">
+                <div className="absolute top-0 bottom-0 w-[2px] bg-gray-800"></div>
+
+                {/* Plus Button */}
+                <div className="absolute top-1/2 -translate-y-1/2 z-10">
+                  <button
+                    type="button"
+                    className="w-6 h-6 rounded-full bg-black text-white flex items-center justify-center"
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+
+              {/* Second Card */}
+              <div className="relative bg-white rounded-lg shadow-md p-4 border border-blue-500">
+                <button
+                  type="button"
+                  className="absolute top-1 -right-6 text-red-500 hover:text-red-600"
+                  aria-label="Delete"
+                >
+                  <Trash2 size={18} />
+                </button>
+
+                <div className="mb-2 text-sm font-medium text-gray-900">
+                  Description
+                </div>
+                <textarea
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                  placeholder="Please type here"
+                  rows={4}
+                  className="w-full placeholder:text-[#252525] placeholder:font-normal  p-4 border border-gray-200 rounded-md focus:ring-0 text-sm resize-none"
+                />
               </div>
             </div>
-
-            {/* Second Card */}
-            <div className="relative bg-white rounded-lg shadow-md p-4 border border-gray-100">
-              <button
-                type="button"
-                className="absolute top-1 -right-6 text-gray-400 hover:text-gray-600"
-                aria-label="Delete"
-              >
-                <Trash2 size={18} />
-              </button>
-
-              <div className="mb-2 text-sm text-gray-900">Description</div>
-              <textarea
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                placeholder="Please type here"
-                rows={4}
-                className="w-full  p-4 border border-gray-200 rounded-md focus:ring-0 text-sm resize-none"
-              />
-            </div>
           </div>
-        </div>
 
-        {/* Connect Button */}
-        <button
-          type="submit"
-          className="w-full bg-[#2472FC] text-white py-2 px-4 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors"
-        >
-          Connect with {integration.title}
-        </button>
-      </form>
-    </div>
+          {/* Connect Button */}
+          <button
+            type="submit"
+            className="w-full bg-[#2472FC] text-white py-2 px-4 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors"
+          >
+            Connect with {integration.title}
+          </button>
+        </form>
+      </div>
+    </>
   );
 };
 

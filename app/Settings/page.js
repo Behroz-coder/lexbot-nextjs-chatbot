@@ -88,7 +88,9 @@ const Settings = () => {
 
   return (
     <div className="max-w-3xl w-full overflow-y-scroll mx-auto p-4 md:p-6 scrollbar-hidden">
-      <h1 className="text-2xl text-center font-semibold mb-6">Settings</h1>
+      <h1 className="text-xl text-center text-black font-medium mb-6">
+        Settings
+      </h1>
 
       <form onSubmit={handleSave} className="space-y-6">
         {/* Name Input */}
@@ -105,7 +107,7 @@ const Settings = () => {
             type="text"
             value={formData.name}
             onChange={handleInputChange}
-            className="w-full px-3 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 text-sm"
+            className="w-full px-3 py-3 border placeholder:text-[#252525] placeholder:font-normal border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 text-sm"
             required
           />
         </div>
@@ -160,14 +162,14 @@ const Settings = () => {
               type="text"
               value={formData.chatbotId}
               readOnly
-              className="w-full px-3 py-3 border border-gray-300 rounded-md bg-gray-50 text-sm"
+              className="w-full px-3 relative py-3 border border-gray-300 rounded-md bg-gray-50 text-sm"
             />
             <button
               type="button"
               onClick={handleCopyId}
-              className="px-3 py-2 border border-gray-300 rounded-md hover:bg-gray-50 active:bg-gray-100 transition-colors"
+              className="px-3 py-2 absolute flex items-center gap-2  right-1 top-1 rounded-md hover:bg-gray-50 active:bg-gray-100 transition-colors"
             >
-              <Copy className="w-4 h-4" />
+              <Copy className="w-4 h-4" />Copy
             </button>
             {showCopyToast && (
               <div className="absolute -top-10 right-0 bg-gray-800 text-white px-3 py-1 rounded text-sm">
@@ -201,7 +203,7 @@ const Settings = () => {
               className="w-full flex items-center justify-between px-4 py-2.5 border border-gray-300 rounded-md hover:bg-gray-50 active:bg-gray-100 transition-colors"
             >
               <span className="text-sm">Delete all Conversation History</span>
-              <Trash2 className="w-4 h-4 text-gray-500" />
+              <Trash2 className="w-4 h-4 text-red-600" />
             </button>
 
             <button
