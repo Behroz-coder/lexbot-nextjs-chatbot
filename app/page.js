@@ -1,6 +1,6 @@
  
 import "./globals.css";
-import HomePage from './home/page'
+import HomePage from './chatbots/page'
 import Login from "./login/page";
 
 export default function Home() {

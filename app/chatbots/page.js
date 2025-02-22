@@ -1,6 +1,6 @@
 "use client";
 import React, { Suspense } from "react";
-import HomeContent from "./HomeContent";
+import HomeContent from "./ChatbotsContent";
 
 export default function Home() {
   return (

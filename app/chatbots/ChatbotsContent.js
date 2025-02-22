@@ -11,6 +11,7 @@ import PublishHeader from "../components/PublishHeader";
 import ShareInterface from "../components/ShareInterface";
 import WebIntegration from "../components/WebIntegration";
 import SeparateInterface from "../components/SeparateInterface";
+import LeadsPage from "../leads/page";
 
 export default function HomeContent() {
   const router = useRouter();
@@ -86,6 +87,11 @@ export default function HomeContent() {
               )}
             </div>
           </>
+        )}
+        {activeMenuItem === "leads" && (
+          <div className="overflow-y-auto flex-1">
+            <LeadsPage />
+          </div>
         )}
       </main>
     </div>
