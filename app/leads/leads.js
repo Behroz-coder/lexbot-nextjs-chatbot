@@ -171,7 +171,7 @@ const LeadsPage = () => {
         </div>
 
       
-          <div className="flex-1 p-4 md:mt-4 md:border border-gray-300 md:mx-3 bg-white rounded-lg shadow overflow-auto flex flex-col">
+          <div className="flex-1 p-4 pb-24 lg:pb-0 md:mt-4 md:border border-gray-300 md:mx-3 bg-white rounded-lg shadow overflow-auto flex flex-col">
             {/* Header */}
             <div className="p-5 border-b border-gray-200">
               <div className="flex flex-wrap justify-between items-center gap-4">
@@ -243,15 +243,15 @@ const LeadsPage = () => {
    
 
             <div className="mt-auto border-t border-gray-200 px-4 py-3 sm:px-6">
-              <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-                <div className="w-full sm:w-auto">
+              <div className="flex flex-row justify-between items-center gap-4">
+                <div className="w-auto">
                   <select
                     value={itemsPerPage}
                     onChange={(e) => {
                       setItemsPerPage(Number(e.target.value));
                       setCurrentPage(1);
                     }}
-                    className="w-full sm:w-auto border border-gray-300 rounded-md text-sm p-2 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                    className="w-auto border border-gray-300 rounded-md text-sm p-2 focus:outline-none focus:ring-1 focus:ring-blue-500"
                   >
                     <option value={10}>10 per page</option>
                     <option value={20}>20 per page</option>
@@ -259,7 +259,7 @@ const LeadsPage = () => {
                   </select>
                 </div>
        
-                <div className="w-full sm:w-auto overflow-x-auto">
+                <div className="w-auto overflow-x-auto">
                   <div className="flex items-center justify-center sm:justify-end min-w-max">
                     <button
                       onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
@@ -322,7 +322,8 @@ const LeadsPage = () => {
                   </div>
                 </div>
               </div>
-            </div>
+                </div>
+                
           </div>
         
       </div>
