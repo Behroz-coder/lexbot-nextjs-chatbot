@@ -12,6 +12,7 @@ import ShareInterface from "../components/ShareInterface";
 import WebIntegration from "../components/WebIntegration";
 import SeparateInterface from "../components/SeparateInterface";
 import LeadsPage from "../leads/page";
+import InboxPage from "../inbox/page";
 
 export default function HomeContent() {
   const router = useRouter();
@@ -91,6 +92,11 @@ export default function HomeContent() {
         {activeMenuItem === "leads" && (
           <div className="overflow-y-auto flex-1">
             <LeadsPage />
+          </div>
+        )}
+        {activeMenuItem === "inbox" && (
+          <div className="overflow-y-auto flex-1">
+            <InboxPage />
           </div>
         )}
       </main>
