@@ -109,7 +109,7 @@ export default function ChatbotSettings() {
       id: "chat_bubble",
       label: "Chat bubble",
       icon: (
-        <Image src={message_icon} alt="Chat Bubble" width={40} height={40} />
+        <Image src={message_icon} alt="Chat Bubble" className="w-auto" width={40} height={40} />
       ),
     },
     {
@@ -652,7 +652,7 @@ export default function ChatbotSettings() {
 
         {/* right side */}
         <div
-          className={`fixed inset-0 rounded-2xl border border-gray-300 bg-white dark:bg-gray-900 mx-4 mb-6 mt-1 lg:m-0 shadow-lg lg:relative lg:w-1/2 lg:flex lg:p-4  md:shadow-none transition-transform duration-300 ease-in-out ${
+          className={`fixed inset-0 lg:h-screen lg:pb-[175px] rounded-2xl border border-gray-300 bg-white  mx-4 mb-6 mt-1 lg:m-0 shadow-lg lg:relative lg:w-1/2 lg:flex lg:p-4  md:shadow-none transition-transform duration-300 ease-in-out ${
             isPreviewOpen
               ? "translate-x-0 opacity-100"
               : "translate-x-full opacity-0 lg:opacity-100 lg:translate-x-0"
@@ -667,9 +667,7 @@ export default function ChatbotSettings() {
           </button> */}
 
           <div
-            className={`h-full ${
-              isMessageSent ? "lg:h-screen" : "lg:h-[600px]"
-            } w-full flex flex-col`}
+            className={`h-full  w-full flex flex-col`}
           >
             <div className="flex items-center p-4 border-b">
               <Image

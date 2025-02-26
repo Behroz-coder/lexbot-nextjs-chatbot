@@ -196,19 +196,19 @@ const LeadsPage = () => {
               <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-[#EDEDED]/10">
                   <tr>
-                    <th className="px-6 py-4 text-left text-[16px] leading-6   text-black uppercase tracking-wider">
+                    <th className="px-6 py-4 text-left text-[16px] leading-6   text-black capitalize tracking-wider">
                       Name
                     </th>
-                    <th className="px-6 py-4 text-left text-[16px] leading-6  text-black uppercase tracking-wider">
+                    <th className="px-6 py-4 text-left text-[16px] leading-6  text-black capitalize tracking-wider">
                       Email
                     </th>
-                    <th className="px-6 py-4 text-left text-[16px] leading-6  text-black uppercase tracking-wider">
+                    <th className="px-6 py-4 text-left text-[16px] leading-6  text-black capitalize tracking-wider">
                       Company
                     </th>
-                    <th className="px-6 py-4 text-left text-[16px] leading-6  text-black uppercase tracking-wider">
+                    <th className="px-6 py-4 text-left text-[16px] leading-6  text-black capitalize tracking-wider">
                       Region
                     </th>
-                    <th className="px-6 py-4 text-left text-[16px] leading-6  text-black uppercase tracking-wider">
+                    <th className="px-6 py-4 text-left text-[16px] leading-6  text-black capitalize tracking-wider">
                       Language
                     </th>
                   </tr>

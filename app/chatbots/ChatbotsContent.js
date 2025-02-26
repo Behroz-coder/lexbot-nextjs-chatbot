@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Sidebar from "../components/Sidebar";
-import MainNav from "../components/MainNav";
+import MainNav from "../components/ChatBotMainNav";
 import Header from "../components/InterfaceHeader";
 import SocialConnections from "../components/SocialConnections";
 import ChatbotSettings from "../chatbot-settings/page"; 
@@ -13,6 +13,9 @@ import WebIntegration from "../components/WebIntegration";
 import SeparateInterface from "../components/SeparateInterface";
 import LeadsPage from "../leads/page";
 import InboxPage from "../inbox/page";
+import AnalyticsPage from "../analytics/analytics";
+import AnalyticsHeader from "../components/AnalyticsHeader";
+import AnalyticsNav from "../components/AnalyticsNav";
 
 export default function HomeContent() {
   const router = useRouter();
@@ -100,6 +103,19 @@ export default function HomeContent() {
           </div>
         )}
       </main>
+      {activeMenuItem === "team" && (
+        <>
+          {/* AnalyticsNav ko correct props de rahe hain */}
+          <AnalyticsNav
+            activeMenuItem={activeMenuItem}
+            setActiveMenuItem={setActiveMenuItem}
+          />
+          <div className="overflow-y-auto flex-1">
+            {activeMenuItem === "team" && <AnalyticsPage />}
+            {activeMenuItem === "custom" && <div>custom analytics</div>}
+          </div>
+        </>
+      )}
     </div>
   );
 }

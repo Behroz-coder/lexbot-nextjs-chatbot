@@ -25,13 +25,13 @@ export default function SeparateInterface() {
 
   const suggestedMessages = ["Hey, how are you doing?", "Hope you are fine?"];
 
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
+  // const scrollToBottom = () => {
+  //   messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  // };
 
-  useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
+  // useEffect(() => {
+  //   scrollToBottom();
+  // }, [messages]);
 
   const handleSendMessage = (suggestedMessage = "") => {
     const messageText = suggestedMessage || inputMessage;
@@ -153,16 +153,14 @@ export default function SeparateInterface() {
 
       {/* Right section */}
       <div
-        className={`fixed inset-0 border overflow-y-auto border-gray-300 bg-white dark:bg-gray-900 mx-0 mb-0 mt-0 lg:m-0 shadow-lg lg:relative lg:w-[70%] lg:flex lg:p-4 md:shadow-none transition-transform duration-300 ease-in-out ${
+        className={`fixed inset-0 border lg:h-screen lg:pb-[170px]  overflow-y-auto border-gray-300 bg-white  mx-0 mb-0 mt-0 lg:m-0 shadow-lg lg:relative lg:w-[70%] lg:flex lg:p-4 md:shadow-none transition-transform duration-300 ease-in-out ${
           isPreviewOpen
             ? "translate-x-0 opacity-100"
             : "translate-x-full opacity-0 lg:opacity-100 lg:translate-x-0"
         }`}
       >
         <div
-          className={`h-full ${
-            isMessageSent ? "lg:h-screen" : "lg:h-[600px]"
-          } w-full flex flex-col`}
+          className={`h-full  w-full flex flex-col`}
         >
           {/* Mobile Header - Only visible on mobile */}
           <div className="flex items-center justify-between p-4 border-b lg:hidden">

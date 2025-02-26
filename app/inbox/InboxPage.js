@@ -14,12 +14,6 @@ import AllTickets from "./AllTicketsInbox";
 
 export default function InboxPage() {
  const [activeTab, setActiveTab] = useState("inbox");
-
-
-  
-
-
-
   return (
     <div className="flex flex-col h-screen">
    

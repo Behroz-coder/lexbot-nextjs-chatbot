@@ -71,14 +71,13 @@ const Playground = () => {
                 {creativity}
               </span>
             </div>
-     
+
             <input
               type="range"
               min="0"
               max="100"
               value={creativity}
               onChange={handleSliderChange}
-            
               style={{
                 background: `linear-gradient(to right, #2472FC 0%, #2472FC ${creativity}%, #E5E7EB ${creativity}%, #E5E7EB 100%)`,
               }}
@@ -181,7 +180,7 @@ const Playground = () => {
 
         {/* right side */}
         <div
-          className={`fixed inset-0   rounded-2xl border border-gray-300 bg-white dark:bg-gray-900 mx-4 mb-6 mt-2 lg:mt-4 lg:mb-[70px] shadow-lg lg:relative lg:w-1/2 lg:flex lg:p-4  md:shadow-none transition-transform duration-300 ease-in-out ${
+          className={`fixed inset-0 lg:h-full lg:pb-[70px]  rounded-2xl border border-gray-300 bg-white  mx-4  mt-2 lg:mt-4  shadow-lg lg:relative lg:w-1/2 lg:flex lg:p-4  md:shadow-none transition-transform duration-300 ease-in-out ${
             isPreviewOpen
               ? "translate-x-0  opacity-100 "
               : "translate-x-full opacity-0   lg:opacity-100 lg:translate-x-0"
@@ -195,11 +194,7 @@ const Playground = () => {
             <X size={24} />
           </button> */}
 
-          <div
-            className={`h-full    ${
-              isMessageSent ? "lg:h-screen" : "lg:h-[600px]"
-            } w-full flex flex-col`}
-          >
+          <div className={` w-full h-full flex flex-col`}>
             <div className="flex items-center p-4 border-b">
               <Image
                 src={logoLex}
@@ -269,7 +264,7 @@ const Playground = () => {
               ))}
             </div>
 
-            <div className="p-4 flex items-center border-t">
+            <div className="p-4 flex items-center border-t ">
               <label className="cursor-pointer">
                 <Paperclip className="text-gray-500 mr-2" />
                 <input

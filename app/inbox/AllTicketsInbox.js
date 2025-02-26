@@ -5,10 +5,8 @@ import Head from "next/head";
 import { FiChevronDown, FiPlus, FiArrowLeft } from "react-icons/fi"; // Added FiArrowLeft for mobile back button
 import { HiOutlineMail, HiOutlineTicket } from "react-icons/hi";
 import { BsPin, BsDownload, BsPaperclip, BsEmojiSmile } from "react-icons/bs";
-import { BiMessageSquare } from "react-icons/bi";
-import { FaFacebook, FaInstagram, FaWhatsapp } from "react-icons/fa";
-import { IoMdSend } from "react-icons/io";
-import { RiFlashlightLine } from "react-icons/ri";
+import logoLex from "../../public/lexLogo.svg";
+import Image from "next/image";
 
 export default function AllTickets() {
   const [message, setMessage] = useState("");
@@ -19,7 +17,8 @@ const [conversations, setConversations] = useState([
     id: 1,
     name: "Elijah Carter",
     avatar: "/avatars/elijah.jpg",
-    message: "Hey, I need some advice on a proje...",
+    message: "Unable to login to account",
+    admin: "Macdonald Anyanwu",
     time: "10m",
     messages: [
       {
@@ -27,7 +26,9 @@ const [conversations, setConversations] = useState([
         sender: "Elijah Carter",
         message:
           "Hey, I need some advice on a project proposal. Do you have a minute?",
+
         time: "Today, 2:15 PM",
+
         isUser: true,
       },
       {
@@ -52,7 +53,8 @@ const [conversations, setConversations] = useState([
     id: 2,
     name: "Sophia Bennett",
     avatar: "/avatars/sophia.jpg",
-    message: "I'm having trouble with my accoun...",
+    message: "Unable to login to account",
+    admin: "Assigned to Paityn Bator",
     time: "20m",
     messages: [
       {
@@ -76,7 +78,8 @@ const [conversations, setConversations] = useState([
     id: 3,
     name: "Liam Jackson",
     avatar: "/avatars/liam.jpg",
-    message: "Thanks for the guidance! I understa...",
+    message: "Unable to login to account",
+    admin: "Macdonald Anyanwu",
     time: "1h",
     messages: [
       {
@@ -122,7 +125,8 @@ const [conversations, setConversations] = useState([
     id: 4,
     name: "Olivia Hayes",
     avatar: "/avatars/olivia.jpg",
-    message: "Do you have any book recommendatio...",
+    message: "Unable to login to account",
+    admin: "Macdonald Anyanwu",
     time: "2h",
     messages: [
       {
@@ -146,7 +150,8 @@ const [conversations, setConversations] = useState([
     id: 5,
     name: "Daniel Reed",
     avatar: "/avatars/daniel.jpg",
-    message: "How can I recover a deleted file fr...",
+    message: "Unable to login to account",
+    admin: "Macdonald Anyanwu",
     time: "3h",
     messages: [
       {
@@ -303,6 +308,9 @@ const [conversations, setConversations] = useState([
                     <p className="text-[16px] leading-6 font-normal text-[#404040] truncate pt-1">
                       {convo.message}
                     </p>
+                    <p className="text-[12px] leading-5 font-normal text-[#404040] truncate pt-1">
+                      {convo.admin}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -328,7 +336,12 @@ const [conversations, setConversations] = useState([
                   >
                     <FiArrowLeft size={20} />
                   </button>
-                  <h2 className="font-medium">{activeConvo.name}</h2>
+                  <div className="flex flex-col">
+                    <h2 className="font-medium">{activeConvo.name}</h2>
+                    <p className="text-[12px] leading-5 font-normal text-[#737373] truncate pt-1">
+                      {activeConvo.admin}
+                    </p>
+                  </div>
                 </div>
                 <div className="flex items-center space-x-4">
                   <button className="text-black bg-[#F2F2F2] w-10 h-10 flex items-center justify-center rounded-lg hover:text-gray-900">
@@ -401,8 +414,13 @@ const [conversations, setConversations] = useState([
                       {/* Assistant avatar for assistant messages */}
                       {!msg.isUser && (
                         <div className="ml-2 mt-1">
-                          <div className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white">
-                            A
+                          <div className=" flex items-center ">
+                               <Image
+                                                src={logoLex}
+                                                alt="lex logo "
+                                                height={30}
+                                                width={30}
+                                              ></Image>
                           </div>
                         </div>
                       )}

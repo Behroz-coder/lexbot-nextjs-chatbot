@@ -5,10 +5,8 @@ import Head from "next/head";
 import { FiChevronDown, FiPlus, FiArrowLeft } from "react-icons/fi"; // Added FiArrowLeft for mobile back button
 import { HiOutlineMail, HiOutlineTicket } from "react-icons/hi";
 import { BsPin, BsDownload, BsPaperclip, BsEmojiSmile } from "react-icons/bs";
-import { BiMessageSquare } from "react-icons/bi";
-import { FaFacebook, FaInstagram, FaWhatsapp } from "react-icons/fa";
-import { IoMdSend } from "react-icons/io";
-import { RiFlashlightLine } from "react-icons/ri";
+import logoLex from "../../public/lexLogo.svg";
+import Image from "next/image";
 
 export default function YourInbox() {
   const [message, setMessage] = useState("");
@@ -429,9 +427,14 @@ export default function YourInbox() {
                       {/* Assistant avatar for assistant messages */}
                       {!msg.isUser && (
                         <div className="ml-2 mt-1">
-                          <div className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white">
-                            A
-                          </div>
+                             <div className=" flex items-center ">
+                                                     <Image
+                                                                      src={logoLex}
+                                                                      alt="lex logo "
+                                                                      height={30}
+                                                                      width={30}
+                                                                    ></Image>
+                                                </div>
                         </div>
                       )}
                     </div>
