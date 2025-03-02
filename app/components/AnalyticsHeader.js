@@ -1,3 +1,4 @@
+//app/components/AnalyticsHeader.js
 "use client";
 import React, { useEffect } from "react";
 
@@ -27,12 +28,12 @@ export default function AnalyticsHeader({ children, activeMenuItem, setActiveMen
           </button>
           <button
             className={`px-4 py-2 border border-gray-300 rounded-lg ${
-              activeMenuItem === "customer"
+              activeMenuItem === "custom"
                 ? "bg-[#252525] text-white"
                 : "text-[#252525]"
             }`}
             // naya: "customer" literal pass kar rahe hain instead of undefined "item"
-            onClick={() => setActiveMenuItem("customer")}
+            onClick={() => setActiveMenuItem("custom")}
           >
             Customer Analytics
           </button>

@@ -1,3 +1,4 @@
+//app/components/AnalyticsNav.js
 "use client";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
@@ -6,19 +7,19 @@ import { useRouter } from "next/navigation"; // naya: router import
 import Sidebar from "./Sidebar";
 import Image from "next/image";
 import logo from "../../public/lexLogo.svg";
-import AnalyticsPage from "../analytics/analytics";
+
+import TeamAnalyticsPage from "../analytics/teamAnalytics";
+import CustomerAnalytics from "../analytics/customerAnalytics";
+import DateRangeButton from "./DateRangeButton";
 
 export default function AnalyticsNav({ activeMenuItem, setActiveMenuItem }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const router = useRouter(); // naya: router instance
-  const menuItems = ["team", "custom"];
+  const menuItems = ["Team Analytics", "Customer Analytics"];
 
   // naya: function jo menu click handle karega aur team ke liye route push karega
   const handleMenuClick = (item) => {
     setActiveMenuItem(item);
-    if (item === "team") {
-      router.push("/analytics"); // naya: team button par /analytics page open hoga
-    }
   };
 
   return (
@@ -39,15 +40,15 @@ export default function AnalyticsNav({ activeMenuItem, setActiveMenuItem }) {
               )}
             </button>
           </div>
-          <div className="flex items-center justify-start px-2 space-x-1 sm:space-x-4 overflow-x-auto whitespace-nowrap">
+          <div className="flex items-center justify-center lg:justify-start px-2 space-x-1 sm:space-x-4 overflow-x-auto whitespace-nowrap">
             {menuItems.map((item) => (
               <button
                 key={item}
                 onClick={() => handleMenuClick(item)} // naya: use handleMenuClick
-                className={`px-3 font-medium text-sm py-1 flex-shrink-0 ${
+                className={`px-4 py-2 border border-gray-300  rounded-lg ${
                   activeMenuItem === item
-                    ? "text-blue-500 border-b-2 border-blue-500"
-                    : "text-gray-600"
+                    ? "bg-[#252525] text-white"
+                    : "text-[#252525]"
                 }`}
               >
                 {item}
@@ -63,17 +64,19 @@ export default function AnalyticsNav({ activeMenuItem, setActiveMenuItem }) {
               <button
                 key={item}
                 onClick={() => handleMenuClick(item)} // naya: use handleMenuClick
-                className={`px-2 font-medium py-1 ${
+                className={`px-4 py-2 border border-gray-300  rounded-lg  ${
                   activeMenuItem === item
-                    ? "text-blue-500 border-b-2 border-blue-500"
-                    : "text-black"
+                    ? "bg-[#252525] text-white"
+                    : "text-[#252525]"
                 }`}
               >
                 {item}
               </button>
             ))}
           </div>
-          <div className="hidden mr-4 lg:block h-10 w-10 bg-slate-300 rounded-full"></div>
+          <div className="">
+            <DateRangeButton/>
+          </div>
         </div>
       </nav>
       {/* Render Sidebar only on mobile */}
@@ -87,8 +90,8 @@ export default function AnalyticsNav({ activeMenuItem, setActiveMenuItem }) {
       </div>
 
       {/* Conditional Rendering: yahan ab bhi AnalyticsPage render ho raha hai */}
-      {activeMenuItem === "team" && <AnalyticsPage />}
-      {activeMenuItem === "custom" && <div>custom analytics</div>}
+      {activeMenuItem === "Team Analytics" && <TeamAnalyticsPage />}
+      {activeMenuItem === "Customer Analytics" && <CustomerAnalytics />}
     </>
   );
 }

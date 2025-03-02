@@ -1,3 +1,4 @@
+//app/components/sidebar.js
 "use client";
 import { useState } from "react";
 import { PanelRightOpen, Search } from "lucide-react";
@@ -132,9 +133,11 @@ export default function Sidebar({ isMobileOpen, closeMobileSidebar }) {
             <button className="w-full py-2 px-4 text-blue-500 bg-blue-100 rounded-lg mb-2">
               Get More Messages
             </button>
-            <button className="w-full py-2 px-4 border rounded-lg lg:bg-[#fff]">
-              Settings
-            </button>
+            <Link href="/Settingspage">
+              <button className="w-full py-2 px-4 border rounded-lg lg:bg-[#fff]">
+                Settings
+              </button>
+            </Link>
           </>
         )}
       </div>

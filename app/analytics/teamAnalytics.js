@@ -1,3 +1,4 @@
+//app/analytics/analytics.js
 "use client";
 // pages/analytics.js
 // pages/analytics.js
@@ -18,6 +19,7 @@ import {
 } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 import { HiOutlineTicket } from "react-icons/hi";
+import DateRangeButton from "../components/DateRangeButton";
 
 // ChartJS registration
 ChartJS.register(
@@ -32,7 +34,7 @@ ChartJS.register(
   ArcElement
 );
 
-export default function AnalyticsPage() {
+export default function TeamAnalyticsPage() {
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
@@ -179,7 +181,11 @@ export default function AnalyticsPage() {
       </Head>
 
       <div className="min-h-screen bg-gray-50 p-4 md:p-6 overflow-y-auto">
-        <div className="max-w-7xl mx-auto">
+        <div className="flex items-center justify-around lg:hidden px-4">
+          <p className="text-sm">Team Analytics</p>
+          <DateRangeButton/>
+        </div>
+        <div className="w-full mx-auto">
           {/* Top Stats */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
             {/* Conversations */}
@@ -410,7 +416,7 @@ export default function AnalyticsPage() {
                     </div>
                   </div>
                 </div>
-                <div className="md:w-2/3 w-full ">
+                <div className="md:w-2/3 w-full mb-20 lg:mb-0 ">
                   <h2 className="text-[20px] leading-8 font-medium text-[#252525] mb-1">
                     Ticket Success Rate
                   </h2>

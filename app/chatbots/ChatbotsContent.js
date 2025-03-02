@@ -6,15 +6,15 @@ import Sidebar from "../components/Sidebar";
 import MainNav from "../components/ChatBotMainNav";
 import Header from "../components/InterfaceHeader";
 import SocialConnections from "../components/SocialConnections";
-import ChatbotSettings from "../chatbot-settings/page"; 
+import ChatbotSettings from "../chatbot-settings/page";
 import PublishHeader from "../components/PublishHeader";
 import ShareInterface from "../components/ShareInterface";
 import WebIntegration from "../components/WebIntegration";
 import SeparateInterface from "../components/SeparateInterface";
 import LeadsPage from "../leads/page";
 import InboxPage from "../inbox/page";
-import AnalyticsPage from "../analytics/analytics";
-import AnalyticsHeader from "../components/AnalyticsHeader";
+import AnalyticsPage from "../analytics/teamAnalytics";
+
 import AnalyticsNav from "../components/AnalyticsNav";
 
 export default function HomeContent() {
@@ -49,10 +49,9 @@ export default function HomeContent() {
     if (menu) setActiveMenuItem(menu);
   }, []);
 
-
   useEffect(() => {
     if (!searchParams.get("tab")) {
-      setActiveTab("web"); 
+      setActiveTab("web");
     }
   }, [activeMenuItem, searchParams]);
 
@@ -103,19 +102,7 @@ export default function HomeContent() {
           </div>
         )}
       </main>
-      {activeMenuItem === "team" && (
-        <>
-          {/* AnalyticsNav ko correct props de rahe hain */}
-          <AnalyticsNav
-            activeMenuItem={activeMenuItem}
-            setActiveMenuItem={setActiveMenuItem}
-          />
-          <div className="overflow-y-auto flex-1">
-            {activeMenuItem === "team" && <AnalyticsPage />}
-            {activeMenuItem === "custom" && <div>custom analytics</div>}
-          </div>
-        </>
-      )}
+  
     </div>
   );
 }

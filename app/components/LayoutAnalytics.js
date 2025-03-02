@@ -9,11 +9,7 @@ import { useState } from "react";
 
 import AnalyticsNav from "./AnalyticsNav";
 
-export default function LayoutAnalytics({
-  children,
-  activeMenuItem,
-  setActiveMenuItem,
-}) {
+export default function LayoutAnalytics({ children, activeMenuItem, setActiveMenuItem }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   return (
     <div className="flex h-screen bg-white">
@@ -23,8 +19,10 @@ export default function LayoutAnalytics({
         setActiveMenuItem={setActiveMenuItem}
       />
       <main className="flex-1 flex flex-col overflow-hidden">
-        
-              <AnalyticsNav/>
+        <AnalyticsNav
+          activeMenuItem={activeMenuItem}
+          setActiveMenuItem={setActiveMenuItem}
+        />
         {/* Render Sidebar only on mobile */}
         <div className="lg:hidden">
           {isMobileMenuOpen && (
