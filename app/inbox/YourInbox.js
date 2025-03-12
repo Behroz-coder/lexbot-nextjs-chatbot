@@ -295,20 +295,20 @@ export default function YourInbox() {
             showMobileChat ? "hidden lg:flex" : "flex"
           }`}
         >
-          <div className="px-4 py-5 lg:py-3 text-xl text-black font-medium  border-b border-gray-400 lg:border-gray-200">
+          <div className="px-4 py-5 lg:py-[17.5px] text-xl text-black font-medium  border-b border-gray-400 lg:border-gray-200">
             Your Inbox
           </div>
-          <div className="overflow-y-auto flex-1">
+          <div className="overflow-y-auto flex-1 mx-[3px] rounded-xl">
             {conversations.map((convo) => (
               <div
                 key={convo.id}
-                className={`cursor-pointer hover:bg-[#E1ECFF] ${
+                className={`cursor-pointer mx-4 rounded-xl my-2 hover:bg-[#E1ECFF] ${
                   activeConversation === convo.id ? "bg-[#E1ECFF] " : ""
                 }`}
                 // Modified click handler for mobile responsiveness
                 onClick={() => handleConversationClick(convo.id)}
               >
-                <div className="flex p-4 border-b border-gray-100">
+                <div className="flex p-3  ">
                   <div className="flex-shrink-0 mr-3">
                     <div className="w-[40px] h-[40px] rounded-full bg-gray-300 overflow-hidden">
                       {/* In production, you would use real images */}
@@ -427,14 +427,14 @@ export default function YourInbox() {
                       {/* Assistant avatar for assistant messages */}
                       {!msg.isUser && (
                         <div className="ml-2 mt-1">
-                             <div className=" flex items-center ">
-                                                     <Image
-                                                                      src={logoLex}
-                                                                      alt="lex logo "
-                                                                      height={30}
-                                                                      width={30}
-                                                                    ></Image>
-                                                </div>
+                          <div className=" flex items-center ">
+                            <Image
+                              src={logoLex}
+                              alt="lex logo "
+                              height={30}
+                              width={30}
+                            ></Image>
+                          </div>
                         </div>
                       )}
                     </div>

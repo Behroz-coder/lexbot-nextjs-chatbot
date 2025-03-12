@@ -109,7 +109,13 @@ export default function ChatbotSettings() {
       id: "chat_bubble",
       label: "Chat bubble",
       icon: (
-        <Image src={message_icon} alt="Chat Bubble" className="w-auto" width={40} height={40} />
+        <Image
+          src={message_icon}
+          alt="Chat Bubble"
+          className="w-auto"
+          width={40}
+          height={40}
+        />
       ),
     },
     {
@@ -203,7 +209,7 @@ export default function ChatbotSettings() {
     }
   };
   return (
-    <div className="min-h-screen bg-white p-4 md:p-8">
+    <div className="min-h-screen bg-white p-4 lg:p-8">
       <Head>
         <title>Lexbot Chatbot Settings</title>
         <meta
@@ -214,9 +220,10 @@ export default function ChatbotSettings() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="flex items-start   gap-16 px-3 lg:px-0 mx-auto w-full ">
-        {/* left side */}
-        <div className="w-full lg:w-1/2 ">
+      {/* NEW UPDATE: Changed the structure to allow scrolling only on the left side */}
+      <main className="flex items-start gap-16 px-3 lg:px-0 mx-auto w-full">
+        {/* Left side - Settings (scrollable) */}
+        <div className="w-full lg:w-1/2 h-screen scrollbar-hidden overflow-y-auto pr-4">
           {/* <div className="flex items-center mb-6">
             <Image
               src={logo}
@@ -648,27 +655,117 @@ export default function ChatbotSettings() {
           >
             Preview
           </button>
+
+          {/* Added some extra padding at the bottom for better scrolling */}
+          <div className="pb-8"></div>
         </div>
 
-        {/* right side */}
+        {/* NEW UPDATE: Right side (preview) - fixed position on large screens */}
+        <div className="hidden lg:block lg:w-1/2 lg:fixed lg:right-0 mr-2 xl:mr-12 lg:top-40 lg:bottom-4 lg:max-w-[35%]">
+          <div className="h-full w-full rounded-2xl border border-gray-300 bg-white  overflow-hidden flex flex-col">
+            <div className="flex items-center p-4 border-b">
+              <Image
+                src={logoLex}
+                alt="lex logo "
+                height={40}
+                width={40}
+              ></Image>
+              <div className="ml-3">
+                <h2 className="font-bold text-lg">Lex</h2>
+                <p className="text-sm text-gray-500">
+                  Our bot will reply instantly
+                </p>
+              </div>
+            </div>
+
+            <div className="flex-grow overflow-y-auto p-4 space-y-3">
+              {messages.map((msg, index) => (
+                <div
+                  key={index}
+                  className={`flex ${
+                    msg.sender === "You" ? "justify-end" : "justify-start"
+                  }`}
+                >
+                  {msg.sender === "Chat bot" && (
+                    <div className=" flex items-center justify-center mr-2">
+                      <Image
+                        src={logoLex}
+                        alt="lex logo "
+                        height={30}
+                        width={30}
+                      ></Image>
+                    </div>
+                  )}
+                  <div
+                    className={`max-w-[90%] lg:max-w-[100%] p-3 rounded-lg ${
+                      msg.sender === "You"
+                        ? "bg-[#2472FC] text-white"
+                        : "bg-[#F3F3F3] text-black"
+                    }`}
+                  >
+                    <p className="text-[16px] leading-[25px] font-normal">
+                      {msg.text}
+                    </p>
+                    <p className="text-xs text-black mt-1">
+                      {msg.sender}{" "}
+                      <span className="text-[#b6abab] pl-2"> {msg.time}</span>{" "}
+                    </p>
+                  </div>
+                </div>
+              ))}
+              <div ref={messagesEndRef} />
+            </div>
+
+            <div className="flex space-x-2 p-4">
+              {suggestedMessages.map((msg, index) => (
+                <button
+                  key={index}
+                  onClick={() => handleSendMessage(msg)}
+                  className="bg-[#DBDBDB]/40 px-4 py-3 rounded-lg border border-gray-300 text-sm lg:text-[16px] leading-6 hover:bg-gray-300 transition"
+                >
+                  {msg}
+                </button>
+              ))}
+            </div>
+
+            <div className="p-4 flex items-center border-t">
+              <label className="cursor-pointer">
+                <Paperclip className="text-gray-500 mr-2" />
+                <input
+                  type="file"
+                  multiple
+                  onChange={handleFileUpload}
+                  className="hidden"
+                />
+              </label>
+              <div className="flex-grow relative">
+                <input
+                  type="text"
+                  placeholder="Write a reply..."
+                  value={inputMessage}
+                  onChange={(e) => setInputMessage(e.target.value)}
+                  className="w-full pr-10 pl-4 py-2 border rounded-full focus:outline-none focus:ring-1 focus:ring-blue-500"
+                />
+              </div>
+              <button
+                onClick={() => handleSendMessage()}
+                className="ml-2 bg-blue-500 text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-blue-600 transition"
+              >
+                <Send size={18} />
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile preview (unchanged) */}
         <div
-          className={`fixed inset-0 lg:h-screen lg:pb-[175px] rounded-2xl border border-gray-300 bg-white  mx-4 mb-6 mt-1 lg:m-0 shadow-lg lg:relative lg:w-1/2 lg:flex lg:p-4  md:shadow-none transition-transform duration-300 ease-in-out ${
+          className={`fixed inset-0 bg-white lg:hidden z-50 transition-transform duration-300 ease-in-out ${
             isPreviewOpen
               ? "translate-x-0 opacity-100"
-              : "translate-x-full opacity-0 lg:opacity-100 lg:translate-x-0"
+              : "translate-x-full opacity-0"
           }`}
         >
-          {/* Close Button for Mobile View */}
-          {/* <button
-            className="absolute top-4 right-4 md:hidden text-gray-600 dark:text-gray-300"
-            onClick={() => setIsPreviewOpen(false)}
-          >
-            <X size={24} />
-          </button> */}
-
-          <div
-            className={`h-full  w-full flex flex-col`}
-          >
+          <div className="h-full w-full flex flex-col">
             <div className="flex items-center p-4 border-b">
               <Image
                 src={logoLex}

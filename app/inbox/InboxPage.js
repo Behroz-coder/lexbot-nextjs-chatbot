@@ -16,11 +16,9 @@ export default function InboxPage() {
  const [activeTab, setActiveTab] = useState("inbox");
   return (
     <div className="flex flex-col h-screen">
-   
-
       <div className="flex h-full">
         {/* Left sidebar - hidden on mobile */}
-        <div className="w-[260px] hidden lg:flex bg-[#F3F5F6] border-r border-gray-200 flex-col">
+        <div className="w-[290px] hidden lg:flex bg-[#F3F5F6] px-2 border-r border-gray-200 flex-col">
           <div className="px-4 py-3 text-xl text-black font-medium ">Inbox</div>
           <div className="overflow-y-auto flex-1">
             <div className="p-2">
@@ -39,8 +37,8 @@ export default function InboxPage() {
                 </span>
                 <span
                   className={`ml-auto ${
-                    activeTab === "inbox" ? "text-white" : "text-gray-500"
-                  } flex items-center justify-center text-sm font-normal`}
+                    activeTab === "inbox" ? "text-[#FDFDFD]" : "text-[#404040]"
+                  } flex items-center justify-center text-[16px] font-normal`}
                 >
                   12
                 </span>
@@ -49,7 +47,7 @@ export default function InboxPage() {
               <div
                 className={`${
                   activeTab === "tickets"
-                    ? "bg-[#2472FC] text-white"
+                    ? "bg-[#2472FC] text-[#FDFDFD]"
                     : "hover:bg-gray-100 text-[#404040]"
                 } rounded-lg flex items-center py-2 px-4 mb-1 cursor-pointer`}
                 onClick={() => setActiveTab("tickets")}
@@ -69,7 +67,7 @@ export default function InboxPage() {
 
               <div className="mt-6">
                 <div className="flex items-center justify-between px-4 mb-2">
-                  <span className="text-sm font-semibold text-black">
+                  <span className="text-[16px] leading-[160%] font-normal text-black">
                     PLATFORMS
                   </span>
                   <FiChevronDown size={20} className="text-black" />
@@ -121,8 +119,6 @@ export default function InboxPage() {
             </div>
           </div>
         </div>
-
-
 
         {/* Conditionally render entire view based on tab */}
         {activeTab === "inbox" ? <YourInbox /> : <AllTickets />}

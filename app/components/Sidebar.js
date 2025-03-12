@@ -6,6 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation"; // naya: current route lene ke liye import
 import logo from "../../public/lexLogo.svg";
+import profile_logo from "../../public/profile_image_lexbot.png";
 import message_icon from "../../public/message_icon.svg";
 import chat_icon from "../../public/chat-icon.svg";
 import analytics_icon from "../../public/hugeicons_analytics-up.svg";
@@ -32,8 +33,8 @@ export default function Sidebar({ isMobileOpen, closeMobileSidebar }) {
     fixed inset-y-0 left-0 z-40 transition-transform duration-200 ease-in-out
     ${isMobileOpen ? "translate-x-0" : "-translate-x-full"}
     lg:static lg:translate-x-0 lg:z-40
-    ${isCollapsed ? "w-16" : "w-64"}
-    flex flex-col bg-[#DBDBDB] lg:bg-[#DBDBDB]/10 border-r
+    ${isCollapsed ? "w-[70px]" : "w-[288px]"}
+    flex flex-col bg-[#DBDBDB] lg:bg-[#F8F9FA] border-r border-[#DBDBDB]
   `;
 
   return (
@@ -44,22 +45,18 @@ export default function Sidebar({ isMobileOpen, closeMobileSidebar }) {
         className="hidden lg:block absolute -right-3 top-10 bg-[#fff] border rounded-full p-1"
       >
         <PanelRightOpen
-          className={`h-5 w-5 transition-transform duration-300 ${
+          className={`h-5 w-5 transition-transform duration-300  ${
             isCollapsed ? "rotate-180" : ""
           }`}
         />
       </button>
 
       {/* Header */}
-      <div className="p-4 border-b flex items-center">
-        <Image
-          src={logo}
-          alt="logo image"
-          className="w-auto"
-          width={30}
-          height={30}
-        />
-        {!isCollapsed && <span className="ml-2 font-semibold">Lexbot</span>}
+      <div className="py-4 px-3 border-b flex items-center ">
+        <Image src={logo} alt="logo image" width={28} height={28} />
+        {!isCollapsed && (
+          <span className="ml-2 font-bold text-[16px]">Lexbot</span>
+        )}
       </div>
 
       {/* Search */}
@@ -96,41 +93,57 @@ export default function Sidebar({ isMobileOpen, closeMobileSidebar }) {
             `}
           >
             <Image alt={item.icon} src={item.icon} />
-            {!isCollapsed && <span className="ml-3">{item.label}</span>}
+            {!isCollapsed && (
+              <span className="ml-3 text-[16px] font-medium ">
+                {item.label}
+              </span>
+            )}
           </Link>
         ))}
       </nav>
 
       {/* Profile Section */}
-      <div className="p-4 border-t">
+      <div className="p-4  ">
         {isCollapsed ? (
-          <div className="h-10 w-10 rounded-full overflow-hidden">
-            <Image
-              src={logo}
-              alt="Profile"
-              className="w-full h-full object-cover"
-            />
-          </div>
+  <div></div>
         ) : (
-          <>
-            <div className="flex items-center space-x-3 mb-4">
-              <div className="h-10 w-10 rounded-full overflow-hidden">
+          <div className="bg-white rounded-xl p-3 border border-[#DBDBDB]">
+            <div className="flex items-center space-x-3 mb-4  ">
+              <div className=" rounded-full bg-white ">
                 <Image
                   src={logo}
                   alt="Profile"
-                  className="w-full h-full object-cover"
+                  width={48}
+                  height={48}
+                  className="object-cover "
                 />
               </div>
               <div>
-                <p className="text-sm font-medium">Macdonald Anyanwu</p>
-                <p className="text-xs text-gray-500">Pro</p>
+                <p className="text-[16px] text-[#000000] font-medium">
+                  Macdonald Anyanwu
+                </p>
+                <p className="text-[14px] font-medium text-[#008000]">
+                  <span className="text-[#737373] text-[14px] font-medium leading-[160%]">
+                    Current Plan:{" "}
+                  </span>
+                  Pro
+                </p>
               </div>
             </div>
+            <div className="flex items-center justify-between">
+              <p className="text-[14px] font-medium leading-[160%] text-[#737373] mb-2">
+                Messages Usage
+              </p>
+              <p className="text-[14px] font-medium leading-[160%] text-black">
+                800 / 1000
+              </p>
+            </div>
+
             <div className="h-2 bg-gray-200 rounded-full mb-2">
               <div className="h-full w-4/5 bg-blue-500 rounded-full" />
             </div>
-            <p className="text-xs text-gray-500 mb-4">800/1000 Messages</p>
-            <button className="w-full py-2 px-4 text-blue-500 bg-blue-100 rounded-lg mb-2">
+
+            <button className="w-full py-2 text-[14px] font-medium leading-[160%] mt-2 px-4 text-[#2472FC] bg-blue-100 rounded-lg mb-2">
               Get More Messages
             </button>
             <Link href="/Settingspage">
@@ -138,7 +151,7 @@ export default function Sidebar({ isMobileOpen, closeMobileSidebar }) {
                 Settings
               </button>
             </Link>
-          </>
+          </div>
         )}
       </div>
     </aside>

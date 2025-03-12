@@ -15,7 +15,7 @@ import Link from 'next/link';
     <div>
 
         
-      <div className="flex flex-col lg:flex-row h-screen">
+      <div className="flex flex-col lg:justify-evenly lg:flex-row h-screen">
         {/* Left Section */}
         <div className="lg:w-1/2 flex items-center justify-start ml-0 lg:ml-12  bg-white">
           <div className="lg:max-w-lg w-full p-6 lg:p-8">

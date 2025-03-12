@@ -43,9 +43,9 @@ export default function MainNav({ activeMenuItem, setActiveMenuItem }) {
               <button
                 key={item}
                 onClick={() => setActiveMenuItem(item)}
-                className={`px-3 font-medium text-sm py-1 flex-shrink-0 ${
+                className={`px-3 font-medium text-sm py-2 flex-shrink-0 ${
                   activeMenuItem === item
-                    ? "text-blue-500 border-b-2 border-blue-500"
+                    ? "text-blue-500 border-b-[3px] border-blue-500"
                     : "text-gray-600"
                 }`}
               >
@@ -62,9 +62,9 @@ export default function MainNav({ activeMenuItem, setActiveMenuItem }) {
               <button
                 key={item}
                 onClick={() => setActiveMenuItem(item)}
-                className={`px-2 font-medium py-1 ${
+                className={`px-0 font-medium py-1 ${
                   activeMenuItem === item
-                    ? "text-blue-500 border-b-2 border-blue-500"
+                    ? "text-blue-500 border-b-[3px] px-2 border-blue-500"
                     : "text-black "
                 }`}
               >

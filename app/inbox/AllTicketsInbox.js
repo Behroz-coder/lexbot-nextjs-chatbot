@@ -274,20 +274,20 @@ const [conversations, setConversations] = useState([
             showMobileChat ? "hidden lg:flex" : "flex"
           }`}
         >
-          <div className="px-4 py-3 text-xl text-black font-medium border-b border-gray-200">
+          <div className="px-4 py-3 lg:py-[24px] text-xl text-black font-medium border-b border-gray-200">
             AIl Tickets
           </div>
-          <div className="overflow-y-auto flex-1">
+          <div className="overflow-y-auto flex-1 mx-[12px] rounded-xl">
             {conversations.map((convo) => (
               <div
                 key={convo.id}
-                className={`cursor-pointer hover:bg-[#E1ECFF] ${
+                className={`cursor-pointer rounded-xl my-2 hover:bg-[#E1ECFF] ${
                   activeConversation === convo.id ? "bg-[#E1ECFF] " : ""
                 }`}
                 // Modified click handler for mobile responsiveness
                 onClick={() => handleConversationClick(convo.id)}
               >
-                <div className="flex p-4 border-b border-gray-100">
+                <div className="flex p-3 ">
                   <div className="flex-shrink-0 mr-3">
                     <div className="w-[40px] h-[40px] rounded-full bg-gray-300 overflow-hidden">
                       {/* In production, you would use real images */}
@@ -415,12 +415,12 @@ const [conversations, setConversations] = useState([
                       {!msg.isUser && (
                         <div className="ml-2 mt-1">
                           <div className=" flex items-center ">
-                               <Image
-                                                src={logoLex}
-                                                alt="lex logo "
-                                                height={30}
-                                                width={30}
-                                              ></Image>
+                            <Image
+                              src={logoLex}
+                              alt="lex logo "
+                              height={30}
+                              width={30}
+                            ></Image>
                           </div>
                         </div>
                       )}

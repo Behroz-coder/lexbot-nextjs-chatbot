@@ -1,9 +1,8 @@
-//app/components/AnalyticsNav.js
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
-import { useRouter } from "next/navigation"; // naya: router import
+import { useRouter } from "next/navigation";
 import Sidebar from "./Sidebar";
 import Image from "next/image";
 import logo from "../../public/lexLogo.svg";
@@ -14,12 +13,36 @@ import DateRangeButton from "./DateRangeButton";
 
 export default function AnalyticsNav({ activeMenuItem, setActiveMenuItem }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const router = useRouter(); // naya: router instance
+  const router = useRouter();
   const menuItems = ["Team Analytics", "Customer Analytics"];
 
-  // naya: function jo menu click handle karega aur team ke liye route push karega
+  useEffect(() => {
+    // Check localStorage for saved tab
+    const savedTab =
+      typeof window !== "undefined"
+        ? localStorage.getItem("activeAnalyticsTab")
+        : null;
+
+    if (savedTab) {
+      // Agar localStorage mein tab save hai to use set karen
+      setActiveMenuItem(savedTab);
+    } else {
+      // Agar nahi hai to default "Team Analytics" set karen
+      setActiveMenuItem("Team Analytics");
+      // Aur localStorage mein bhi save karen
+      if (typeof window !== "undefined") {
+        localStorage.setItem("activeAnalyticsTab", "Team Analytics");
+      }
+    }
+  }, [setActiveMenuItem]);
+
   const handleMenuClick = (item) => {
+    // Tab change karen
     setActiveMenuItem(item);
+    // Aur new tab ko localStorage mein save karen
+    if (typeof window !== "undefined") {
+      localStorage.setItem("activeAnalyticsTab", item);
+    }
   };
 
   return (
@@ -44,7 +67,7 @@ export default function AnalyticsNav({ activeMenuItem, setActiveMenuItem }) {
             {menuItems.map((item) => (
               <button
                 key={item}
-                onClick={() => handleMenuClick(item)} // naya: use handleMenuClick
+                onClick={() => handleMenuClick(item)}
                 className={`px-4 py-2 border border-gray-300  rounded-lg ${
                   activeMenuItem === item
                     ? "bg-[#252525] text-white"
@@ -63,7 +86,7 @@ export default function AnalyticsNav({ activeMenuItem, setActiveMenuItem }) {
             {menuItems.map((item) => (
               <button
                 key={item}
-                onClick={() => handleMenuClick(item)} // naya: use handleMenuClick
+                onClick={() => handleMenuClick(item)}
                 className={`px-4 py-2 border border-gray-300  rounded-lg  ${
                   activeMenuItem === item
                     ? "bg-[#252525] text-white"
@@ -75,7 +98,7 @@ export default function AnalyticsNav({ activeMenuItem, setActiveMenuItem }) {
             ))}
           </div>
           <div className="">
-            <DateRangeButton/>
+            <DateRangeButton />
           </div>
         </div>
       </nav>
@@ -89,7 +112,7 @@ export default function AnalyticsNav({ activeMenuItem, setActiveMenuItem }) {
         )}
       </div>
 
-      {/* Conditional Rendering: yahan ab bhi AnalyticsPage render ho raha hai */}
+      {/* Conditional Rendering */}
       {activeMenuItem === "Team Analytics" && <TeamAnalyticsPage />}
       {activeMenuItem === "Customer Analytics" && <CustomerAnalytics />}
     </>

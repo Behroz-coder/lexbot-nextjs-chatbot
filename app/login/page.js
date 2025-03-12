@@ -10,17 +10,33 @@ const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
   return (
     <div>
-      <div className="flex flex-col lg:flex-row h-screen">
+      <div className="flex flex-col lg:justify-evenly  lg:flex-row h-screen">
         {/* Left Section */}
-        <div className="lg:w-1/2 flex items-center justify-start ml-0 lg:ml-12  bg-white">
-          <div className="lg:max-w-lg w-full p-6 lg:p-8">
-            <div className="text-left mb-4">
-              <Image src={logo} alt="logo image" className="w-16" />
+
+        <div className="lg:w-1/2 flex flex-col items-start justify-center ml-0 lg:ml-12 bg-white">
+          <div className="hidden lg:block ">
+            <Image
+              src={logo}
+              alt="logo image"
+              width={85}
+              height={28}
+              className="w-[85px] h-[28px]"
+            />
+          </div>
+          <div className="lg:max-w-lg w-full p-6 lg:p-3">
+            <div className="lg:hidden block ">
+              <Image
+                src={logo}
+                alt="logo image"
+                width={85}
+                height={28}
+                className="w-[85px] h-[28px]"
+              />
             </div>
-            <div className="text-left mt-20 mb-8">
+            <div className="text-left mt-12 md:mt-20 mb-8">
               <h1 className="text-4xl font-bold">Welcome back!</h1>
               <p className="text-gray-600 mt-2">
-                Don’t have an account?{" "}
+                Don't have an account?{" "}
                 <Link href="/signup" className="text-blue-500">
                   Sign up now
                 </Link>
@@ -85,7 +101,13 @@ const Login = () => {
             </div>
             <button className="w-full mt-6 border border-gray-400 flex items-center justify-center py-3 px-4 rounded-lg hover:bg-gray-100">
               <span className="mr-2">
-                <Image src={googleLogo} alt="Google logo" className="w-5 h-5" />
+                <Image
+                  src={googleLogo}
+                  alt="Google logo"
+                  width={20}
+                  height={20}
+                  className="w-5 h-5"
+                />
               </span>
               Continue with Google
             </button>
@@ -93,13 +115,16 @@ const Login = () => {
         </div>
 
         {/* Right Section */}
-        <div className="lg:w-1/2 hidden lg:flex lg:items-center lg:justify-end min-h-screen bg-custom-gradient ">
+
+        <div className="lg:w-1/2 hidden lg:flex lg:items-center lg:justify-end min-h-screen bg-custom-gradient">
           <Image
             src={sideBG}
             alt="AI Powered Customer Support"
-            className="xl:h-full h-auto w-full xl:w-auto object-cover"
+            width={800}
+            height={800}
+            className="xl:h-full h-auto w-full xl:w-auto object-contain"
           />
-          {/* <p className="absolute top-10 right-0 text-black text-xl font-semibold  pr-64 ">
+          {/* <p className="absolute top-10 right-0 text-black text-xl font-semibold pr-64">
             AI-Powered Customer Support
           </p> */}
         </div>
