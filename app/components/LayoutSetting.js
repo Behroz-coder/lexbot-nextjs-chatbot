@@ -37,12 +37,12 @@ export default function LayoutSetting({
                 )}
               </button>
             </div>{" "}
-            <h1 className="text-[20px] px-4 pb-2 leading-8 font-semibold text-black mb-6 border-b border-gray-200">
+            <h1 className="text-[20px] px-6 pb-2 leading-8 font-medium text-black mb-6 border-b border-gray-200">
               Settings
             </h1>
           </div>
         </nav>
-        <h1 className="text-[20px] px-4 py-5 hidden lg:block leading-8 font-semibold text-black mb-6 border-b border-gray-200">
+        <h1 className="text-[20px] px-6 py-5 hidden lg:block leading-8 font-medium text-black mb-6 border-b border-gray-200">
           Settings
         </h1>
         {/* Render Sidebar only on mobile */}

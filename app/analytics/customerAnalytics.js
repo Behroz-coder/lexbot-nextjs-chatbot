@@ -222,15 +222,15 @@ const GoogleMapsComponent = () => {
 
 export default function CustomerAnalytics() {
   return (
-    <div className="flex h-screen bg-gray-50">
+    <div className="flex h-screen bg-gray-50 ">
       {/* Main content */}
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Main content area */}
-        <div className="flex items-center justify-around lg:hidden px-4">
+        <div className="flex items-center justify-around lg:hidden px-4 py-4">
           <p className="text-sm">Customer Analytics</p>
           <DateRangeButton />
         </div>
-        <main className="flex-1 overflow-y-auto bg-gray-50 p-4 sm:p-6">
+        <main className="flex-1 overflow-y-auto bg-gray-50 p-4 sm:p-4">
           <Head>
             <title>Analytics Dashboard</title>
             <meta

@@ -165,7 +165,7 @@ export default function SeparateInterface() {
           {/* Mobile Header - Only visible on mobile */}
           <div className="flex items-center justify-between p-4 border-b lg:hidden">
             <div className="flex items-center">
-              <Image src={logoLex} alt="lex logo" height={30} width={30} />
+              <Image src={logoLex} alt="lex logo" height={38} width={38} />
             </div>
             <button
               className="text-gray-500"
@@ -181,39 +181,45 @@ export default function SeparateInterface() {
           </div> */}
 
           {/* Messages */}
-          <div className="flex-grow overflow-y-auto scrollbar-hidden p-4 space-y-3">
-            {messages.map((msg, index) => (
-              <div
-                key={index}
-                className={`flex ${
-                  msg.sender === "You" ? "justify-end" : "justify-start"
-                }`}
-              >
-                {msg.sender === "Chat bot" && (
-                  <div className="flex items-center justify-center mr-2">
-                    <Image
-                      src={logoLex}
-                      alt="lex logo "
-                      height={30}
-                      width={30}
-                    />
+          <div className="flex-grow overflow-auto p-4 space-y-4">
+                {messages.map((msg, index) => (
+                  <div
+                    key={index}
+                    className={`flex ${
+                      msg.sender === "You" ? "justify-end" : "justify-start"
+                    } mb-4`}
+                  >
+                    <div className="flex items-start">
+                      {msg.sender === "Chat bot" && (
+                        <div className="flex-shrink-0 mr-2 mt-1">
+                          <Image
+                            src={logoLex}
+                            alt="lex logo"
+                            height={38}
+                            width={38}
+                          />
+                        </div>
+                      )}
+                      <div className="flex flex-col">
+                        <div
+                          className={`p-3  max-w-[100%] rounded-lg ${
+                            msg.sender === "You"
+                              ? "bg-[#2472FC] max-w-[300px] lg:max-w-[400px] xl:max-w-[500px]  text-white"
+                              : "bg-[#F3F3F3] text-black"
+                          } break-words`}
+                          
+                        >
+                          <p className="text-[16px] leading-[25px] font-normal">
+                            {msg.text}
+                          </p>
+                        </div>
+                   
+                      </div>
+                    </div>
                   </div>
-                )}
-                <div
-                  className={`max-w-[90%] lg:max-w-[90%] p-3 rounded-lg ${
-                    msg.sender === "You"
-                      ? "bg-[#2472FC] text-white"
-                      : "bg-[#F3F3F3] text-black"
-                  }`}
-                >
-                  <p className="text-[16px] leading-[25px] font-normal">
-                    {msg.text}
-                  </p>
-                </div>
+                ))}
+                <div ref={messagesEndRef} />
               </div>
-            ))}
-            <div ref={messagesEndRef} />
-          </div>
 
           {/* Suggested Messages */}
           <div className="flex space-x-2 p-8">
@@ -221,7 +227,7 @@ export default function SeparateInterface() {
               <button
                 key={index}
                 onClick={() => handleSendMessage(msg)}
-                className="bg-[#DBDBDB]/10 p-3 rounded-lg border-2 border-blue-500 text-sm lg:text-[16px] leading-6 hover:bg-gray-300 transition"
+                className="bg-[#DBDBDB]/10 p-2 lg:p-3 rounded-lg border-2 border-blue-500 text-sm lg:text-[16px] leading-6 hover:bg-gray-300 transition"
               >
                 {msg}
               </button>

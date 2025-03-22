@@ -209,7 +209,7 @@ export default function ChatbotSettings() {
     }
   };
   return (
-    <div className="min-h-screen bg-white p-4 lg:p-8">
+    <div className="min-h-screen bg-white px-4 lg:px-6">
       <Head>
         <title>Lexbot Chatbot Settings</title>
         <meta
@@ -234,7 +234,7 @@ export default function ChatbotSettings() {
             />
           </div> */}
           <div>
-            <h1 className="font-medium text-2xl mt-1">Settings</h1>
+            <h1 className="font-medium text-lg lg:text-2xl mt-1">Settings</h1>
             <p className="my-2 text-[#737373]">
               Easily customize your chatbot for web integrations
             </p>
@@ -348,47 +348,11 @@ export default function ChatbotSettings() {
               <span className="text-sm font-mono p">{color}</span>
             </div>
           </section>
-          {/* Chat Bubble Design */}
-          {/* Chat Bubble Design Selection */}
-          {/* <section className="my-6">
-            <h3 className="text-lg font-semibold text-black mb-2">
-              Chat bubble design
-            </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-              {options.map((option) => (
-                <div
-                  key={option.id}
-                  className={`flex flex-col items-center p-4 border rounded-lg cursor-pointer transition-all duration-300 ${
-                    selected === option.id
-                      ? "border-blue-500 shadow-md"
-                      : "border-gray-300"
-                  }`}
-                  onClick={() => {
-                    setSelected(option.id);
-                    if (option.id === "custom") {
-                      handleCustomClick();
-                    }
-                  }}
-                >
-                  <input
-                    type="radio"
-                    name="chat_bubble_design"
-                    checked={selected === option.id}
-                    onChange={() => setSelected(option.id)}
-                    className="mb-2"
-                  />
-                  <div className="text-gray-700">{option.icon}</div>
-                  <span className="mt-2 text-sm text-gray-700">
-                    {option.label}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </section> */}
+         
           <hr />
           {/* Chat Bubble Design Selection Section */}
           <section className="my-6 ">
-            <h3 className="text-lg font-semibold text-black mb-2">
+            <h3 className="text-lg font-medium text-black mb-2">
               Chat bubble design
             </h3>
             <div className="grid grid-cols-3 gap-4">
@@ -570,7 +534,7 @@ export default function ChatbotSettings() {
           )}
           {/* chat button color */}
           <section className="flex items-center justify-between space-x-3">
-            <span className="text-black text-lg font-semibold capitalize ">
+            <span className="text-black text-lg font-medium capitalize ">
               chat bubble button color
             </span>
             <div className="flex items-center gap-1">
@@ -585,7 +549,7 @@ export default function ChatbotSettings() {
           </section>
           {/* Additional Settings */}
           <section className="mb-6">
-            <h2 className="text-lg font-semibold mb-2 mt-4">
+            <h2 className="text-lg font-medium mb-2 mt-4">
               Align Chat bubble
             </h2>
             <div className="flex space-x-4 justify-between w-full">
@@ -627,7 +591,7 @@ export default function ChatbotSettings() {
           </section>
           {/* Auto show */}
           <section>
-            <h2 className="text-lg font-semibold mb-2 ">
+            <h2 className="text-lg font-medium mb-2 ">
               Auto show initial message pop-up after
             </h2>
             <select
@@ -662,104 +626,111 @@ export default function ChatbotSettings() {
 
         {/* NEW UPDATE: Right side (preview) - fixed position on large screens */}
         <div className="hidden lg:block lg:w-1/2 lg:fixed lg:right-0 mr-2 xl:mr-12 lg:top-40 lg:bottom-4 lg:max-w-[35%]">
-          <div className="h-full w-full rounded-2xl border border-gray-300 bg-white  overflow-hidden flex flex-col">
-            <div className="flex items-center p-4 border-b">
-              <Image
-                src={logoLex}
-                alt="lex logo "
-                height={40}
-                width={40}
-              ></Image>
-              <div className="ml-3">
-                <h2 className="font-bold text-lg">Lex</h2>
-                <p className="text-sm text-gray-500">
-                  Our bot will reply instantly
+  <div className="h-full w-full rounded-2xl border border-gray-300 bg-white overflow-hidden flex flex-col">
+    <div className="flex items-center p-4 border-b">
+      <Image
+        src={logoLex}
+        alt="lex logo"
+        height={38}
+        width={38}
+      />
+      <div className="ml-3">
+        <h2 className="font-medium text-lg">Lex</h2>
+        <p className="text-sm font-normal text-[#737373]">
+          Our bot will reply instantly
+        </p>
+      </div>
+    </div>
+
+    <div className="flex-grow overflow-auto p-4 space-y-4">
+      {messages.map((msg, index) => (
+        <div
+          key={index}
+          className={`flex min-w-[100%] ${
+            msg.sender === "You" ? "justify-end" : "justify-start"
+          } mb-4`}
+        >
+          <div className="flex items-start">
+            {msg.sender === "Chat bot" && (
+              <div className="flex-shrink-0 mr-2 mt-1">
+                <Image
+                  src={logoLex}
+                  alt="lex logo"
+                  height={38}
+                  width={38}
+                />
+              </div>
+            )}
+            <div className="flex flex-col">
+              <div
+                className={`p-3  max-w-[100%] rounded-lg ${
+                  msg.sender === "You"
+                    ? "bg-[#2472FC] text-white"
+                    : "bg-[#F3F3F3] text-black"
+                } break-words`}
+                style={{ maxWidth: "380px" }}
+              >
+                <p className="text-[16px] leading-[25px] font-normal">
+                  {msg.text}
                 </p>
               </div>
-            </div>
-
-            <div className="flex-grow overflow-y-auto p-4 space-y-3">
-              {messages.map((msg, index) => (
-                <div
-                  key={index}
-                  className={`flex ${
-                    msg.sender === "You" ? "justify-end" : "justify-start"
-                  }`}
-                >
-                  {msg.sender === "Chat bot" && (
-                    <div className=" flex items-center justify-center mr-2">
-                      <Image
-                        src={logoLex}
-                        alt="lex logo "
-                        height={30}
-                        width={30}
-                      ></Image>
-                    </div>
-                  )}
-                  <div
-                    className={`max-w-[90%] lg:max-w-[100%] p-3 rounded-lg ${
-                      msg.sender === "You"
-                        ? "bg-[#2472FC] text-white"
-                        : "bg-[#F3F3F3] text-black"
-                    }`}
-                  >
-                    <p className="text-[16px] leading-[25px] font-normal">
-                      {msg.text}
-                    </p>
-                    <p className="text-xs text-black mt-1">
-                      {msg.sender}{" "}
-                      <span className="text-[#b6abab] pl-2"> {msg.time}</span>{" "}
-                    </p>
-                  </div>
-                </div>
-              ))}
-              <div ref={messagesEndRef} />
-            </div>
-
-            <div className="flex space-x-2 p-4">
-              {suggestedMessages.map((msg, index) => (
-                <button
-                  key={index}
-                  onClick={() => handleSendMessage(msg)}
-                  className="bg-[#DBDBDB]/40 px-4 py-3 rounded-lg border border-gray-300 text-sm lg:text-[16px] leading-6 hover:bg-gray-300 transition"
-                >
-                  {msg}
-                </button>
-              ))}
-            </div>
-
-            <div className="p-4 flex items-center border-t">
-              <label className="cursor-pointer">
-                <Paperclip className="text-gray-500 mr-2" />
-                <input
-                  type="file"
-                  multiple
-                  onChange={handleFileUpload}
-                  className="hidden"
-                />
-              </label>
-              <div className="flex-grow relative">
-                <input
-                  type="text"
-                  placeholder="Write a reply..."
-                  value={inputMessage}
-                  onChange={(e) => setInputMessage(e.target.value)}
-                  className="w-full pr-10 pl-4 py-2 border rounded-full focus:outline-none focus:ring-1 focus:ring-blue-500"
-                />
+              <div className={`flex mt-1 text-xs ${
+                msg.sender === "You" ? "justify-end" : "justify-start"
+              }`}>
+                <p className="text-black">{msg.sender}</p>
+                <span className="text-[#787878] pl-2">{msg.time}</span>
               </div>
-              <button
-                onClick={() => handleSendMessage()}
-                className="ml-2 bg-blue-500 text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-blue-600 transition"
-              >
-                <Send size={18} />
-              </button>
             </div>
           </div>
         </div>
+      ))}
+      <div ref={messagesEndRef} />
+    </div>
+
+    <div className="flex space-x-2 p-4">
+      {suggestedMessages.map((msg, index) => (
+        <button
+          key={index}
+          onClick={() => handleSendMessage(msg)}
+          className="bg-[#DBDBDB]/40 px-4 py-3 rounded-lg border border-gray-300 text-sm lg:text-[16px] leading-6 hover:bg-gray-300 transition"
+        >
+          {msg}
+        </button>
+      ))}
+    </div>
+
+    <div className="p-4 flex items-center border-t">
+      <label className="cursor-pointer">
+        <Paperclip className="text-gray-500 mr-2" />
+        <input
+          type="file"
+          multiple
+          onChange={handleFileUpload}
+          className="hidden"
+        />
+      </label>
+      <div className="flex-grow relative">
+        <input
+          type="text"
+          placeholder="Write a reply..."
+          value={inputMessage}
+          onChange={(e) => setInputMessage(e.target.value)}
+          className="w-full pr-10 pl-4 py-2 border rounded-full focus:outline-none focus:ring-1 focus:ring-blue-500"
+        />
+      </div>
+      <button
+        onClick={() => handleSendMessage()}
+        className="ml-2 bg-blue-500 text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-blue-600 transition"
+      >
+        <Send size={18} />
+      </button>
+    </div>
+  </div>
+</div>
 
         {/* Mobile preview (unchanged) */}
         <div
-          className={`fixed inset-0 bg-white lg:hidden z-50 transition-transform duration-300 ease-in-out ${
+          className={`fixed inset-0 bg-white shadow-xl lg:hidden  m-4 rounded-2xl z-50 transition-transform duration-300 ease-in-out ${
             isPreviewOpen
               ? "translate-x-0 opacity-100"
               : "translate-x-full opacity-0"
@@ -770,12 +741,12 @@ export default function ChatbotSettings() {
               <Image
                 src={logoLex}
                 alt="lex logo "
-                height={40}
-                width={40}
+                height={38}
+                width={38}
               ></Image>
               <div className="ml-3">
-                <h2 className="font-bold text-lg">Lex</h2>
-                <p className="text-sm text-gray-500">
+                <h2 className="font-medium text-lg">Lex</h2>
+                <p className="text-sm font-normal   text-[#737373]">
                   Our bot will reply instantly
                 </p>
               </div>
@@ -787,50 +758,57 @@ export default function ChatbotSettings() {
               </button>
             </div>
 
-            <div className="flex-grow overflow-y-auto p-4 space-y-3">
-              {messages.map((msg, index) => (
-                <div
-                  key={index}
-                  className={`flex ${
-                    msg.sender === "You" ? "justify-end" : "justify-start"
-                  }`}
-                >
-                  {msg.sender === "Chat bot" && (
-                    <div className=" flex items-center justify-center mr-2">
-                      <Image
-                        src={logoLex}
-                        alt="lex logo "
-                        height={30}
-                        width={30}
-                      ></Image>
-                    </div>
-                  )}
-                  <div
-                    className={`max-w-[90%] lg:max-w-[100%] p-3 rounded-lg ${
-                      msg.sender === "You"
-                        ? "bg-[#2472FC] text-white"
-                        : "bg-[#F3F3F3] text-black"
-                    }`}
-                  >
-                    <p className="text-[16px] leading-[25px] font-normal">
-                      {msg.text}
-                    </p>
-                    <p className="text-xs text-black mt-1">
-                      {msg.sender}{" "}
-                      <span className="text-[#b6abab] pl-2"> {msg.time}</span>{" "}
-                    </p>
-                  </div>
-                </div>
-              ))}
-              <div ref={messagesEndRef} />
+            <div className="flex-grow overflow-auto p-4 space-y-4">
+      {messages.map((msg, index) => (
+        <div
+          key={index}
+          className={`flex   ${
+            msg.sender === "You" ? "justify-end" : "justify-start"
+          } mb-4`}
+        >
+          <div className="flex items-start">
+            {msg.sender === "Chat bot" && (
+              <div className="flex-shrink-0 mr-2 mt-1">
+                <Image
+                  src={logoLex}
+                  alt="lex logo"
+                  height={38}
+                  width={38}
+                />
+              </div>
+            )}
+            <div className="flex flex-col">
+              <div
+                className={`p-3  max-w-[100%] rounded-lg  ${
+                  msg.sender === "You"
+                    ? "bg-[#2472FC] max-w-[300px] text-white"
+                    : "bg-[#F3F3F3] text-black"
+                } break-words`}
+              
+              >
+                <p className="text-[16px] leading-[25px] font-normal">
+                  {msg.text}
+                </p>
+              </div>
+              <div className={`flex mt-1 text-xs ${
+                msg.sender === "You" ? "justify-end" : "justify-start"
+              }`}>
+                <p className="text-black">{msg.sender}</p>
+                <span className="text-[#787878] pl-2">{msg.time}</span>
+              </div>
             </div>
+          </div>
+        </div>
+      ))}
+      <div ref={messagesEndRef} />
+    </div>
 
-            <div className="flex space-x-2 p-4">
+            <div className="flex justify-center space-x-2 p-2">
               {suggestedMessages.map((msg, index) => (
                 <button
                   key={index}
                   onClick={() => handleSendMessage(msg)}
-                  className="bg-[#DBDBDB]/40 px-4 py-3 rounded-lg border border-gray-300 text-sm lg:text-[16px] leading-6 hover:bg-gray-300 transition"
+                  className="bg-[#DBDBDB]/40 px-2 py-3 rounded-lg border border-gray-300 text-sm lg:text-[16px] leading-6 hover:bg-gray-300 transition"
                 >
                   {msg}
                 </button>

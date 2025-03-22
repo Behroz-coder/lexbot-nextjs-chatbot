@@ -62,7 +62,7 @@ const Playground = () => {
   return (
     // Yahan main container ki height ko set kia hai responsive tareeqe se
     // Laptop view par left side scroll hoga, right side fixed rahega
-    <div className="flex items-start lg:h-screen bg-white gap-20 px-3 lg:px-4 mx-auto w-full overflow-hidden">
+    <div className="flex items-start lg:h-screen bg-white gap-12 px-3 lg:px-6 mx-auto w-full overflow-hidden">
       {/* left side - is ko scrollable banaya hai */}
       {/* Yahan overflow-y-auto add kia hai taky sirf left side scroll ho */}
       <div className="w-full lg:w-1/2 lg:border-r-2 border-gray-300 lg:pr-6 pb-24 overflow-y-auto scrollbar-hidden h-screen">
@@ -95,7 +95,7 @@ const Playground = () => {
         {/* Functions Section */}
         <div className="mb-6">
           <h3 className="text-lg font-medium text-black mb-2">Functions</h3>
-          <div className="border border-dashed border-gray-300 rounded-lg p-4">
+          <div className="">
             <p className="text-lg text-gray-500 mb-3">No functions enabled</p>
             <button className="w-full py-3 px-4 border border-gray-300 rounded-md text-lg font-medium text-gray-900 hover:bg-gray-50 flex items-center justify-center gap-2">
               <svg
@@ -184,7 +184,7 @@ const Playground = () => {
       {/* right side - is ko fixed rakha hai */}
       {/* Yahan overflow-hidden add kia hai taky right side fixed rahe, lekin uske andar ka content scroll ho */}
       <div
-        className={`fixed inset-0 lg:h-screen overflow-hidden lg:static lg:inset-auto lg:mt-8 lg:pb-24 rounded-2xl border border-gray-300 bg-white mx-4 mt-2  shadow-lg  lg:w-1/2 lg:flex lg:p-4 md:shadow-none transition-transform duration-300 ease-in-out ${
+        className={`fixed inset-0 lg:h-screen overflow-hidden lg:static lg:inset-auto lg:mt-8 lg:pb-24 rounded-2xl border border-gray-300 bg-white mx-4 mt-2  shadow-lg  lg:w-1/2 lg:flex lg:p-1 md:shadow-none transition-transform duration-300 ease-in-out ${
           isPreviewOpen
             ? "translate-x-0  opacity-100 "
             : "translate-x-full opacity-0   lg:opacity-100 lg:translate-x-0"
@@ -209,41 +209,50 @@ const Playground = () => {
           </div>
 
           {/* Messages area ko scrollable banaya hai, lekin right side container fixed hai */}
-          <div className="flex-grow overflow-y-auto p-4 space-y-3">
-            {messages.map((msg, index) => (
-              <div
-                key={index}
-                className={`flex ${
-                  msg.sender === "You" ? "justify-end" : "justify-start"
-                }`}
-              >
+        <div className="flex-grow overflow-auto p-4 space-y-4">
+          {messages.map((msg, index) => (
+            <div
+              key={index}
+              className={`flex min-w-[100%] ${
+                msg.sender === "You" ? "justify-end" : "justify-start"
+              } mb-4`}
+            >
+              <div className="flex items-start">
                 {msg.sender === "Chat bot" && (
-                  <div className=" flex items-center justify-center mr-2">
+                  <div className="flex-shrink-0 mr-2 mt-1">
                     <Image
                       src={logoLex}
-                      alt="lex logo "
-                      height={30}
-                      width={30}
-                    ></Image>
+                      alt="lex logo"
+                      height={38}
+                      width={38}
+                    />
                   </div>
                 )}
-                <div
-                  className={`max-w-[90%] lg:max-w-[100%] p-3 rounded-lg ${
-                    msg.sender === "You"
-                      ? "bg-[#2472FC] text-white"
-                      : "bg-[#F3F3F3] text-black"
-                  }`}
-                >
-                  <p className="text-lg">{msg.text}</p>
-                  <p className="text-xs text-black mt-1">
-                    {msg.sender}{" "}
-                    <span className="text-[#b6abab] pl-2"> {msg.time}</span>{" "}
-                  </p>
+                <div className="flex flex-col">
+                  <div
+                    className={`p-3  max-w-[100%] rounded-lg ${
+                      msg.sender === "You"
+                        ? "bg-[#2472FC] text-white"
+                        : "bg-[#F3F3F3] text-black"
+                    } break-words`}
+                    style={{ maxWidth: "380px" }}
+                  >
+                    <p className="text-[16px] leading-[25px] font-normal">
+                      {msg.text}
+                    </p>
+                  </div>
+                  <div className={`flex mt-1 text-xs ${
+                    msg.sender === "You" ? "justify-end" : "justify-start"
+                  }`}>
+                    <p className="text-black">{msg.sender}</p>
+                    <span className="text-[#787878] pl-2">{msg.time}</span>
+                  </div>
                 </div>
               </div>
-            ))}
-            <div ref={messagesEndRef} />
-          </div>
+            </div>
+          ))}
+          <div ref={messagesEndRef} />
+        </div>
 
           <div className="flex space-x-2 p-4">
             {suggestedMessages.map((msg, index) => (

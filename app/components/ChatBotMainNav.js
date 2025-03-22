@@ -43,9 +43,9 @@ export default function MainNav({ activeMenuItem, setActiveMenuItem }) {
               <button
                 key={item}
                 onClick={() => setActiveMenuItem(item)}
-                className={`px-3 font-medium text-sm py-2 flex-shrink-0 ${
+                className={`px-3 font-normal text-sm py-2 flex-shrink-0 ${
                   activeMenuItem === item
-                    ? "text-blue-500 border-b-[3px] border-blue-500"
+                    ? "text-blue-500 border-b-[3px] px-1 border-blue-500"
                     : "text-gray-600"
                 }`}
               >
@@ -56,7 +56,7 @@ export default function MainNav({ activeMenuItem, setActiveMenuItem }) {
         </div>
 
         {/* Desktop Navigation */}
-        <div className="hidden lg:flex justify-between px-4 py-2 bg-[#DBDBDB]/10 ">
+        <div className="hidden lg:flex justify-between px-6 py-2 bg-[#DBDBDB]/10 ">
           <div className="flex items-center space-x-6">
             {menuItems.map((item) => (
               <button
@@ -64,7 +64,7 @@ export default function MainNav({ activeMenuItem, setActiveMenuItem }) {
                 onClick={() => setActiveMenuItem(item)}
                 className={`px-0 font-medium py-1 ${
                   activeMenuItem === item
-                    ? "text-blue-500 border-b-[3px] px-2 border-blue-500"
+                    ? "text-blue-500 border-b-[3px] border-blue-500"
                     : "text-black "
                 }`}
               >

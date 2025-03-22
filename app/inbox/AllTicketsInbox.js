@@ -277,7 +277,7 @@ const [conversations, setConversations] = useState([
           <div className="px-4 py-3 lg:py-[24px] text-xl text-black font-medium border-b border-gray-200">
             AIl Tickets
           </div>
-          <div className="overflow-y-auto flex-1 mx-[12px] rounded-xl">
+          <div className="overflow-y-auto flex-1 scrollbar-hidden mx-[12px] rounded-xl">
             {conversations.map((convo) => (
               <div
                 key={convo.id}
@@ -337,7 +337,7 @@ const [conversations, setConversations] = useState([
                     <FiArrowLeft size={20} />
                   </button>
                   <div className="flex flex-col">
-                    <h2 className="font-medium">{activeConvo.name}</h2>
+                    <h2 className="font-medium text-[14px] lg:text-[20px]">{activeConvo.name}</h2>
                     <p className="text-[12px] leading-5 font-normal text-[#737373] truncate pt-1">
                       {activeConvo.admin}
                     </p>
@@ -376,7 +376,7 @@ const [conversations, setConversations] = useState([
                       {/* User avatar for user messages */}
                       {msg.isUser && (
                         <div className="mr-2 mt-1">
-                          <div className="w-10 h-10 rounded-full bg-gray-300 overflow-hidden">
+                          <div className="lg:w-[38px] lg:h-[38px] w-[24px] h-[24px] rounded-full bg-gray-300 overflow-hidden">
                             {/* User avatar */}
                             <img
                               src="/avatars/macdonald.jpg"
@@ -394,7 +394,9 @@ const [conversations, setConversations] = useState([
                       )}
 
                       {/* Message bubble */}
-                      <div
+                      <div className={`flex flex-col ${msg.isUser ? "items-start" : "items-end"}`}>
+    {/* Message bubble */}
+    <div
                         className={`${
                           msg.isUser
                             ? "bg-[#F3F3F3] rounded-lg text-[#252525]"
@@ -402,24 +404,24 @@ const [conversations, setConversations] = useState([
                         } p-3 max-w-md`}
                       >
                         <p>{msg.message}</p>
-                        <div
-                          className={`text-xs mt-1 ${
-                            msg.isUser ? "text-gray-500" : "text-blue-200"
-                          }`}
-                        >
-                          Seen {msg.time}
-                        </div>
+                    
                       </div>
+                      <div
+                          className={ `text-xs mt-1 text-[#787878] text-[12px] leading-4 font-normal `}
+                        >
+                        <span className="text-black text-[12px] leading-4 font-normal"> Seen</span>   {msg.time}
+                        </div>
+</div>
 
                       {/* Assistant avatar for assistant messages */}
                       {!msg.isUser && (
                         <div className="ml-2 mt-1">
-                          <div className=" flex items-center ">
+                          <div className=" flex items-center  lg:w-[38px] lg:h-[38px] w-[24px] h-[24px]">
                             <Image
                               src={logoLex}
                               alt="lex logo "
-                              height={30}
-                              width={30}
+                              height={38}
+                              width={38}
                             ></Image>
                           </div>
                         </div>

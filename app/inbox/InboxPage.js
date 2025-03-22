@@ -1,14 +1,13 @@
 // pages/index.js
 "use client";
 import { useState, useRef, useEffect } from "react";
-import Head from "next/head";
+
 import { FiChevronDown, FiPlus, FiArrowLeft } from "react-icons/fi"; // Added FiArrowLeft for mobile back button
 import { HiOutlineMail, HiOutlineTicket } from "react-icons/hi";
-import { BsPin, BsDownload, BsPaperclip, BsEmojiSmile } from "react-icons/bs";
+
 import { BiMessageSquare } from "react-icons/bi";
 import { FaFacebook, FaInstagram, FaWhatsapp } from "react-icons/fa";
-import { IoMdSend } from "react-icons/io";
-import { RiFlashlightLine } from "react-icons/ri";
+
 import YourInbox from "./YourInbox";
 import AllTickets from "./AllTicketsInbox";
 

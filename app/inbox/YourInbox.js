@@ -298,7 +298,7 @@ export default function YourInbox() {
           <div className="px-4 py-5 lg:py-[17.5px] text-xl text-black font-medium  border-b border-gray-400 lg:border-gray-200">
             Your Inbox
           </div>
-          <div className="overflow-y-auto flex-1 mx-[3px] rounded-xl">
+          <div className="overflow-y-auto  scrollbar-hidden flex-1 mx-[3px] rounded-xl">
             {conversations.map((convo) => (
               <div
                 key={convo.id}
@@ -354,7 +354,7 @@ export default function YourInbox() {
                   >
                     <FiArrowLeft size={20} />
                   </button>
-                  <h2 className="font-medium">{activeConvo.name}</h2>
+                  <h2 className="font-medium text-[14px] lg:text-[20px]">{activeConvo.name}</h2>
                 </div>
                 <div className="flex items-center space-x-4">
                   <button className="text-black bg-[#F2F2F2] w-10 h-10 flex items-center justify-center rounded-lg hover:text-gray-900">
@@ -388,8 +388,8 @@ export default function YourInbox() {
                     >
                       {/* User avatar for user messages */}
                       {msg.isUser && (
-                        <div className="mr-2 mt-1">
-                          <div className="w-10 h-10 rounded-full bg-gray-300 overflow-hidden">
+                        <div className="mr-2 mt-1 ">
+                          <div className="lg:w-[38px] w-[24px] h-[24px] lg:h-[38px] rounded-full bg-gray-300 overflow-hidden">
                             {/* User avatar */}
                             <img
                               src="/avatars/macdonald.jpg"
@@ -405,9 +405,9 @@ export default function YourInbox() {
                           </div>
                         </div>
                       )}
-
-                      {/* Message bubble */}
-                      <div
+<div className={`flex flex-col ${msg.isUser ? "items-start" : "items-end"}`}>
+    {/* Message bubble */}
+    <div
                         className={`${
                           msg.isUser
                             ? "bg-[#F3F3F3] rounded-lg text-[#252525]"
@@ -415,24 +415,25 @@ export default function YourInbox() {
                         } p-3 max-w-md`}
                       >
                         <p>{msg.message}</p>
-                        <div
-                          className={`text-xs mt-1 ${
-                            msg.isUser ? "text-gray-500" : "text-blue-200"
-                          }`}
-                        >
-                          Seen {msg.time}
-                        </div>
+                    
                       </div>
+                      <div
+                          className={ `text-xs mt-1 text-[#787878] text-[12px] leading-4 font-normal `}
+                        >
+                        <span className="text-black text-[12px] leading-4 font-normal"> Seen</span>   {msg.time}
+                        </div>
+</div>
+                    
 
                       {/* Assistant avatar for assistant messages */}
                       {!msg.isUser && (
                         <div className="ml-2 mt-1">
-                          <div className=" flex items-center ">
+                          <div className=" flex items-center  lg:w-[38px] lg:h-[38px] w-[24px] h-[24px]">
                             <Image
                               src={logoLex}
                               alt="lex logo "
-                              height={30}
-                              width={30}
+                              height={38}
+                              width={38}
                             ></Image>
                           </div>
                         </div>

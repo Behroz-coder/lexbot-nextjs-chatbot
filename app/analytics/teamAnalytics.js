@@ -180,8 +180,8 @@ export default function TeamAnalyticsPage() {
         <meta name="robots" content="index, follow" />
       </Head>
 
-      <div className="min-h-screen bg-gray-50 p-4 md:p-6 overflow-y-auto">
-        <div className="flex items-center justify-around lg:hidden px-4">
+      <div className="min-h-screen bg-gray-50 p-4 md:p-4 overflow-y-auto">
+        <div className="flex items-center justify-around lg:hidden px-4 py-4">
           <p className="text-sm">Team Analytics</p>
           <DateRangeButton/>
         </div>
@@ -286,7 +286,7 @@ export default function TeamAnalyticsPage() {
               </p>
 
               <div className="grid  items-center  md:grid-cols-3   w-full mt-4 mb-6 pb-4">
-                <div className="text-center p-4 border w-full border-[#A3A3A3] border-dashed rounded-lg">
+                <div className="text-center px-8 py-4 border w-full border-[#A3A3A3] border-dashed rounded-lg">
                   <p className="text-[#252525] text-[16px] leading-6 font-normal mb-1">
                     Total Conversations
                   </p>
@@ -294,7 +294,7 @@ export default function TeamAnalyticsPage() {
                 </div>
                 <div className="text-center  px-8 w-full py-4 border-[#A3A3A3] border  border-dashed rounded-lg">
                   <p className="text-[#2472FC] text-[16px] leading-6 font-normal mb-1">
-                    AI Agents
+                    AI  <br className=" hidden 2xl:hidden md:block"/>Agents
                   </p>
                   <p className="text-2xl font-medium text-[#252525]">36,899</p>
                 </div>

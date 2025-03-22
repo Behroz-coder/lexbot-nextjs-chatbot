@@ -50,7 +50,7 @@ export default function AnalyticsNav({ activeMenuItem, setActiveMenuItem }) {
       <nav className="border-b">
         {/* Mobile Header */}
         <div className="lg:hidden bg-[#DBDBDB]/10">
-          <div className="flex items-center justify-between px-4 py-4 mb-8">
+          <div className="flex items-center justify-between   px-4 py-4 mb-8">
             <Link href="/" className="flex items-center space-x-2">
               <Image src={logo} alt="logo image" width={30} height={30} />
               <span className="font-semibold text-xl">Lexbot</span>
@@ -63,7 +63,7 @@ export default function AnalyticsNav({ activeMenuItem, setActiveMenuItem }) {
               )}
             </button>
           </div>
-          <div className="flex items-center justify-center lg:justify-start px-2 space-x-1 sm:space-x-4 overflow-x-auto whitespace-nowrap">
+          <div className="flex items-center justify-center border-gray-400 pb-2 border-b-[.5px] lg:justify-start px-2 space-x-1 sm:space-x-4 overflow-x-auto whitespace-nowrap">
             {menuItems.map((item) => (
               <button
                 key={item}
@@ -81,13 +81,13 @@ export default function AnalyticsNav({ activeMenuItem, setActiveMenuItem }) {
         </div>
 
         {/* Desktop Navigation */}
-        <div className="hidden lg:flex justify-between px-4 py-2 bg-[#DBDBDB]/10">
+        <div className="hidden lg:flex justify-between px-4 py-3 bg-[#DBDBDB]/10">
           <div className="flex items-center space-x-6">
             {menuItems.map((item) => (
               <button
                 key={item}
                 onClick={() => handleMenuClick(item)}
-                className={`px-4 py-2 border border-gray-300  rounded-lg  ${
+                className={`px-4 py-2 border text-[16px] font-normal border-gray-300  rounded-lg  ${
                   activeMenuItem === item
                     ? "bg-[#252525] text-white"
                     : "text-[#252525]"

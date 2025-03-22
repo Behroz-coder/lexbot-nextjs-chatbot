@@ -166,16 +166,16 @@ const LeadsPage = () => {
 
     return (
       <div className="h-screen flex flex-col bg-white">
-        <div className="border-b border-gray-300 font-medium text-[20px] leading-8 py-5 px-5">
+        <div className="border-b border-gray-300 font-medium text-[20px] text-black leading-8 py-5 px-6">
           Leads
         </div>
 
       
-          <div className="flex-1 p-4 pb-24 lg:pb-0 md:mt-4 md:border border-gray-300 md:mx-3 bg-white rounded-lg shadow overflow-auto flex flex-col">
+          <div className="flex-1 py-4 pb-24 lg:pb-0 md:mt-4 md:border border-gray-300 md:mx-6 bg-white rounded-lg shadow overflow-auto flex flex-col">
             {/* Header */}
-            <div className="p-5 border-b border-gray-200">
+            <div className="p-4 border-b border-gray-200">
               <div className="flex flex-wrap justify-between items-center gap-4">
-                <h1 className=" sm:text-lg md:text-xl lg:text-2xl font-medium text-black">
+                <h1 className=" font-medium text-[20px] leading-8 text-black">
                   {totalLeads.toLocaleString()} Total Leads
                 </h1>
                 <div className="space-x-2 flex items-center gap-1 lg:gap-2">
@@ -196,19 +196,19 @@ const LeadsPage = () => {
               <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-[#EDEDED]/10">
                   <tr>
-                    <th className="px-6 py-4 text-left text-[16px] leading-6   text-black capitalize tracking-wider">
+                    <th className="px-6 py-4 text-left text-[16px] leading-6  font-medium text-black capitalize tracking-wider">
                       Name
                     </th>
-                    <th className="px-6 py-4 text-left text-[16px] leading-6  text-black capitalize tracking-wider">
+                    <th className="px-6 py-4 text-left text-[16px] leading-6 font-medium  text-black capitalize tracking-wider">
                       Email
                     </th>
-                    <th className="px-6 py-4 text-left text-[16px] leading-6  text-black capitalize tracking-wider">
+                    <th className="px-6 py-4 text-left text-[16px] leading-6  font-medium text-black capitalize tracking-wider">
                       Company
                     </th>
-                    <th className="px-6 py-4 text-left text-[16px] leading-6  text-black capitalize tracking-wider">
+                    <th className="px-6 py-4 text-left text-[16px] leading-6 font-medium  text-black capitalize tracking-wider">
                       Region
                     </th>
-                    <th className="px-6 py-4 text-left text-[16px] leading-6  text-black capitalize tracking-wider">
+                    <th className="px-6 py-4 text-left text-[16px] leading-6 font-medium  text-black capitalize tracking-wider">
                       Language
                     </th>
                   </tr>

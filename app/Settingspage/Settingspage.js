@@ -204,10 +204,10 @@ export default function Settings() {
       </Head>
 
       <div className="min-h-screen bg-white">
-        <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 pb-8">
+        <div className="w-full mx-auto px-4 sm:px-6 lg:px-6 pb-8">
           <div className="flex flex-col md:flex-row gap-6">
             {/* Sidebar */}
-            <div className="w-full md:w-64 flex-shrink-0 ">
+            <div className="w-full md:w-32 lg:w-32 xl:w-64 flex-shrink-0 ">
               <nav className="space-y-1 overflow-auto flex items-center md:flex-col">
                 {["Profile", "Billing", "Affiliate", "Team"].map((tab) => (
                   <button
@@ -216,7 +216,7 @@ export default function Settings() {
                     className={`w-full px-4 py-4 text-left ${
                       activeTab === tab
                         ? "bg-[#EAECF0]   rounded-lg  text-black text-[16px] leading-6 font-medium"
-                        : "text-gray-800 hover:bg-gray-50"
+                        : "text-gray-800 hover:bg-gray-50 text-[16px] leading-6 font-medium"
                     }`}
                   >
                     {tab}
@@ -302,7 +302,7 @@ export default function Settings() {
 
               {activeTab == "Billing" && (
                 <div className="min-h-screen bg-white">
-                  <div className="w-full scrollbar-hidden overflow-y-auto h-screen mx-auto px-4 sm:px-6">
+                  <div className="w-full scrollbar-hidden  overflow-y-auto h-screen mx-auto ">
                     <div className="flex flex-col md:flex-row gap-8 pt-6 lg:pt-0">
                       {/* Main Content */}
                       <div className="flex-1 space-y-6 mb-72 lg:mb-52">
@@ -502,7 +502,7 @@ export default function Settings() {
               )}
               {activeTab == "Affiliate" && (
                 <div className="min-h-screen bg-white">
-                  <div className="p-4 lg:p-6 max-w-6xl mx-auto h-screen overflow-y-auto ">
+                  <div className=" scrollbar-hidden  max-w-6xl mx-auto h-screen overflow-y-auto ">
                     <div className="flex flex-col md:flex-row gap-6 mb-32">
                       {/* Main content */}
                       <div className="flex-1">

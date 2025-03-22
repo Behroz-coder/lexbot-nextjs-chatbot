@@ -115,13 +115,13 @@ const MessageBubble = memo(({ message }) =>  {
             className={`flex flex-col ${isUser ? "ml-auto" : ""} max-w-[85%]`}
           >
             <div
-              className={` py-6 px-4 ${
+              className={` py-3 px-4 ${
                 isUser
                   ? "bg-[#2472FC] text-white rounded-lg rounded-br-none"
                   : "bg-[#EDEDED] text-black rounded-lg rounded-bl-none"
               }`}
             >
-              <p className="text-base ">{message.text}</p>
+              <p className="text-base font-medium">{message.text}</p>
             </div>
 
             <div className="flex items-center gap-2 mt-3">
@@ -151,7 +151,7 @@ const MessageBubble = memo(({ message }) =>  {
             >
               <ArrowLeft />
             </button>
-            <h3 className="font-medium text-lg">{activeChat.name}</h3>
+            <h3 className="font-medium text-[16px]">{activeChat.name}</h3>
           </div>
           <button className="text-red-500">
             <svg
@@ -241,7 +241,7 @@ const MessageBubble = memo(({ message }) =>  {
       {!isMobileView && activeChat && (
         <div className="flex-1 flex flex-col">
           <div className="flex items-center justify-between p-4 border-b">
-            <h3 className="font-semibold text-black text-lg">
+            <h3 className="font-medium text-black text-[16px]">
               {activeChat.name}
             </h3>
             <button className="text-red-500">
