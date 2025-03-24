@@ -25,6 +25,7 @@ import {
 import { BiUpArrow } from "react-icons/bi";
 import DateRangeButton from "../components/DateRangeButton";
 import Image from "next/image";
+import { RiTeamLine } from "react-icons/ri";
 export default function Settings() {
   const [email, setEmail] = useState("macdonald@gmail.com");
   const [displayName, setDisplayName] = useState("Macdonald Anyanwu");
@@ -213,10 +214,10 @@ export default function Settings() {
                   <button
                     key={tab}
                     onClick={() => setActiveTab(tab)}
-                    className={`w-full px-4 py-4 text-left ${
+                    className={`w-full px-3   py-2 text-left ${
                       activeTab === tab
-                        ? "bg-[#EAECF0]   rounded-lg  text-black text-[16px] leading-6 font-medium"
-                        : "text-gray-800 hover:bg-gray-50 text-[16px] leading-6 font-medium"
+                        ? "bg-[#EAECF0]   rounded-lg  text-black text-[12px] lg:text-[16px] leading-6 font-normal lg:font-medium"
+                        : "text-gray-800 hover:bg-gray-50  text-[12px] lg:text-[16px] leading-6  font-normal lg:font-medium"
                     }`}
                   >
                     {tab}
@@ -802,19 +803,7 @@ function AddMemberModal({ onClose, onAddMember }) {
       <div className="bg-[#F9fbff] rounded-2xl shadow-lg w-full max-w-md p-6 mx-4">
         <div className="text-center mb-6">
           <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-blue-100 mb-4">
-            <svg
-              className="w-6 h-6 text-blue-500"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M12 10c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z" />
-              <path d="M12 14c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-            </svg>
+          <RiTeamLine className="text-blue-500 text-3xl" />
           </div>
           <h2 className="text-2xl text-black font-medium">Add team member</h2>
           <p className="text-gray-900 text-[16px] leading-6 mt-1 ">

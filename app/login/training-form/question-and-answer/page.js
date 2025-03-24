@@ -22,14 +22,14 @@ function page() {
   return (
     <div>
       <div className="mb-4">
-        <label className="block text-black mb-2">Q&A</label>
+        <label className="block text-[12px] lg:text-[16px] font-medium text-black mb-2">Q&A</label>
         <div>
           {questions.map((qa, index) => (
             <div key={index} className="mb-4">
               <input
                 type="text"
                 placeholder="Question"
-                className="w-full px-4 py-2 mb-2 border rounded-md"
+                className="w-full px-4 py-2 mb-2 border rounded-lg"
                 value={qa.question}
                 onChange={(e) =>
                   handleInputChange(index, "question", e.target.value)
@@ -38,7 +38,7 @@ function page() {
               <input
                 type="text"
                 placeholder="Answer"
-                className="w-full px-4 py-2 border rounded-md"
+                className="w-full px-4 py-2 border rounded-lg"
                 value={qa.answer}
                 onChange={(e) =>
                   handleInputChange(index, "answer", e.target.value)
@@ -47,7 +47,7 @@ function page() {
             </div>
           ))}
           <button
-            className="text-blue-500 flex items-center gap-2 hover:text-black font-medium mb-4 transform transition-transform duration-300 ease-in-out hover:scale-105"
+            className="text-blue-500  text-[12px] lg:text-[16px] font-medium  flex items-center gap-2 hover:text-black font-medium mb-4 transform transition-transform duration-300 ease-in-out hover:scale-105"
             onClick={addNewQA}
           >
             <span className="font-semibold">+</span> Add New Q&A

@@ -2,7 +2,7 @@
 export default function Header({ activeTab, setActiveTab }) {
   return (
     <header className="border-b px-6 py-4">
-      <div className="flex justify-between items-center overflow-x-auto  whitespace-nowrap">
+      <div className="flex justify-between items-center overflow-x-auto  scrollbar-hidden whitespace-nowrap">
         <div className="flex space-x-4">
           <button
             className={`px-4 py-2 border font-normal text-[16px] border-[#DBDBDB] rounded-lg ${

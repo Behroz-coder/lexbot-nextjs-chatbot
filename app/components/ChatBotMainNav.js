@@ -38,14 +38,14 @@ export default function MainNav({ activeMenuItem, setActiveMenuItem }) {
               )}
             </button>
           </div>
-          <div className="flex items-center justify-start px-2 space-x-1 sm:space-x-4 overflow-x-auto whitespace-nowrap">
+          <div className="flex items-center justify-start px-6 space-x-5 sm:space-x-4 overflow-x-auto scrollbar-hidden whitespace-nowrap">
             {menuItems.map((item) => (
               <button
                 key={item}
                 onClick={() => setActiveMenuItem(item)}
-                className={`px-3 font-normal text-sm py-2 flex-shrink-0 ${
+                className={`px-0 font-normal text-[12px] leading-[160%]  py-2 flex-shrink-0 ${
                   activeMenuItem === item
-                    ? "text-blue-500 border-b-[3px] px-1 border-blue-500"
+                    ? "text-blue-500 border-b-[3px] px-0 border-blue-500"
                     : "text-gray-600"
                 }`}
               >
@@ -62,7 +62,7 @@ export default function MainNav({ activeMenuItem, setActiveMenuItem }) {
               <button
                 key={item}
                 onClick={() => setActiveMenuItem(item)}
-                className={`px-0 font-medium py-1 ${
+                className={`px-0 font-normal text-[16px] leading-[160%] py-1 ${
                   activeMenuItem === item
                     ? "text-blue-500 border-b-[3px] border-blue-500"
                     : "text-black "

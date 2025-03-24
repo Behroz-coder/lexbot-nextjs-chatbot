@@ -82,7 +82,7 @@ export default function AnalyticsNav({ activeMenuItem, setActiveMenuItem }) {
 
         {/* Desktop Navigation */}
         <div className="hidden lg:flex justify-between px-4 py-3 bg-[#DBDBDB]/10">
-          <div className="flex items-center space-x-6">
+          <div className="flex items-center space-x-4">
             {menuItems.map((item) => (
               <button
                 key={item}

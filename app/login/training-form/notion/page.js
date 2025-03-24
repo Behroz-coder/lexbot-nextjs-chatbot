@@ -5,7 +5,7 @@ function page() {
   return (
     <div>
     <div className="mb-4">
-      <button className="flex items-center gap-2 w-full lg:w-auto justify-center lg:justify-start  px-4 py-2 text-white bg-black rounded-md hover:bg-gray-800">
+      <button className="flex items-center text-[12px] lg:text-[16px] font-medium gap-2 w-full lg:w-auto justify-center lg:justify-start  px-4 py-2 text-white bg-black rounded-lg hover:bg-gray-800">
         <RiNotionFill size={20} />
         Connect with Notion
       </button>

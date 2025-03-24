@@ -116,7 +116,7 @@ console.log(await response.text());
       {/* Main container */}
       <div className="min-h-screen w-full flex flex-col items-center bg-white">
         {/* Top Section: 6 Cards (3x2 grid) */}
-        <section className=" w-full px-4 py-8">
+        <section className=" w-full px-6 py-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {cardsData.map((card, index) => (
               <div
@@ -146,7 +146,7 @@ console.log(await response.text());
         </section>
         <h3 className="text-sm lg:text-2xl my-2">Guide for Html</h3>
         {/* Middle Section: Video Player */}
-        <section className=" w-full px-4 pb-8">
+        <section className=" w-full px-6 pb-8">
           <div className="relative pb-[56.25%] h-0 rounded-lg overflow-hidden shadow-sm">
             <ReactPlayer
               url="https://www.youtube.com/watch?v=ysz5S6PUM-U"
@@ -164,7 +164,7 @@ console.log(await response.text());
           part:
         </h4>
      
-        <section className=" w-full px-4 py-8 flex flex-col md:flex-row gap-4">
+        <section className=" w-full px-6 py-8 flex flex-col md:flex-row gap-4">
           {/* Left: Code Snippet */}
           <div className="w-full md:w-1/2 bg-[#253238] text-white p-6 rounded-2xl relative pb-16">
             {/* Code Snippet */}

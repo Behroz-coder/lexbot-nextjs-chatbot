@@ -25,7 +25,7 @@ function page() {
     <div>
            <div>
       <div className="mb-4">
-        <label className="block font-medium text-black mb-2">Website URL</label>
+        <label className="block font-medium text-[12px] lg:text-[16px] text-black mb-2">Website URL</label>
         <input
           type="text"
           placeholder="Please enter website URL"
@@ -35,14 +35,14 @@ function page() {
         />
       </div>
       <div className="mb-4">
-        <label className="block text-black font-medium mb-2">
+        <label className="block text-black font-medium mb-2 text-[12px] lg:text-[16px]">
           Already Imported websites
         </label>
         <div className="space-y-2">
           {importedWebsites.map((site, index) => (
             <div
               key={index}
-              className="flex justify-between text-gray-500 items-center p-2 border rounded-lg"
+              className="flex justify-between text-[12px] lg:text-[16px] text-gray-500 items-center p-2 border rounded-lg"
             >
               <span>{site}</span>
               <button

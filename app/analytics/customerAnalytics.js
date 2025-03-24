@@ -565,7 +565,7 @@ export default function CustomerAnalytics() {
           </div>
 
           {/* Geographical Distribution - GOOGLE MAPS IMPLEMENTATION */}
-          <div className="mt-6 bg-white overflow-hidden shadow rounded-lg mb-12">
+          <div className="mt-6 bg-white overflow-hidden shadow rounded-lg mb-16">
             <div className="px-4 py-5 sm:p-6">
               <h3 className="text-xl font-medium leading-6 text-black">
                 Geographical Distribution

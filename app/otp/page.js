@@ -38,8 +38,8 @@ const handleChange = (index, value) => {
           <Image src={logo} alt="logo image" className="w-16" />
         </div>
         <div className="text-left mt-20 lg:mt-60 xl:mt-44 mb-8">
-          <h1 className="text-4xl font-bold">OTP</h1>
-          <p className="text-gray-600 mt-4">We have sent a 6-digit confirmation code to macdonald@gmail.com</p>
+          <h1 className="text-[24px] lg:text-[48px] font-bold">OTP</h1>
+          <p className="text-gray-600 text-[12px] lg:text-[16px] font-normal mt-4">We have sent a 6-digit confirmation code to macdonald@gmail.com</p>
         </div>
         <div className="flex justify-between">
             {otp.map((digit, index) => (
@@ -50,16 +50,16 @@ const handleChange = (index, value) => {
                 maxLength={1}
                 value={digit}
                 onChange={(e) => handleChange(index, e.target.value)}
-                className="h-12 w-12 rounded-md border border-gray-300 text-center text-xl focus:border-blue-500 focus:outline-none"
+                className="h-12 w-12 rounded-md border border-gray-300 text-center text-xl focus:border-black focus:outline-none"
               />
             ))}
           </div>
-          <p className="text-gray-600 text-sm my-8">
-            Didn't receive a code? <span className="cursor-pointer font-bold text-gray-800">Resend Code</span>
+          <p className="text-gray-600 text-[12px] lg:text-[16px] font-normal my-8">
+            Didn't receive a code? <span className="cursor-pointer  font-medium text-[12px] lg:text-[16px] text-black">Resend Code</span>
           </p>
           <button
             onClick={handleVerify}
-            className="w-full rounded-md bg-[#2472FC] py-2 px-4 text-white hover:bg-blue-700"
+            className="w-full rounded-lg text-[12px] lg:text-[16px] font-medium bg-[#2472FC] py-2 px-4 text-white hover:bg-blue-700"
           >
             Verify
           </button>

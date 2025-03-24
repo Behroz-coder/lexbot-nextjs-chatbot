@@ -5,7 +5,7 @@ function page() {
   return (
     <div>
     <div className="mb-4">
-      <label className="block text-black mb-2">Raw Text</label>
+      <label className="block text-[12px] lg:text-[16px] font-medium text-black mb-2">Raw Text</label>
       <textarea
         placeholder="Enter raw text here..."
         className="w-full h-32 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"

@@ -343,7 +343,7 @@ export default function ChatbotSettings() {
                 type="color"
                 value={color}
                 onChange={(e) => setColor(e.target.value)}
-                className="w-8 h-8 cursor-pointer rounded-2xl"
+                className="w-8 h-8  cursor-pointer rounded-2xl"
               />
               <span className="text-sm font-mono p">{color}</span>
             </div>

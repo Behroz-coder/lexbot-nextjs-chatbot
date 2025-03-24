@@ -55,7 +55,7 @@ function layout({ children }) {
                 </span>
               </div>
             </div>
-            <h3 className="font-medium text-black mr-auto lg:hidden block px-4 my-4 text-lg">
+            <h3 className="font-medium text-black mr-auto lg:hidden block px-4 my-4 text-[16px]">
               Training
             </h3>
             {/* Desktop Section */}
@@ -66,7 +66,7 @@ function layout({ children }) {
                    
                       <div className="w-8 h-8 relative flex items-center justify-center border border-gray-400 rounded-full text-gray-500">
                         1
-                        <span className="font-medium text-gray-400 absolute left-12 whitespace-nowrap w-full text-lg">
+                        <span className="font-medium text-[20px] text-gray-400 absolute left-12 whitespace-nowrap w-full ">
                           Let’s create your first AI chatbot!
                         </span>
                       </div>
@@ -75,7 +75,7 @@ function layout({ children }) {
                   <div className="w-px h-8 bg-gray-400"></div>
                   <div className="relative w-8 h-8 flex items-center justify-center border border-gray-900 rounded-full text-black font-semibold">
                     2
-                    <span className="font-medium text-black absolute left-12 text-lg">
+                    <span className="font-medium text-[20px] text-black absolute left-12 ">
                       Training
                     </span>
                   </div>
@@ -83,7 +83,7 @@ function layout({ children }) {
               </div>
               <div className="lg:pl-12">
                 <div className="border-b mb-4">
-                  <nav className="flex space-x-2 lg:space-x-4 text-sm lg:text-base">
+                  <nav className="flex space-x-3.5 lg:space-x-4 text-[12px] font-medium lg:text-base">
                     <Link href="url">
                       <p className={getLinkClass("url")}>Website URL</p>
                     </Link>

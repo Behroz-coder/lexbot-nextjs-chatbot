@@ -11,8 +11,8 @@ export default function PublishHeader({ activeTab, setActiveTab }) {
   }, [activeTab, setActiveTab]); 
 
   return (
-    <header className="border-b px-4 py-4">
-      <div className="flex items-center justify-start space-x-1 sm:space-x-4 overflow-x-auto whitespace-nowrap">
+    <header className="border-b px-6 py-4">
+      <div className="flex items-center scrollbar-hidden justify-start space-x-1 sm:space-x-4 overflow-x-auto whitespace-nowrap">
         <button
           className={`px-4 py-2 border border-gray-300 rounded-lg ${
             activeTab === "web" ? "bg-[#252525] text-white" : "text-[#252525]"

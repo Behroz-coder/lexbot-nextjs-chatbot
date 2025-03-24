@@ -6,14 +6,14 @@ function page() {
   return (
     <div>
     <div className="mb-4">
-      <label className="block text-black mb-2">Document</label>
+      <label className="block text-[12px] lg:text-[16px] font-medium text-black mb-2">Document</label>
       <div className="w-full h-40 flex flex-col items-center justify-center border-2  rounded-lg text-gray-400">
         <input type="file" multiple className="hidden" id="file-upload" />
         <label htmlFor="file-upload" className="cursor-pointer">
           <div className="flex flex-col items-center">
             <Image src={documentIcon} alt="Document Icon" className="w-8" />
 
-            <span className="text-sm mt-2">
+            <span className="text-[12px] lg:text-[16px] mt-2">
               Click here to import PDFs, Docx, Txt, Csvs
             </span>
           </div>

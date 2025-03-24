@@ -12,12 +12,12 @@ function page() {
              <Image src={logo} alt="logo image" className="w-16" />
            </div>
            <div className="text-left mt-20 lg:mt-60 xl:mt-44 mb-8">
-             <h1 className="text-4xl font-bold">Forget Password?</h1>
-             <p className="text-gray-600 mt-4 ">Please enter the email you used in registering and a password reset link will be sent to you</p>
+             <h1 className="text-[24px] lg:text-[48px] font-bold">Forget Password?</h1>
+             <p className="text-gray-600 text-[12px] lg:text-[16px] font-normal mt-4 ">Please enter the email you used in registering and a password reset link will be sent to you</p>
            </div>
            <div className="mb-4">
                 <label
-                  className="block text-black font-medium text-sm mb-2"
+                  className="block text-black font-medium text-[12px] lg:text-[16px]  mb-2"
                   htmlFor="email"
                 >
                   Email
@@ -26,15 +26,15 @@ function page() {
                   type="email"
                   id="email"
                   placeholder="Please enter your email"
-                  className="w-full px-4 py-2 placeholder:text-gray-600 border border-gray-400 rounded-lg focus:outline-none focus:ring-1 focus:ring-blue-500"
+                  className="w-full px-4 py-2 placeholder:text-gray-600 border border-gray-400 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
                 />
               </div>
        
              <button
            
-               className="w-full rounded-md bg-[#2472FC] py-2 px-4 mt-2 text-white hover:bg-blue-700"
+               className="w-full rounded-lg bg-[#2472FC] py-2 px-4 mt-2 text-white hover:bg-blue-700"
              >
-              proceed
+              Proceed
              </button>
     
          </div>

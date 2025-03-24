@@ -18,19 +18,19 @@ function page() {
         <Image src={logo} alt="Logo" width={80} height={80} />
       </div>
   
-   <div className="w-full max-w-md rounded-2xl bg-white p-8 mt-20 lg:mt-0 shadow-xl">
-        <h2 className="mb-6 text-left lg:text-center text-2xl font-semibold">Reset your password</h2>
+   <div className="w-full max-w-md rounded-3xl bg-white p-8 mt-20 lg:mt-0 shadow-xl">
+        <h2 className="mb-6 text-left lg:text-center  font-bold text-[24px] lg:font-medium">Reset your password</h2>
         
         {/* Password Input */}
         <div className="mb-4 relative">
-          <label className="block text-sm font-medium text-black">Password</label>
+          <label className="block text-[12px] lg:text-[16px] font-medium text-black">Password</label>
           <div className="relative">
             <input
               type={showPassword ? 'text' : 'password'}
               placeholder="Please enter your password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full rounded-md border px-4 py-2 pr-10 focus:border-blue-500 focus:outline-none"
+              className="w-full rounded-lg border px-4 py-2 pr-10 focus:border-blue-500 focus:outline-none"
             />
             <button
               type="button"
@@ -44,14 +44,14 @@ function page() {
         
         {/* Confirm Password Input */}
         <div className="mb-6 relative">
-          <label className="block text-sm font-medium text-black">Retype Password</label>
+          <label className="block text-[12px] lg:text-[16px] font-medium text-black">Retype Password</label>
           <div className="relative">
             <input
               type={showConfirmPassword ? 'text' : 'password'}
               placeholder="Please enter your password"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
-              className="w-full rounded-md border px-4 py-2 pr-10 focus:border-blue-500 focus:outline-none"
+              className="w-full rounded-lg border px-4 py-2 pr-10 focus:border-blue-500 focus:outline-none"
             />
             <button
               type="button"
@@ -65,7 +65,7 @@ function page() {
         
         {/* Submit Button */}
         <button
-          className="w-full rounded-md bg-[#2472FC]  py-2 text-white hover:bg-blue-700 transition"
+          className="w-full rounded-lg text-[12px] lg:text-[16px] font-medium bg-[#2472FC]  py-2 text-white hover:bg-blue-700 transition"
         >
           Proceed to Dashboard
         </button>

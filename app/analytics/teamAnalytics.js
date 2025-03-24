@@ -180,7 +180,7 @@ export default function TeamAnalyticsPage() {
         <meta name="robots" content="index, follow" />
       </Head>
 
-      <div className="min-h-screen bg-gray-50 p-4 md:p-4 overflow-y-auto">
+      <div className="min-h-screen bg-gray-50 p-4 md:p-4 overflow-y-auto ">
         <div className="flex items-center justify-around lg:hidden px-4 py-4">
           <p className="text-sm">Team Analytics</p>
           <DateRangeButton/>
@@ -342,7 +342,7 @@ export default function TeamAnalyticsPage() {
           </div>
 
           {/* Bottom Charts */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 pb-16">
             {/* AI vs Human Rate */}
             <div className="bg-white rounded-xl shadow p-4 lg:p-6">
               <div className="flex  md:flex-row items-center gap-2 justify-center md:items-center">
