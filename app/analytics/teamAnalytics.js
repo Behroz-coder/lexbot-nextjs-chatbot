@@ -180,12 +180,12 @@ export default function TeamAnalyticsPage() {
         <meta name="robots" content="index, follow" />
       </Head>
 
-      <div className="min-h-screen bg-gray-50 p-4 md:p-4 overflow-y-auto ">
+      <div className="min-h-screen bg-gray-50 p-4  md:p-4 overflow-y-auto ">
         <div className="flex items-center justify-around lg:hidden px-4 py-4">
           <p className="text-sm">Team Analytics</p>
           <DateRangeButton/>
         </div>
-        <div className="w-full mx-auto">
+        <div className="w-full mx-auto  ">
           {/* Top Stats */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
             {/* Conversations */}
@@ -342,7 +342,7 @@ export default function TeamAnalyticsPage() {
           </div>
 
           {/* Bottom Charts */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 pb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6   lg:pb-16">
             {/* AI vs Human Rate */}
             <div className="bg-white rounded-xl shadow p-4 lg:p-6">
               <div className="flex  md:flex-row items-center gap-2 justify-center md:items-center">
@@ -382,7 +382,7 @@ export default function TeamAnalyticsPage() {
             </div>
 
             {/* Ticket Success Rate */}
-            <div className="bg-white rounded-xl shadow p-6">
+            <div className="bg-white rounded-xl shadow mb-44 lg:mb-0 p-4 lg:p-6">
               <div className="flex flex-col md:flex-row md:items-center">
                 <div className="md:w-1/3 w-full flex lg:justify-center items-center mb-4 md:mb-0">
                   <div className="relative w-36 lg:w-64">
@@ -416,7 +416,7 @@ export default function TeamAnalyticsPage() {
                     </div>
                   </div>
                 </div>
-                <div className="md:w-2/3 w-full mb-20 lg:mb-0 ">
+                <div className="md:w-2/3 w-full mb-4 lg:mb-0 ">
                   <h2 className="text-[20px] leading-8 font-medium text-[#252525] mb-1">
                     Ticket Success Rate
                   </h2>

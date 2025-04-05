@@ -17,7 +17,7 @@ import Link from 'next/link';
         
       <div className="flex flex-col relative lg:justify-between lg:flex-row h-screen">
         {/* Left Section */}
-        <div className="hidden lg:block absolute top-10 left-12 ">
+        <div className="hidden lg:block absolute top-8 left-32 ">
             <Image
               src={logo}
               alt="logo image"
@@ -25,7 +25,7 @@ import Link from 'next/link';
               className="w-[85px] h-[28px]"
             />
           </div>
-        <div className="lg:w-1/2 flex items-center justify-start ml-0 lg:ml-12  bg-white">
+        <div className="lg:w-[60%] flex lg:mt-12 justify-start pl-0 lg:pl-32  bg-white">
           <div className="lg:max-w-lg w-full p-6 lg:p-0">
             <div className="text-left mb-3 lg:hidden block lg:mb-0 lg:mt-[70px]">
               <Image src={logo} alt="logo image" className="w-16" />
@@ -119,12 +119,12 @@ import Link from 'next/link';
                 Create Account
               </button>
             </form>
-            <div className="flex items-center justify-center mt-3">
+            <div className="flex items-center justify-center mt-2">
               <span className="border-b w-full border-gray-400"></span>
               <span className="px-3 text-black">or</span>
               <span className="border-b w-full border-gray-400"></span>
             </div>
-            <button className="w-full text-[12px] lg:text-[16px] font-medium mt-3 border border-gray-400 flex items-center justify-center py-3 px-4 rounded-lg hover:bg-gray-100">
+            <button className="w-full text-[12px] lg:text-[16px] font-medium mt-2 border border-gray-400 flex items-center justify-center py-3 px-4 rounded-lg hover:bg-gray-100">
               <span className="mr-2">
                 <Image src={googleLogo} alt="Google logo" className="w-5 h-5" />
               </span>
@@ -134,7 +134,7 @@ import Link from 'next/link';
         </div>
 
         {/* Right Section */}
-        <div className="lg:w-1/2 relative mr-0 hidden lg:block min-h-screen ">
+        <div className="lg:w-[60%] 2xl:w-[45%] relative mr-0 hidden lg:block min-h-screen ">
           <Image
             src={sideBG}
             alt="AI Powered Customer Support"

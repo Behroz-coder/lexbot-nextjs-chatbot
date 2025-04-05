@@ -1,6 +1,6 @@
 "use client"
 import React,{useEffect} from 'react'
-import chatrightside from "../../../public/image 21.png";
+import chatrightside from "../../../public/onboard_side.png";
 import logo from "../../../public/Lexbot.svg";
 import Link from 'next/link';
 import Image from 'next/image';
@@ -30,15 +30,21 @@ function layout({ children }) {
   return (
     <div>
 
-<div className="flex flex-col md:flex-row items-start justify-center">
-        {/* Left Section */}
-        <div className="w-full lg:w-1/2 mt-12 lg:mt-0">
-          <div className="lg:block hidden mr-auto px-10 pt-12">
-            <Image src={logo} alt="logo image" width={64} height={64} className="w-16" />
+<div className="flex flex-col relative  lg:flex-row h-screen">
+<div className="hidden lg:block absolute top-8 left-16 2xl:left-[330px] ">
+            <Image
+              src={logo}
+              alt="logo image"
+             
+              className="w-[85px] h-[28px]"
+            />
           </div>
+        {/* Left Section */}
+        <div className="w-full lg:w-[60%] flex flex-col lg:items-start lg:mt-1 pl-0 lg:pl-12 2xl:pl-80 bg-white">
+      
           <div className="flex flex-col items-center justify-center p-4">
             {/* Mobile Step Indicators */}
-            <div className="flex items-center w-full justify-between px-4 lg:hidden space-x-4 mb-8">
+            <div className="flex items-center w-full justify-between px-4 pt-6 lg:hidden space-x-4 mb-8">
               <Link href="/login/create-chatbot-form">
            
                   <div className="flex items-center space-x-2">
@@ -59,7 +65,7 @@ function layout({ children }) {
               Training
             </h3>
             {/* Desktop Section */}
-            <div className="w-full lg:max-w-xl p-4 lg:p-0 mx-auto lg:py-20">
+            <div className="w-full lg:max-w-xl p-4 lg:p-0 mx-auto lg:pt-20">
               <div className="items-center hidden lg:flex mb-6">
                 <div className="flex flex-col items-center mr-4">
                   <Link href="/login/create-chatbot-form">
@@ -108,8 +114,13 @@ function layout({ children }) {
           </div>
         </div>
         {/* Right Section */}
-        <div className="w-full lg:w-1/2 min-h-screen bg-custom-gradient hidden lg:flex items-center justify-center mt-8 md:mt-0">
-          <Image src={chatrightside} alt="Chatbot Preview" width={500} height={500} className="py-12" />
+        <div className="lg:w-[60%] 2xl:w-[45%] relative mr-0 hidden lg:block ">
+        <Image
+            src={chatrightside}
+            alt="AI Powered Customer Support"
+       
+            className="h-full  w-full object-fill"
+          />
         </div>
       </div>
 

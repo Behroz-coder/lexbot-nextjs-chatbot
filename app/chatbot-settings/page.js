@@ -7,7 +7,18 @@ import logoLex from "../../public/lexLogo.svg";
 import { FaTrash } from "react-icons/fa";
 import message_icon from "../../public/message-icon.svg";
 import profile_icon from "../../public/profile-icon.svg";
-import custom_icon from "../../public/custom-icon.svg";
+import up_arrow_icon from "../../public/up_arrow.svg";
+import teenyicons_message from "../../public/teenyicons_message-solid.svg";
+import fa6_solid_message from "../../public/fa6-solid_message.svg";
+import Group_icon from "../../public/Group_icon.svg";
+import fluent_chat_empty from "../../public/fluent_chat-empty-12-filled.svg";
+import ant_design_message from "../../public/ant-design_message-filled.svg";
+import duo_icons_message from "../../public/duo-icons_message-2.svg";
+
+
+
+
+
 import { Paperclip, Send } from "lucide-react";
 import { X } from "lucide-react";
 import {
@@ -93,12 +104,16 @@ export default function ChatbotSettings() {
 
   // changes here
 
+  const iconStyle = {
+    filter: 'brightness(0) invert(1)'
+  };
+
   const [showCustomizer, setShowCustomizer] = useState(false);
   const [selected, setSelected] = useState("chat_bubble");
   const [selectedIcon, setSelectedIcon] = useState("message1");
   const [selectedColor, setSelectedColor] = useState("#2472FC");
   const [texture, setTexture] = useState("flat");
-  const [customIcon, setCustomIcon] = useState(<MessageSquare size={24} />);
+  const [customIcon, setCustomIcon] = useState(<Image src={teenyicons_message} width={24} height={24} alt="Message Icon"     style={iconStyle}   /> );
   const [customLabel, setCustomlabel] = useState("Custom");
   const [customColor, setCustomColor] = useState("#2472FC");
   const [showColorPicker, setShowColorPicker] = useState(false);
@@ -113,15 +128,15 @@ export default function ChatbotSettings() {
           src={message_icon}
           alt="Chat Bubble"
           className="w-auto"
-          width={40}
-          height={40}
+          width={48}
+          height={48}
         />
       ),
     },
     {
       id: "textured",
       label: "Textured",
-      icon: <Image src={profile_icon} alt="Textured" width={40} height={40} />,
+      icon: <Image src={profile_icon} alt="Textured" width={48} height={48} />,
     },
     {
       id: "custom",
@@ -129,7 +144,7 @@ export default function ChatbotSettings() {
       customElement: (
         <>
           <div
-            className="w-[40px] h-[40px] rounded-full flex items-center justify-center"
+            className="w-[48px] h-[48px] rounded-full flex items-center justify-center"
             style={{
               background: customColor,
               boxShadow:
@@ -138,7 +153,11 @@ export default function ChatbotSettings() {
                   : "none",
             }}
           >
-            <div className="text-white">{customIcon}</div>
+            <div className="text-white">    {React.cloneElement(customIcon, { 
+        width: 24, 
+        height: 24,
+        style: { filter: "brightness(0) invert(1)" } // सफेद रंग में रंगने के लिए CSS फिल्टर
+      })}</div>
           </div>
           <div className="text-gray-700 mt-2 text-sm">{customLabel}</div>
         </>
@@ -148,12 +167,12 @@ export default function ChatbotSettings() {
 
   // Icon options
   const iconOptions = [
-    { id: "message1", icon: <MessageSquare size={24} /> },
-    { id: "message2", icon: <MessageCircle size={24} /> },
-    { id: "user", icon: <User size={24} /> },
-    { id: "messages", icon: <MessagesSquare size={24} /> },
-    { id: "more", icon: <MoreHorizontal size={24} /> },
-    { id: "menu", icon: <MenuSquare size={24} /> },
+    { id: "message1", icon: <Image src={teenyicons_message} width={24} height={24} alt="Message Icon" /> },
+    { id: "message2", icon: <Image src={fa6_solid_message} width={24} height={24} alt="Solid Message Icon" /> },
+    { id: "user", icon: <Image src={Group_icon} width={24} height={24} alt="User Icon" /> },
+    { id: "messages", icon: <Image src={fluent_chat_empty} width={24} height={24} alt="Chat Icon" /> },
+    { id: "more", icon: <Image src={ant_design_message} width={24} height={24} alt="More Icon" /> },
+    { id: "menu", icon: <Image src={duo_icons_message} width={24} height={24} alt="Menu Icon" /> },
   ];
 
   // Color options
@@ -355,7 +374,7 @@ export default function ChatbotSettings() {
             <h3 className="text-lg font-medium text-black mb-2">
               Chat bubble design
             </h3>
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-3 gap-2 lg:gap-4">
               {options.map((option) => (
                 <div
                   key={option.id}
@@ -378,7 +397,7 @@ export default function ChatbotSettings() {
                   ) : (
                     <>
                       <div className="text-gray-700">{option.icon}</div>
-                      <span className="mt-1 lg:mt-2 text-sm text-gray-700">
+                      <span className="mt-1 lg:mt-2 text-sm whitespace-nowrap text-gray-700">
                         {option.label}
                       </span>
                     </>
@@ -390,13 +409,13 @@ export default function ChatbotSettings() {
 
           {/* Customizer Popup */}
           {showCustomizer && (
-            <div className="fixed right-1 top-0 sm:top-4 w-full sm:w-auto  sm:inset-0 lg:bg-black/50 flex items-center justify-center lg:p-4 z-50">
-              <div className="bg-white rounded-lg max-h-[540px] shadow-xl max-w-5xl w-full lg:overflow-hidden">
-                <div className="flex lg:flex-row flex-col bg-white">
+            <div className="fixed right-1 lg:top-4 w-full sm:w-auto  inset-0 bg-black/40 flex items-center justify-center p-6  lg:p-4 z-50">
+              <div className="bg-white rounded-xl h-[620px] overflow-hidden lg:max-h-[540px] shadow-xl max-w-5xl w-full lg:overflow-hidden">
+                <div className="flex lg:flex-row flex-col ">
                   {/* Preview Section */}
-                  <div className="lg:w-1/2 bg-gray-50 p-8 border-r flex flex-col items-center justify-center">
+                  <div className="w-full lg:w-1/2 bg-gray-50 p-8 border-r flex flex-col items-center justify-center">
                     <div
-                      className="w-32 h-32 rounded-full flex items-center justify-center"
+                      className="lg:w-32 lg:h-32 w-28 h-28 rounded-full flex items-center justify-center"
                       style={{
                         background: selectedColor,
                         boxShadow:
@@ -405,10 +424,13 @@ export default function ChatbotSettings() {
                             : "none",
                       }}
                     >
-                      <div className="text-white ">
-                        {" "}
-                        {React.cloneElement(customIcon, { size: runtimeSize })}
-                      </div>
+                <div className="text-white flex items-center justify-center">
+      {React.cloneElement(customIcon, { 
+        width: 60, 
+        height: 60,
+        style: { filter: "brightness(0) invert(1)" } 
+      })}
+    </div>
                     </div>
                     {/* <div className="mt-4 text-center">
                       <p className="text-sm text-gray-600">
@@ -419,27 +441,27 @@ export default function ChatbotSettings() {
 
                   {/* Customization Section */}
                   <div className="lg:w-1/2 p-4 lg:p-8">
-                    <h2 className="text-xl font-semibold mb-2">
+                    <h2 className="text-[16px] leading-[160%]  lg:text-xl font-medium mb-2">
                       Customise your Chat bubble
                     </h2>
 
                     {/* Icons Section */}
                     <div className="space-y-4 mb-3">
-                      <h3 className="text-lg font-medium text-gray-900">
+                      <h3 className="text-[12px] leading-[160%] lg:text-[16px] font-medium text-gray-900">
                         Icons
                       </h3>
-                      <div className="grid grid-cols-6 gap-4">
+                      <div className="grid grid-cols-6 gap-2 lg:gap-4">
                         {iconOptions.map((icon) => (
                           <button
                             key={icon.id}
                             onClick={() => handleIconSelect(icon.id, icon.icon)}
-                            className={`px-2 py-3 border rounded-md flex items-center justify-center transition-all ${
+                            className={`px-2 py-3 border rounded flex items-center justify-center transition-all ${
                               selectedIcon === icon.id
                                 ? "border-blue-500 bg-blue-50"
                                 : "border-gray-200 hover:border-blue-200"
                             }`}
                           >
-                            <div className="text-gray-900">{icon.icon}</div>
+                            <div className="text-gray-900 ">{icon.icon}</div>
                           </button>
                         ))}
                       </div>
@@ -447,7 +469,7 @@ export default function ChatbotSettings() {
 
                     {/* Colors Section */}
                     <div className="space-y-4 mb-4">
-                      <h3 className="text-lg font-medium text-gray-900">
+                      <h3 className="text-[12px] leading-[160%] lg:text-[16px]  font-medium text-gray-900">
                         Chat Bubble Button Color
                       </h3>
                       <div className="grid grid-cols-6 gap-4">
@@ -485,13 +507,13 @@ export default function ChatbotSettings() {
                     </div>
                     {/* Texture Section */}
                     <div className="space-y-4 mb-4">
-                      <h3 className="text-lg font-medium text-gray-900">
+                      <h3 className="text-[12px] leading-[160%] lg:text-[16px] font-medium text-gray-900">
                         Texture
                       </h3>
                       <div className="grid grid-cols-2 gap-4">
                         <button
                           onClick={() => setTexture("flat")}
-                          className={`p-3 rounded-xl text-center transition-all ${
+                          className={`p-2 lg:p-3 rounded-xl text-[12px] leading-[160%] lg:text-[16px] font-medium text-center transition-all ${
                             texture === "flat"
                               ? "bg-blue-50 border-blue-500 border"
                               : "border border-gray-200"
@@ -501,7 +523,7 @@ export default function ChatbotSettings() {
                         </button>
                         <button
                           onClick={() => setTexture("textured")}
-                          className={`p-3 rounded-xl text-center transition-all ${
+                          className={`p-2 lg:p-3 rounded-xl text-[12px] leading-[160%] lg:text-[16px] font-medium text-center transition-all ${
                             texture === "textured"
                               ? "bg-blue-50 border-blue-500 border"
                               : "border border-gray-200"
@@ -516,13 +538,13 @@ export default function ChatbotSettings() {
                     <div className="space-y-3">
                       <button
                         onClick={() => setShowCustomizer(false)}
-                        className="w-full py-3 bg-[#2472FC] text-white rounded-lg hover:bg-blue-600 transition-colors"
+                        className="w-full text-[12px] leading-[160%] lg:text-[16px] font-medium py-2 lg:py-3 bg-[#2472FC] text-white rounded-lg hover:bg-blue-600 transition-colors"
                       >
                         Save
                       </button>
                       <button
                         onClick={() => setShowCustomizer(false)}
-                        className="w-full py-3 bg-[#DBDBDB]/40 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
+                        className="w-full text-[12px] leading-[160%] lg:text-[16px] font-medium py-2 lg:py-3 bg-[#DBDBDB]/40 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
                       >
                         Close
                       </button>
@@ -700,30 +722,37 @@ export default function ChatbotSettings() {
     </div>
 
     <div className="p-4 flex items-center border-t">
-      <label className="cursor-pointer">
-        <Paperclip className="text-gray-500 mr-2" />
-        <input
-          type="file"
-          multiple
-          onChange={handleFileUpload}
-          className="hidden"
-        />
-      </label>
+
       <div className="flex-grow relative">
-        <input
-          type="text"
-          placeholder="Write a reply..."
-          value={inputMessage}
-          onChange={(e) => setInputMessage(e.target.value)}
-          className="w-full pr-10 pl-4 py-2 border rounded-full focus:outline-none focus:ring-1 focus:ring-blue-500"
-        />
+        <div className="relative">
+          <input
+            type="text"
+            placeholder="Write a reply..."
+            value={inputMessage}
+            onChange={(e) => setInputMessage(e.target.value)}
+            className="w-full pr-24 pl-4 py-[14px] bg-white placeholder:text-[#737373] border rounded-[32px] focus:outline-none focus:ring-1 focus:ring-blue-500"
+          />
+          <div className="absolute right-2 top-1/2 -translate-y-1/2 flex items-center space-x-2">
+            <label className="cursor-pointer">
+              <Paperclip size={20} className="text-black" />
+              <input
+                type="file"
+                multiple
+                onChange={handleFileUpload}
+                className="hidden"
+              />
+            </label>
+            <button
+              onClick={() => handleSendMessage()}
+              className="transition"
+            >
+              <Image src={up_arrow_icon} alt="up arrow" height={28} width={28} />
+            </button>
+          </div>
+        </div>
       </div>
-      <button
-        onClick={() => handleSendMessage()}
-        className="ml-2 bg-blue-500 text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-blue-600 transition"
-      >
-        <Send size={18} />
-      </button>
+ 
+      
     </div>
   </div>
 </div>
@@ -816,30 +845,34 @@ export default function ChatbotSettings() {
             </div>
 
             <div className="p-4 flex items-center border-t">
-              <label className="cursor-pointer">
-                <Paperclip className="text-gray-500 mr-2" />
-                <input
-                  type="file"
-                  multiple
-                  onChange={handleFileUpload}
-                  className="hidden"
-                />
-              </label>
-              <div className="flex-grow relative">
-                <input
-                  type="text"
-                  placeholder="Write a reply..."
-                  value={inputMessage}
-                  onChange={(e) => setInputMessage(e.target.value)}
-                  className="w-full pr-10 pl-4 py-2 border rounded-full focus:outline-none focus:ring-1 focus:ring-blue-500"
-                />
-              </div>
-              <button
-                onClick={() => handleSendMessage()}
-                className="ml-2 bg-blue-500 text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-blue-600 transition"
-              >
-                <Send size={18} />
-              </button>
+            <div className="flex-grow relative">
+        <div className="relative">
+          <input
+            type="text"
+            placeholder="Write a reply..."
+            value={inputMessage}
+            onChange={(e) => setInputMessage(e.target.value)}
+            className="w-full pr-24 pl-4 py-[14px] bg-white placeholder:text-[#737373] border rounded-[32px] focus:outline-none focus:ring-1 focus:ring-blue-500"
+          />
+          <div className="absolute right-2 top-1/2 -translate-y-1/2 flex items-center space-x-2">
+            <label className="cursor-pointer">
+              <Paperclip size={20} className="text-black" />
+              <input
+                type="file"
+                multiple
+                onChange={handleFileUpload}
+                className="hidden"
+              />
+            </label>
+            <button
+              onClick={() => handleSendMessage()}
+              className="transition"
+            >
+              <Image src={up_arrow_icon} alt="up arrow" height={28} width={28} />
+            </button>
+          </div>
+        </div>
+      </div>
             </div>
           </div>
         </div>

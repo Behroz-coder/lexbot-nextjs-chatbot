@@ -1,5 +1,5 @@
 import React from 'react'
-import chatrightside from "../../../public/image 21.png"
+import chatrightside from "../../../public/onboard_side.png"
 import logo from "../../../public/Lexbot.svg";
 import Link from 'next/link';
 import Image from 'next/image';
@@ -7,12 +7,12 @@ import Image from 'next/image';
 function Page() {
   return (
     <div>
-      <div className="flex flex-col md:flex-row items-start justify-center px-4 lg:px-0">
+      <div className="flex flex-col relative   lg:flex-row  h-screen">
         {/* Left Section */}
-        <div className="w-full lg:w-1/2 mt-16 lg:mt-0">
-          <div className="flex flex-col items-center">
+        <div className="w-full lg:w-[60%] ">
+     
             {/* Step indicators for mobile */}
-            <div className="flex items-center w-full justify-between px-4 lg:hidden space-x-4 mb-8">
+            <div className="flex items-center w-full justify-between px-4  pt-6 lg:hidden space-x-4 mb-8">
               <div className="flex items-center space-x-2">
                 <span className="flex items-center justify-center border border-gray-800 w-8 h-8 rounded-full ring-4 ring-white text-gray-700">
                   1
@@ -68,10 +68,18 @@ function Page() {
             </div>
 
             {/* Vertical timeline for larger screens */}
-            <div className="lg:block hidden mr-auto px-10 pb-32 pt-12">
-              <Image src={logo} alt="logo image" className="w-16" />
-            </div>
-            <div className="hidden lg:block relative mx-auto text-gray-500 w-full max-w-xl border-l-2 border-dashed border-gray-300 h-full px-4">
+        
+          <div className='w-full pt-32  flex flex-col lg:items-center lg:mt-1 pl-0 lg:pl-12 2xl:pl-80 bg-white'>
+          <div className="hidden lg:block absolute top-8 left-16  2xl:left-[330px] ">
+            <Image
+              src={logo}
+              alt="logo image"
+             
+              className="w-[85px] h-[28px]"
+            />
+          </div>
+
+            <div className="hidden lg:block relative mx-auto  text-gray-500 w-full max-w-xl border-l-2 border-dashed border-gray-300 h-full px-4">
               <div className="flex items-center space-x-8 mb-10">
                 <span className="absolute flex items-center border border-gray-800 justify-center w-8 h-8 rounded-full -top-8 -left-4 ring-4 ring-white text-gray-700">
                   1
@@ -112,7 +120,7 @@ function Page() {
                   />
                 </div>
                 <Link href="/login/training-form">
-                  <button className="w-full lg:w-[25%] bg-[#2472FC] text-[16px] font-medium text-white  p-2 rounded-lg hover:bg-blue-600">
+                  <button className="w-full lg:w-auto lg:px-3 bg-[#2472FC] text-[16px] font-medium text-white  p-2 rounded-lg hover:bg-blue-600">
                     Create Chatbot
                   </button>
                 </Link>
@@ -129,15 +137,16 @@ function Page() {
                 </div>
               </Link>
             </div>
-          </div>
+            </div>
         </div>
 
-        {/* Right Section */}
-        <div className="w-full lg:w-1/2 min-h-screen bg-custom-gradient hidden lg:flex items-center justify-center mt-8 md:mt-0">
-          <Image
-            src={chatrightside} 
-            alt="Chatbot Preview"
-            className="w-[500px] py-12"
+      {/* Right Section */}
+      <div className="lg:w-[60%] 2xl:w-[45%] relative mr-0 hidden lg:block ">
+        <Image
+            src={chatrightside}
+            alt="AI Powered Customer Support"
+       
+            className="h-full  w-full object-fill"
           />
         </div>
       </div>

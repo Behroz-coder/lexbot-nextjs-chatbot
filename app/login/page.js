@@ -12,7 +12,7 @@ const Login = () => {
     <div>
       <div className="flex flex-col relative lg:justify-between  lg:flex-row h-screen">
         {/* Left Section */}
-        <div className="hidden lg:block absolute top-7 left-14 ">
+        <div className="hidden lg:block absolute top-8 left-36 ">
             <Image
               src={logo}
               alt="logo image"
@@ -20,7 +20,7 @@ const Login = () => {
               className="w-[85px] h-[28px]"
             />
           </div>
-        <div className="lg:w-1/2 flex flex-col items-start justify-center ml-0 lg:ml-12 bg-white">
+        <div className="lg:w-[60%] flex flex-col items-start lg:mt-1 pl-0 lg:pl-32 bg-white">
         
           <div className="lg:max-w-lg w-full p-6 lg:p-3">
             <div className="lg:hidden block ">
@@ -97,12 +97,12 @@ const Login = () => {
                 </button>
               </Link>
             </form>
-            <div className="flex items-center justify-center mt-6">
+            <div className="flex items-center justify-center mt-5">
               <span className="border-b w-full border-gray-400"></span>
               <span className="px-3 text-black">or</span>
               <span className="border-b w-full border-gray-400"></span>
             </div>
-            <button className="w-full mt-6 border text-[12px] lg:text-[16px] font-medium border-gray-400 flex items-center justify-center py-3 px-4 rounded-lg hover:bg-gray-100">
+            <button className="w-full mt-5 border text-[12px] lg:text-[16px] font-medium border-gray-400 flex items-center justify-center py-3 px-4 rounded-lg hover:bg-gray-100">
               <span className="mr-2">
                 <Image
                   src={googleLogo}
@@ -119,7 +119,7 @@ const Login = () => {
 
         {/* Right Section */}
 
-        <div className="lg:w-1/2 relative mr-0 hidden lg:block min-h-screen ">
+        <div className="lg:w-[60%] 2xl:w-[45%] relative mr-0 hidden lg:block min-h-screen ">
           <Image
             src={sideBG}
             alt="AI Powered Customer Support"

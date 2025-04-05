@@ -4,6 +4,7 @@ import React, { useState, useRef } from "react";
 import logoLex from "../../public/lexLogo.svg";
 import { X } from "lucide-react";
 import { Paperclip, Send } from "lucide-react";
+import up_arrow_icon from "../../public/up_arrow.svg";
 const Playground = () => {
   const [creativity, setCreativity] = useState(0);
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
@@ -65,7 +66,7 @@ const Playground = () => {
     <div className="flex items-start lg:h-screen bg-white gap-12 px-3 lg:px-6 mx-auto w-full overflow-hidden">
       {/* left side - is ko scrollable banaya hai */}
       {/* Yahan overflow-y-auto add kia hai taky sirf left side scroll ho */}
-      <div className="w-full lg:w-1/2 lg:border-r-2 border-gray-300 lg:pr-6 pb-24 overflow-y-auto scrollbar-hidden h-screen">
+      <div className="w-full lg:w-1/2 lg:border-r-[1px] border-gray-300 lg:pr-6 pb-24 overflow-y-auto scrollbar-hidden h-screen">
         {/* Creativity Section */}
         <div className="my-6">
           <div className="flex justify-between items-center mb-2">
@@ -183,32 +184,24 @@ const Playground = () => {
 
       {/* right side - is ko fixed rakha hai */}
       {/* Yahan overflow-hidden add kia hai taky right side fixed rahe, lekin uske andar ka content scroll ho */}
-      <div
-        className={`fixed inset-0 lg:h-screen overflow-hidden lg:static lg:inset-auto lg:mt-8 lg:pb-24 rounded-2xl border border-gray-300 bg-white mx-4 mt-2  shadow-lg  lg:w-1/2 lg:flex lg:p-1 md:shadow-none transition-transform duration-300 ease-in-out ${
-          isPreviewOpen
-            ? "translate-x-0  opacity-100 "
-            : "translate-x-full opacity-0   lg:opacity-100 lg:translate-x-0"
-        }`}
-      >
-        {/* Close Button for Mobile View */}
-        <div className={`w-full h-full flex flex-col`}>
+            {/* NEW UPDATE: Right side (preview) - fixed position on large screens */}
+            <div className="hidden lg:block lg:w-1/2 lg:fixed lg:right-0 mr-2 xl:mr-12 lg:top-[110px] lg:bottom-4 lg:max-w-[33%] 2xl:max-w-[35%]">
+  <div className="h-full w-full rounded-2xl border border-gray-300 bg-white overflow-hidden flex flex-col">
           <div className="flex items-center p-4 border-b">
-            <Image src={logoLex} alt="lex logo " height={40} width={40}></Image>
+      <Image
+        src={logoLex}
+        alt="lex logo"
+        height={38}
+        width={38}
+      />
             <div className="ml-3">
-              <h2 className="font-bold text-lg">Lex</h2>
-              <p className="text-sm text-gray-500">
+        <h2 className="font-medium text-lg">Lex</h2>
+        <p className="text-sm font-normal text-[#737373]">
                 Our bot will reply instantly
               </p>
             </div>
-            <button
-              className="ml-auto text-gray-500 lg:hidden"
-              onClick={() => setIsPreviewOpen(false)}
-            >
-              <X size={24} />
-            </button>
           </div>
 
-          {/* Messages area ko scrollable banaya hai, lekin right side container fixed hai */}
         <div className="flex-grow overflow-auto p-4 space-y-4">
           {messages.map((msg, index) => (
             <div
@@ -266,9 +259,20 @@ const Playground = () => {
             ))}
           </div>
 
-          <div className="p-4 flex items-center border-t ">
+    <div className="p-4 flex items-center border-t">
+
+      <div className="flex-grow relative">
+        <div className="relative">
+          <input
+            type="text"
+            placeholder="Write a reply..."
+            value={inputMessage}
+            onChange={(e) => setInputMessage(e.target.value)}
+            className="w-full pr-24 pl-4 py-[14px] bg-white placeholder:text-[#737373] border rounded-[32px] focus:outline-none focus:ring-1 focus:ring-blue-500"
+          />
+          <div className="absolute right-2 top-1/2 -translate-y-1/2 flex items-center space-x-2">
             <label className="cursor-pointer">
-              <Paperclip className="text-gray-500 mr-2" />
+              <Paperclip size={20} className="text-black" />
               <input
                 type="file"
                 multiple
@@ -276,21 +280,137 @@ const Playground = () => {
                 className="hidden"
               />
             </label>
-            <div className="flex-grow relative">
-              <input
-                type="text"
-                placeholder="Write a reply..."
-                value={inputMessage}
-                onChange={(e) => setInputMessage(e.target.value)}
-                className="w-full pr-10 pl-4 py-2 border rounded-full focus:outline-none focus:ring-1 focus:ring-blue-500"
-              />
-            </div>
             <button
               onClick={() => handleSendMessage()}
-              className="ml-2 bg-blue-500 text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-blue-600 transition"
+              className="transition"
             >
-              <Send size={18} />
+              <Image src={up_arrow_icon} alt="up arrow" height={28} width={28} />
             </button>
+          </div>
+        </div>
+      </div>
+ 
+      
+    </div>
+  </div>
+</div>
+
+        {/* Mobile preview (unchanged) */}
+        <div
+          className={`fixed inset-0 bg-white shadow-xl lg:hidden  m-4 rounded-2xl z-50 transition-transform duration-300 ease-in-out ${
+            isPreviewOpen
+              ? "translate-x-0 opacity-100"
+              : "translate-x-full opacity-0"
+          }`}
+        >
+          <div className="h-full w-full flex flex-col">
+            <div className="flex items-center p-4 border-b">
+              <Image
+                src={logoLex}
+                alt="lex logo "
+                height={38}
+                width={38}
+              ></Image>
+              <div className="ml-3">
+                <h2 className="font-medium text-lg">Lex</h2>
+                <p className="text-sm font-normal   text-[#737373]">
+                  Our bot will reply instantly
+                </p>
+              </div>
+              <button
+                className="ml-auto text-gray-500"
+                onClick={() => setIsPreviewOpen(false)}
+              >
+                <X size={24} />
+              </button>
+            </div>
+
+            <div className="flex-grow overflow-auto p-4 space-y-4">
+      {messages.map((msg, index) => (
+        <div
+          key={index}
+          className={`flex   ${
+            msg.sender === "You" ? "justify-end" : "justify-start"
+          } mb-4`}
+        >
+          <div className="flex items-start">
+            {msg.sender === "Chat bot" && (
+              <div className="flex-shrink-0 mr-2 mt-1">
+                <Image
+                  src={logoLex}
+                  alt="lex logo"
+                  height={38}
+                  width={38}
+                />
+              </div>
+            )}
+            <div className="flex flex-col">
+              <div
+                className={`p-3  max-w-[100%] rounded-lg  ${
+                  msg.sender === "You"
+                    ? "bg-[#2472FC] max-w-[300px] text-white"
+                    : "bg-[#F3F3F3] text-black"
+                } break-words`}
+              
+              >
+                <p className="text-[16px] leading-[25px] font-normal">
+                  {msg.text}
+                </p>
+              </div>
+              <div className={`flex mt-1 text-xs ${
+                msg.sender === "You" ? "justify-end" : "justify-start"
+              }`}>
+                <p className="text-black">{msg.sender}</p>
+                <span className="text-[#787878] pl-2">{msg.time}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+      <div ref={messagesEndRef} />
+    </div>
+
+            <div className="flex justify-center space-x-2 p-2">
+              {suggestedMessages.map((msg, index) => (
+                <button
+                  key={index}
+                  onClick={() => handleSendMessage(msg)}
+                  className="bg-[#DBDBDB]/40 px-2 py-3 rounded-lg border border-gray-300 text-sm lg:text-[16px] leading-6 hover:bg-gray-300 transition"
+                >
+                  {msg}
+                </button>
+              ))}
+            </div>
+
+            <div className="p-4 flex items-center border-t">
+          <div className="flex-grow relative">
+        <div className="relative">
+          <input
+            type="text"
+            placeholder="Write a reply..."
+            value={inputMessage}
+            onChange={(e) => setInputMessage(e.target.value)}
+            className="w-full pr-24 pl-4 py-[14px] bg-white placeholder:text-[#737373] border rounded-[32px] focus:outline-none focus:ring-1 focus:ring-blue-500"
+          />
+          <div className="absolute right-2 top-1/2 -translate-y-1/2 flex items-center space-x-2">
+            <label className="cursor-pointer">
+              <Paperclip size={20} className="text-black" />
+              <input
+                type="file"
+                multiple
+                onChange={handleFileUpload}
+                className="hidden"
+              />
+            </label>
+            <button
+              onClick={() => handleSendMessage()}
+              className="transition"
+            >
+              <Image src={up_arrow_icon} alt="up arrow" height={28} width={28} />
+            </button>
+          </div>
+        </div>
+      </div>
           </div>
         </div>
       </div>

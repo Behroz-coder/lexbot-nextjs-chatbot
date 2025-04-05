@@ -1,7 +1,9 @@
 "use client";
 
-import {  ArrowLeft } from "lucide-react";
+import {  ArrowLeft, DeleteIcon } from "lucide-react";
 import { useState, useEffect, memo } from "react";
+import delete_icon from "../../public/delete_icon.svg";
+import Image from "next/image";
 
 // Sample initial data
 const initialChats = [
@@ -154,20 +156,7 @@ const MessageBubble = memo(({ message }) =>  {
             <h3 className="font-medium text-[16px]">{activeChat.name}</h3>
           </div>
           <button className="text-red-500">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <polyline points="3 6 5 6 21 6"></polyline>
-              <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-            </svg>
+         <Image src={delete_icon} alt="delete icon" height={24} width={24} />
           </button>
         </div>
 
@@ -244,7 +233,7 @@ const MessageBubble = memo(({ message }) =>  {
             <h3 className="font-medium text-black text-[16px]">
               {activeChat.name}
             </h3>
-            <button className="text-red-500">
+            {/* <button className="text-red-500">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="20"
@@ -259,7 +248,8 @@ const MessageBubble = memo(({ message }) =>  {
                 <polyline points="3 6 5 6 21 6"></polyline>
                 <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
               </svg>
-            </button>
+            </button> */}
+        <Image src={delete_icon} alt="delete icon" height={24} width={24} />
           </div>
 
           <div className="flex-1 p-6 overflow-y-auto">

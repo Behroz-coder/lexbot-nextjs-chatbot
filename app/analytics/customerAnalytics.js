@@ -12,6 +12,7 @@ import {
 import { BarChart, Bar } from "recharts";
 import { PieChart, Pie, Cell } from "recharts";
 import DateRangeButton from "../components/DateRangeButton";
+import { ArrowDownIcon, ChevronDown, ChevronUp } from "lucide-react";
 
 // Sample data for charts - can be replaced with API data
 const monthlyData = [
@@ -243,17 +244,20 @@ export default function CustomerAnalytics() {
             {/* Total Users Card */}
             <div className="bg-white overflow-hidden shadow rounded-xl">
               <div className="px-4 py-5 sm:p-6">
-                <div className="flex items-center">
-                  <div className="flex-shrink-0">
+                <div className="flex  flex-col">
+                  <div className="flex items-center gap-2">
                     <h2 className="text-[24px] leading-9 font-medium text-black">
                       259,786
                     </h2>
+                    
+                    <span className="text-green-500 flex items-center gap-1  font-medium bg-[#E8FFF3] py-1 px-[7px] rounded text-[12px]"> <ChevronUp className="w-3 h-3" />  12.3%</span>
+                    </div>
                     <div className="mt-1 flex items-center text-sm">
-                      <span className="text-green-500 font-medium">+12.3%</span>
+
                       <span className="ml-2 text-[14px] leading-5 text-[#737373]">
                         Total Users
                       </span>
-                    </div>
+             
                   </div>
                 </div>
                 <div className="mt-5 h-32 md:h-60">
@@ -296,18 +300,20 @@ export default function CustomerAnalytics() {
             {/* Repeated Users Card */}
             <div className="bg-white overflow-hidden shadow rounded-xl">
               <div className="px-4 py-5 sm:p-6">
-                <div className="flex items-center">
-                  <div className="flex-shrink-0">
+                <div className="flex  flex-col">
+                  <div className="flex items-center gap-2">
                     <h2 className="text-[24px] leading-9 font-medium text-black">
                       4,920
                     </h2>
+                    <span className="text-red-500 bg-[#FEE2E2] py-1 px-[7px] rounded text-[12px] font-medium flex items-center gap-1">   <ChevronDown className="w-3 h-3" /> 7.4%</span>
+                    </div>
                     <div className="mt-1 flex items-center text-sm">
-                      <span className="text-red-500 font-medium">-7.4%</span>
+
                       <span className="ml-2 text-[14px] leading-5 text-[#737373]">
                         Repeated Users
                       </span>
                     </div>
-                  </div>
+              
                 </div>
                 <div className="mt-5 h-32 md:h-60 ">
                   <ResponsiveContainer width="100%" height="100%">

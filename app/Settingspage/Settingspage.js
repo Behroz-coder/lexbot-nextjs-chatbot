@@ -2,7 +2,11 @@
 "use client";
 import { useState } from "react";
 import Head from "next/head";
-import Link from "next/link";
+
+import team_icon from "../../public/team_icon.svg"
+import dollar_icon from "../../public/dollar_icon.svg"
+import sales_icon from "../../public/sales_icon.svg"
+
 
 import { FaRegCheckCircle, FaStripe } from "react-icons/fa";
 import {
@@ -12,6 +16,7 @@ import {
   Copy,
   Download,
   Trash2,
+  ChevronUp,
 } from "lucide-react";
 import {
   LineChart,
@@ -26,6 +31,10 @@ import { BiUpArrow } from "react-icons/bi";
 import DateRangeButton from "../components/DateRangeButton";
 import Image from "next/image";
 import { RiTeamLine } from "react-icons/ri";
+import e_check from "../../public/ei_check.svg"
+import next from "next";
+import ConfirmationModal from '../components/ConfirmationModal';
+
 export default function Settings() {
   const [email, setEmail] = useState("macdonald@gmail.com");
   const [displayName, setDisplayName] = useState("Macdonald Anyanwu");
@@ -192,6 +201,23 @@ export default function Settings() {
     }]);
     setShowAddMemberModal(false);
   };
+
+  const [showRemoveModal, setShowRemoveModal] = useState(false);
+  const [selectedTeammate, setSelectedTeammate] = useState(null);
+
+  const handleRemoveTeammate = (teammate) => {
+    setSelectedTeammate(teammate);
+    setShowRemoveModal(true);
+  };
+
+  const confirmRemoveTeammate = () => {
+    if (selectedTeammate) {
+      setTeamMembers(teamMembers.filter(member => member.id !== selectedTeammate.id));
+      setShowRemoveModal(false);
+      setSelectedTeammate(null);
+    }
+  };
+
   return (
     <>
       <Head>
@@ -359,11 +385,12 @@ export default function Settings() {
                           {/* Subscription Plans */}
                           <div className="grid md:grid-cols-2 gap-6">
                             {/* Premium Plan */}
-                            <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
-                              <h3 className="text-lg font-medium  text-black mb-4">
-                                Premium
-                              </h3>
-                              <div className="mb-4">
+                            <div className="max-w-md bg-white rounded-xl p-0 border border-gray-200 shadow-sm overflow-hidden">
+      <h3 className="text-[20px] leading-[160%] font-medium text-[#252525] p-3 bg-[#F5F5F5]">
+        Premium
+      </h3>
+      <div className="p-4">
+      <div className="mb-2">
                                 <span className="text-[24px] leading-9 font-bold text-black">
                                   $4,000
                                 </span>
@@ -378,7 +405,8 @@ export default function Settings() {
                               <ul className="space-y-3 mb-6">
                                 {[1, 2, 3, 4, 5].map((item) => (
                                   <li key={item} className="flex items-center">
-                                    <FaRegCheckCircle className="text-[#008000]" />
+                                    {/* <FaRegCheckCircle className="text-[#008000]" /> */}
+                                    <Image src={e_check} alt="check icon" width={20} height={20} loading="lazy"/>
                                     <span className="ml-2 font-normal text-gray-600">
                                       Lorem ipsum ått preck prekrost
                                     </span>
@@ -386,21 +414,26 @@ export default function Settings() {
                                 ))}
                               </ul>
 
-                              <button className="w-full justify-center flex items-center gap-1 py-1 px-4 border border-gray-300 rounded-lg text-sm font-medium text-black bg-white">
+                              <button className="w-full justify-center flex items-center gap-1 py-0 px-4 border border-gray-300 rounded-lg text-[16px] leading-[160%] font-medium text-black bg-white">
                                 Pay with{" "}
                                 <FaStripe
-                                  size={35}
+                                  size={47}
                                   className="text-[#635BFF]"
                                 />
                               </button>
+
+                            </div>
                             </div>
 
                             {/* Standard Plan */}
-                            <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
-                              <h3 className="text-lg font-medium text-black mb-4">
-                                Standard
-                              </h3>
-                              <div className="mb-4">
+                            <div className="max-w-md bg-white rounded-xl p-0 border border-gray-200 shadow-sm overflow-hidden">
+      <h3 className="text-[20px] leading-[160%] font-medium text-[#252525] p-3 bg-[#F5F5F5]">
+        Standard
+      </h3>
+      <div className="p-4">
+
+    
+                              <div className="mb-2">
                                 <span className="text-[24px] leading-9 font-bold text-black">
                                   $4,000
                                 </span>
@@ -415,7 +448,8 @@ export default function Settings() {
                               <ul className="space-y-3 mb-6">
                                 {[1, 2, 3, 4, 5].map((item) => (
                                   <li key={item} className="flex items-center">
-                                    <FaRegCheckCircle className="text-[#008000]" />
+                                    {/* <FaRegCheckCircle className="text-[#008000]" /> */}
+                                    <Image src={e_check} alt="check icon" width={20} height={20} loading="lazy"/>
                                     <span className="ml-2 text-gray-600">
                                       Lorem ipsum ått preck prekrost
                                     </span>
@@ -423,13 +457,14 @@ export default function Settings() {
                                 ))}
                               </ul>
 
-                              <button className="w-full justify-center flex items-center gap-1 py-1 px-4 border border-gray-300 rounded-lg text-sm font-medium text-black bg-white">
+                              <button className="w-full justify-center flex items-center gap-1 py-0 px-4 border border-gray-300 rounded-lg text-[16px] leading-[160%] font-medium text-black bg-white">
                                 Pay with{" "}
                                 <FaStripe
-                                  size={35}
+                                  size={47}
                                   className="text-[#635BFF]"
                                 />
                               </button>
+                            </div>
                             </div>
                           </div>
                         </div>
@@ -527,37 +562,39 @@ export default function Settings() {
                         </div>
 
                         {/* Stats cards */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div className="grid grid-cols-2 md:grid-cols-2 gap-2 lg:gap-6 mb-6">
                           <div className="bg-white p-6 rounded-xl shadow-md">
                             <div className="flex justify-between items-start">
                               <div>
-                                <h2 className="text-2xl font-medium text-[#252525]">
+                                <h2 className="text-[16px] lg:text-2xl font-medium text-[#252525]">
                                   $40,204
                                 </h2>
-                                <p className="text-gray-500">Total Revenue</p>
+                                <p className="text-gray-500 font-normal text-[12px] lg:text-[14px]">Total Revenue</p>
                               </div>
-                              <div className="bg-gray-100 p-2 rounded-full">
-                                <DollarSign
+                              <div className="">
+                                {/* <DollarSign
                                   size={20}
                                   className="text-gray-700"
-                                />
-                              </div>
+                                /> */}
+                                <Image src={dollar_icon} alt='dollar icon' width={24} height={24} />
+                                                              </div>
                             </div>
                           </div>
 
                           <div className="bg-white p-6 rounded-lg shadow-md">
                             <div className="flex justify-between items-start">
                               <div>
-                                <h2 className="text-2xl font-medium text-[#252525]">
+                                <h2 className="text-[16px] lg:text-2xl font-medium  text-[#252525]">
                                   950
                                 </h2>
-                                <p className="text-gray-500">Total Sales</p>
+                                <p className="text-gray-500 font-normal text-[12px] lg:text-[14px]">Total Sales</p>
                               </div>
-                              <div className="bg-gray-100 p-2 rounded-full">
-                                <ArrowUpRight
+                              <div className="">
+                                {/* <ArrowUpRight
                                   size={20}
                                   className="text-gray-700"
-                                />
+                                /> */}
+                                <Image src={sales_icon} alt='sales icon' width={24} height={24} />
                               </div>
                             </div>
                           </div>
@@ -565,14 +602,14 @@ export default function Settings() {
 
                         {/* Purchase trends chart - Now using Recharts */}
                         <div className="bg-white p-6 rounded-xl shadow-md mb-6">
-                          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6">
+                          <div className="flex flex-row gap-1 justify-between items-start sm:items-center mb-6">
                             <div>
-                              <div className="flex items-center gap-3">
+                              <div className="flex items-center gap-1 lg:gap-3">
                                 <h2 className="text-2xl font-medium text-[#252525]">
                                   12,039
                                 </h2>
-                                <span className="text-green-600 flex items-center gap-1 text-sm bg-[#EBFFEB] px-2 py-1 rounded">
-                                  <BiUpArrow /> 7.4%
+                                <span className="text-green-600 flex items-center gap-1 text-[12px] font-medium bg-[#EBFFEB] px-2 py-1 rounded">
+                                  <ChevronUp size={12} /> 7.4%
                                 </span>
                               </div>
                               <p className="text-gray-500">Purchase Trends</p>
@@ -716,40 +753,29 @@ export default function Settings() {
                         </div>
 
                         <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
-                          {teamMembers.map((member, index) => (
-                            <div
-                              key={member.id}
-                              className={`flex items-center justify-between p-4 ${
-                                index !== teamMembers.length - 1
-                                  ? "border-b border-gray-200"
-                                  : ""
-                              }`}
-                            >
-                              <div className="flex items-center">
-                                <div className="w-10 h-10 rounded-full overflow-hidden mr-3 bg-gray-200">
-                                  {member.avatar && (
-                                    <Image
-                                      src={member.avatar}
-                                      alt={member.name}
-                                      width={40}
-                                      height={40}
-                                      className="object-cover"
-                                    />
-                                  )}
-                                </div>
+                          {teamMembers.map((member) => (
+                            <div key={member.id} className="flex items-center justify-between p-4 border-b">
+                              <div className="flex items-center space-x-4">
+                                <img
+                                  src={member.avatar}
+                                  alt={member.name}
+                                  className="w-10 h-10 rounded-full"
+                                />
                                 <div>
-                                  <h3 className="font-medium text-[16px] leading-6 text-black">
-                                    {member.name}
-                                  </h3>
-                                  <p className="text-[#737373] text-[14px] leading-5">
-                                    {member.email}
-                                  </p>
+                                  <h3 className="font-medium">{member.name}</h3>
+                                  <p className="text-sm text-gray-500">{member.email}</p>
                                 </div>
                               </div>
-                              <button className="text-gray-400 hover:text-gray-600">
+                              <div className="flex items-center space-x-2">
+                                <button
+                                  onClick={() => handleRemoveTeammate(member)}
+                                  className="text-gray-400 hover:text-red-600 transition-colors"
+                                >
+                                  {/* <Trash2 className="h-5 w-5" /> */}
+                                
                                 <svg
                                   xmlns="http://www.w3.org/2000/svg"
-                                  className="h-6 w-6"
+                                  className="h-5 w-5"
                                   fill="none"
                                   viewBox="0 0 24 24"
                                   stroke="currentColor"
@@ -761,7 +787,9 @@ export default function Settings() {
                                     d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"
                                   />
                                 </svg>
-                              </button>
+                        
+                                </button>
+                              </div>
                             </div>
                           ))}
                         </div>
@@ -782,6 +810,13 @@ export default function Settings() {
           </div>
         </div>
       </div>
+
+      <ConfirmationModal
+        isOpen={showRemoveModal}
+        onClose={() => setShowRemoveModal(false)}
+        onConfirm={confirmRemoveTeammate}
+        teammateName={selectedTeammate?.name}
+      />
     </>
   );
 }
@@ -802,8 +837,9 @@ function AddMemberModal({ onClose, onAddMember }) {
     <div className="fixed inset-0 bg-black bg-opacity-30 flex items-center justify-center z-50">
       <div className="bg-[#F9fbff] rounded-2xl shadow-lg w-full max-w-md p-6 mx-4">
         <div className="text-center mb-6">
-          <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-blue-100 mb-4">
-          <RiTeamLine className="text-blue-500 text-3xl" />
+          <div className="inline-flex items-center justify-center w-[82px] h-[82px] rounded-full bg-blue-50 mb-4">
+          {/* <RiTeamLine className="text-blue-500 text-3xl" /> */}
+          <Image  src={team_icon} alt="team icon" width={56} height={56}/>
           </div>
           <h2 className="text-2xl text-black font-medium">Add team member</h2>
           <p className="text-gray-900 text-[16px] leading-6 mt-1 ">

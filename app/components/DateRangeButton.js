@@ -49,7 +49,7 @@ export default function DateRangeButton() {
       {/* Button displaying the date range and icon */}
       <button
         onClick={handleButtonClick}
-        className="flex items-center justify-center bg-[#F1F1F2] rounded-md shadow-sm px-4 py-2 text-black font-bold hover:bg-gray-200 transition-colors"
+        className="flex items-center justify-center bg-[#F1F1F2] rounded-md shadow-sm px-3 lg:px-4 py-2 text-black font-normal text-[12px] lg:text-[14px] hover:bg-gray-200 transition-colors"
       >
         <span>{formatDateRange(startDate, endDate)}</span>
         <CalendarIcon className="ml-2 h-5 w-5" />

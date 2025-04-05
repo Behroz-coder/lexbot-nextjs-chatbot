@@ -1,17 +1,26 @@
 import React from 'react'
-import sideBG from "../../public/login_side_image.png";
+import sideBG from "../../public/side_login.png";
 import logo from "../../public/Lexbot.svg";
 import Image from 'next/image';
 function page() {
   return (
-       <div className="flex flex-col lg:flex-row   h-screen">
+       <div className="flex flex-col relative lg:justify-between lg:flex-row h-screen">
+        <div className="hidden lg:block absolute top-8 left-32 ">
+            <Image
+              src={logo}
+              alt="logo image"
+             
+              className="w-[85px] h-[28px]"
+            />
+          </div>
+
        {/* Left Section */}
-       <div className="lg:w-1/2 flex items-start justify-start ml-0 lg:ml-12  bg-white">
+       <div className="lg:w-[60%]  flex items-start justify-start ml-0 lg:pl-[100px]  bg-white">
          <div className="lg:max-w-[34rem] w-full p-6 lg:p-8">
-           <div className="text-left mb-4">
-             <Image src={logo} alt="logo image" className="w-16" />
-           </div>
-           <div className="text-left mt-20 lg:mt-60 xl:mt-44 mb-8">
+         <div className="text-left mb-3 lg:hidden block lg:mb-0 lg:mt-[70px]">
+              <Image src={logo} alt="logo image" className="w-16" />
+            </div>
+           <div className="text-left mt-8 lg:mt-60 xl:mt-44 mb-8">
              <h1 className="text-[24px] lg:text-[48px] font-bold">Forget Password?</h1>
              <p className="text-gray-600 text-[12px] lg:text-[16px] font-normal mt-4 ">Please enter the email you used in registering and a password reset link will be sent to you</p>
            </div>
@@ -41,16 +50,14 @@ function page() {
        </div>
    
        {/* Right Section */}
-       <div className="lg:w-1/2 hidden lg:flex lg:items-center lg:justify-end min-h-screen bg-custom-gradient ">
-         <Image
-           src={sideBG}
-           alt="AI Powered Customer Support"
-           className="xl:h-full h-auto w-full xl:w-auto object-cover"
-         />
-         {/* <p className="absolute top-10 right-0 text-black text-xl font-semibold  pr-64 ">
-           AI-Powered Customer Support
-         </p> */}
-       </div>
+       <div className="lg:w-[60%] 2xl:w-[45%] relative mr-0 hidden lg:block min-h-screen ">
+          <Image
+            src={sideBG}
+            alt="AI Powered Customer Support"
+       
+            className="h-full  w-full object-fill"
+          />
+        </div>
      </div>
   )
 }
